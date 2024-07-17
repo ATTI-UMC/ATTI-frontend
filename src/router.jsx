@@ -2,7 +2,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
@@ -12,3 +12,5 @@ export const router = createBrowserRouter([
     element: <SignUp />,
   },
 ]);
+
+export default router;
