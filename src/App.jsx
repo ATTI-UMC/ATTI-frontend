@@ -1,10 +1,14 @@
-import "./App.css";
-
+import { GlobalStyle } from "./styles/global";
+import { ThemeProvider } from "styled-components";
+import { RouterProvider } from "react-router-dom";
+import theme from "./styles/theme";
+import router from "./router";
 function App() {
   return (
-    <>
-      <h1>화이팅!</h1>
-    </>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <RouterProvider router={router} />
+    </ThemeProvider>
   );
 }
 
