@@ -1,11 +1,15 @@
-import React from 'react';
-import Login from './pages/Login'
+import { GlobalStyle } from "./styles/global";
+import { ThemeProvider } from "styled-components";
+import { RouterProvider } from "react-router-dom";
+import theme from "./styles/theme";
+import router from "./router";
 
 function App() {
   return (
-    <>
-      <Login />
-    </>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <RouterProvider router={router} />
+    </ThemeProvider>
   );
 }
 
