@@ -10,9 +10,9 @@ const FormContainer = styled.form`
 `;
 
 const Input = styled.input`
-  width: 95%;
+  width: 90%;
   height: 42px;
-  padding: 10px;
+  padding: 10px 15px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 50px;
@@ -40,7 +40,7 @@ const Button = styled.button`
   height: 60px;
   padding: 15px;
   margin-top: 15px;
-  background-color: #10d99b;
+  background-color: ${({ theme }) => theme.colors.main[500]};
   border: none;
   border-radius: 50px;
   color: #fff;
