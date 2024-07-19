@@ -1,8 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import logoNaver from '../assets/images/logoNaver.png';
-import logoKakao from '../assets/images/logoKakao.png';
-import logoGoogle from '../assets/images/logoGoogle.png';
+import React from "react";
+import styled from "styled-components";
+import logoNaver from "../assets/images/logoNaver.png";
+import logoKakao from "../assets/images/logoKakao.png";
+import logoGoogle from "../assets/images/logoGoogle.png";
+import { Link } from "react-router-dom";
 
 const FooterContainer = styled.div`
   display: flex;
@@ -10,7 +11,6 @@ const FooterContainer = styled.div`
   width: 80%;
   max-width: 400px;
   align-items: center;
-  
 `;
 
 const LinksContainer = styled.div`
@@ -26,12 +26,12 @@ const LinksContainer = styled.div`
   }
 `;
 
-const Link = styled.span`
+const LinkItem = styled.span`
   padding-left: 10px;
   &::before {
     padding-right: 10px;
     color: #999999;
-    content: '|';
+    content: "|";
   }
   &:nth-child(1)::before {
     content: none;
@@ -39,7 +39,7 @@ const Link = styled.span`
   &:nth-child(1) {
     padding-left: 0px;
   }
-`
+`;
 
 const IconsContainer = styled.div`
   display: flex;
@@ -58,9 +58,15 @@ const Icon = styled.img`
 const LoginFooter = () => (
   <FooterContainer>
     <LinksContainer>
-      <Link><a href="#">회원가입</a></Link>
-      <Link><a href="#">아이디 찾기</a></Link>
-      <Link><a href="#">비밀번호 찾기</a></Link>
+      <LinkItem>
+        <Link to="/signup">회원가입</Link>
+      </LinkItem>
+      <LinkItem>
+        <Link to="">아이디 찾기</Link>
+      </LinkItem>
+      <LinkItem>
+        <Link to="">비밀번호 찾기</Link>
+      </LinkItem>
     </LinksContainer>
     <IconsContainer>
       <Icon src={logoNaver} alt="Naver" />
