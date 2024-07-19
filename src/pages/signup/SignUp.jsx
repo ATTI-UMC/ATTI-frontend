@@ -1,12 +1,25 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import styled from "styled-components";
+import SignUpHeader from "../../components/signupComponents/SignUpHeader";
+
+const SignUpContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  min-width: 375px;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+`
 
 const SignUp = () => {
   return (
-    <div>
-      <h1>회원가입</h1>
+    <SignUpContainer>
+      <SignUpHeader />
       <Outlet />
-    </div>
+    </SignUpContainer>
   );
 };
 
