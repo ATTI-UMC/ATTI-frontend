@@ -1,10 +1,16 @@
 import React from "react";
+import InputField from "../../components/signupComponents/InputField";
+import Button from "../../components/signupComponents/Button";
+import ImageUpload from "../../components/signupComponents/ImageUpload";
 
 const Authentication = () => {
   return (
-    <div>
-      <h1>인증화면</h1>
-    </div>
+    <>
+      <InputField label="E - mail 입력하기" type="text" withButton />
+      <InputField label="인증번호" type="text" />
+      <ImageUpload />
+      <Button />
+    </>
   );
 };
 
