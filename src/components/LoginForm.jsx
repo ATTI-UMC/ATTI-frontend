@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const FormContainer = styled.form`
   display: flex;
@@ -31,7 +31,7 @@ const Checkbox = styled.input`
 `;
 
 const CheckboxLabel = styled.label`
-  font-size: 14px
+  font-size: 14px;
 `;
 
 const Button = styled.button`
@@ -54,7 +54,7 @@ const LoginForm = () => (
     <Input type="password" placeholder="비밀번호 입력하기" />
     <CheckboxContainer>
       <Checkbox type="checkbox" />
-      <CheckboxLabel >로그인 상태 유지하기</CheckboxLabel>
+      <CheckboxLabel>로그인 상태 유지하기</CheckboxLabel>
     </CheckboxContainer>
     <Button>로그인</Button>
   </FormContainer>
