@@ -28,10 +28,9 @@ const BackButtonImg = styled.img`
 
 const Title = styled.h1`
   flex: 1;
-
   margin: 0 10px 0 20px;
   font-size: 18px;
-  color: #1c1b1f;
+  font-weight: bold;
 `;
 
 const SignUpHeader = ({ onBack }) => (
