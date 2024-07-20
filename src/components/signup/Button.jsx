@@ -6,7 +6,7 @@ const Btn = styled.button`
   max-width: 400px;
   height: 60px;
   padding: 15px;
-  margin-top: 120px;
+  margin-top: auto;
   background-color: ${({ theme }) => theme.colors.main[500]};
   border: none;
   border-radius: 50px;

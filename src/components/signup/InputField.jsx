@@ -29,9 +29,9 @@ const Input = styled.input`
 const VerifyButton = styled.button`
   width: 50px;
   border: none;
-  background-color: #fff
+  background-color: white;
   cursor: pointer;
-`;
+  `;
 
 const InputField = ({ label, type, placeholder, withButton }) => (
   <InputWrapper>

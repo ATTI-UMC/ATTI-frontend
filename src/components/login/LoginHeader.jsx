@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import logoAtti from '../assets/images/logoAtti.png'
+import logoAtti from '../../assets/images/logoAtti.png'
 
 const HeaderContainer = styled.div`
   display: flex;
