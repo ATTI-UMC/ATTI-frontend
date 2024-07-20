@@ -1,14 +1,25 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import styled from "styled-components";
 
 const Onboarding = () => {
   return (
-    <div>
-      <h1>Onboarding Process</h1>
+    <OnboardingContainer>
       <h1>Progress Bar</h1>
       <Outlet />
-    </div>
+    </OnboardingContainer>
   );
 };
 
 export default Onboarding;
+
+const OnboardingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  min-width: 375px;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+`;
