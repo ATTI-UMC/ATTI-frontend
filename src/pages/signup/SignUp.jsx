@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import SignUpHeader from "../../components/signupComponents/SignUpHeader";
+import SignUpHeader from "../../components/signup/SignUpHeader";
 
 const SignUpContainer = styled.div`
   display: flex;

@@ -12,7 +12,6 @@ const HeaderWrapper = styled.div`
 `
 
 const BackBtn = styled.button`
-  position absolute;
   width: 10px;
   height: 20px;
   margin: 20px;

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import logoNaver from "../assets/images/logoNaver.png";
-import logoKakao from "../assets/images/logoKakao.png";
-import logoGoogle from "../assets/images/logoGoogle.png";
+import logoNaver from "../../assets/images/logoNaver.png";
+import logoKakao from "../../assets/images/logoKakao.png";
+import logoGoogle from "../../assets/images/logoGoogle.png"
 import { Link } from "react-router-dom";
 
 const FooterContainer = styled.div`

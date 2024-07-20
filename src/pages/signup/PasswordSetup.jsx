@@ -1,6 +1,6 @@
 import React from "react";
-import InputField from "../../components/signupComponents/InputField";
-import Button from "../../components/signupComponents/Button";
+import InputField from "../../components/signup/InputField";
+import Button from "../../components/signup/Button";
 
 const PasswordSetup = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
-import MbtiForm from "../../components/MbtiForm";
-import NextButton from "../../components/NextButton";
+import MbtiForm from "../../components/onboarding/MbtiForm";
+import NextButton from "../../components/onboarding/NextButton";
 import styled from "styled-components";
 
 const MbtiInfo = () => {

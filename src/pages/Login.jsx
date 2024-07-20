@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import LoginHeader from '../components/LoginHeader'
-import LoginForm from '../components/LoginForm';
-import LoginFooter from '../components/LoginFooter';
+import LoginHeader from '../components/login/LoginHeader'
+import LoginForm from '../components/login/LoginForm';
+import LoginFooter from '../components/login/LoginFooter';
 
 const LoginContainer = styled.div`
   display: flex;
