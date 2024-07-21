@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20.15.1
-          cache: npm
+          #cache: npm - 오류발생
       - run: npm ci
 
       - name: Set Environment Variables #환경변수 추가, 추가될 때 마다 yaml과 github action 수정
