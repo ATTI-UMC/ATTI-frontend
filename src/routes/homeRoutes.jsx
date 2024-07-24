@@ -2,7 +2,7 @@ import Home from "../pages/Home";
 
 const homeRoutes = [
   {
-    path: "/",
+    path: "/home",
     element: <Home />,
   },
 ];
