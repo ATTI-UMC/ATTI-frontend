@@ -1,6 +1,17 @@
-import React from 'react'
-import styled from 'styled-components'
-import logoAtti from '../../assets/images/logoAtti.png'
+import React from "react";
+import styled from "styled-components";
+import logoAtti from "../../assets/images/logoAtti.png";
+
+const LoginHeader = () => {
+  return (
+    <HeaderContainer>
+      <Logo src={logoAtti} alt="Logo" />
+      <Title>아띠</Title>
+    </HeaderContainer>
+  );
+};
+
+export default LoginHeader;
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -19,12 +30,3 @@ const Title = styled.h1`
   color: #000;
   margin-left: 20px;
 `;
-
-export default function LoginHeader() {
-  return (
-    <HeaderContainer>
-      <Logo src={logoAtti} alt="Logo" />
-      <Title>아띠</Title>
-    </HeaderContainer>
-  )
-}

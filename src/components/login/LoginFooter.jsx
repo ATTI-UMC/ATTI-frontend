@@ -5,6 +5,29 @@ import logoKakao from "../../assets/images/logoKakao.png";
 import logoGoogle from "../../assets/images/logoGoogle.png";
 import { Link } from "react-router-dom";
 
+const LoginFooter = () => (
+  <FooterContainer>
+    <LinksContainer>
+      <LinkItem>
+        <Link to="/signup/auth">회원가입</Link>
+      </LinkItem>
+      <LinkItem>
+        <Link to="">아이디 찾기</Link>
+      </LinkItem>
+      <LinkItem>
+        <Link to="">비밀번호 찾기</Link>
+      </LinkItem>
+    </LinksContainer>
+    <IconsContainer>
+      <Icon src={logoNaver} alt="Naver" />
+      <Icon src={logoKakao} alt="KakaoTalk" />
+      <Icon src={logoGoogle} alt="Google" />
+    </IconsContainer>
+  </FooterContainer>
+);
+
+export default LoginFooter;
+
 const FooterContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -54,26 +77,3 @@ const Icon = styled.img`
   margin: 0 15px;
   cursor: pointer;
 `;
-
-const LoginFooter = () => (
-  <FooterContainer>
-    <LinksContainer>
-      <LinkItem>
-        <Link to="/signup/auth">회원가입</Link>
-      </LinkItem>
-      <LinkItem>
-        <Link to="">아이디 찾기</Link>
-      </LinkItem>
-      <LinkItem>
-        <Link to="">비밀번호 찾기</Link>
-      </LinkItem>
-    </LinksContainer>
-    <IconsContainer>
-      <Icon src={logoNaver} alt="Naver" />
-      <Icon src={logoKakao} alt="KakaoTalk" />
-      <Icon src={logoGoogle} alt="Google" />
-    </IconsContainer>
-  </FooterContainer>
-);
-
-export default LoginFooter;

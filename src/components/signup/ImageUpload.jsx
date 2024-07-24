@@ -1,12 +1,23 @@
 // ImageUpload.js
-import React from 'react';
-import styled from 'styled-components';
-import camera from "../../assets/images/camera.png"
+import React from "react";
+import styled from "styled-components";
+import camera from "../../assets/images/camera.png";
+
+const ImageUpload = () => (
+  <ImageUploadWrapper>
+    <Label>학생증 인증</Label>
+    <ImageUploadBox>
+      <ImageIcon src={camera} />
+    </ImageUploadBox>
+  </ImageUploadWrapper>
+);
+
+export default ImageUpload;
 
 const ImageUploadWrapper = styled.div`
-width: calc(100% - 40px);
-margin-top: 20px;
-`
+  width: calc(100% - 40px);
+  margin-top: 20px;
+`;
 
 const ImageUploadBox = styled.div`
   width: 100%;
@@ -24,23 +35,12 @@ const ImageUploadBox = styled.div`
 `;
 
 const ImageIcon = styled.img`
-  width:58px;
-  height:50px;
+  width: 58px;
+  height: 50px;
 `;
 
 const Label = styled.label`
-  display:block;
+  display: block;
   margin-bottom: 10px;
   font-weight: bold;
-`
-
-const ImageUpload = () => (
-  <ImageUploadWrapper>
-    <Label>학생증 인증</Label>
-    <ImageUploadBox>
-      <ImageIcon src={camera} />
-    </ImageUploadBox>
-  </ImageUploadWrapper>
-);
-
-export default ImageUpload;
+`;
