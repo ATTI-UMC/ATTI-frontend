@@ -1,5 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
+
+const Button = () => {
+  return <Btn>다음</Btn>;
+};
+
+export default Button;
 
 const Btn = styled.button`
   width: calc(100% - 40px);
@@ -14,11 +20,3 @@ const Btn = styled.button`
   font-size: 16px;
   cursor: pointer;
 `;
-
-const Button = () => {
-  return(
-    <Btn>다음</Btn>
-  )
-}
-
-export default Button;

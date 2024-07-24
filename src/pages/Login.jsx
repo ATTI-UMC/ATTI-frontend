@@ -5,18 +5,7 @@ import LoginForm from "../components/login/LoginForm";
 import LoginFooter from "../components/login/LoginFooter";
 import Debug from "./Debug";
 
-const LoginContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  min-width: 375px;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-`;
-
-export default function Login() {
+const Login = () => {
   return (
     <>
       <LoginContainer>
@@ -27,4 +16,17 @@ export default function Login() {
       <Debug></Debug>
     </>
   );
-}
+};
+
+export default Login;
+
+const LoginContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  min-width: 375px;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+`;
