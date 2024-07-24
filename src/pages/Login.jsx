@@ -1,8 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import LoginHeader from '../components/login/LoginHeader'
-import LoginForm from '../components/login/LoginForm';
-import LoginFooter from '../components/login/LoginFooter';
+import React from "react";
+import styled from "styled-components";
+import LoginHeader from "../components/login/LoginHeader";
+import LoginForm from "../components/login/LoginForm";
+import LoginFooter from "../components/login/LoginFooter";
+import Debug from "./Debug";
 
 const LoginContainer = styled.div`
   display: flex;
@@ -17,10 +18,13 @@ const LoginContainer = styled.div`
 
 export default function Login() {
   return (
-    <LoginContainer>
-      <LoginHeader />
-      <LoginForm />
-      <LoginFooter />
-    </LoginContainer>
-  )
+    <>
+      <LoginContainer>
+        <LoginHeader />
+        <LoginForm />
+        <LoginFooter />
+      </LoginContainer>
+      <Debug></Debug>
+    </>
+  );
 }
