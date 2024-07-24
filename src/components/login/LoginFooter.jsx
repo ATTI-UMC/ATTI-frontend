@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import logoNaver from "../../assets/images/logoNaver.png";
 import logoKakao from "../../assets/images/logoKakao.png";
-import logoGoogle from "../../assets/images/logoGoogle.png"
+import logoGoogle from "../../assets/images/logoGoogle.png";
 import { Link } from "react-router-dom";
 
 const FooterContainer = styled.div`
@@ -59,7 +59,7 @@ const LoginFooter = () => (
   <FooterContainer>
     <LinksContainer>
       <LinkItem>
-        <Link to="/signup">회원가입</Link>
+        <Link to="/signup/auth">회원가입</Link>
       </LinkItem>
       <LinkItem>
         <Link to="">아이디 찾기</Link>
