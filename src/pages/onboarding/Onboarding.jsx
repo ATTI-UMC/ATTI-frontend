@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import ProgressBar from "../../components/ProgressBar";
+import NextButton from "../../components/NextButton";
 
 const Onboarding = () => {
+  const nav = useNavigate();
+
+  const [progress, setProgress] = useState(25);
+
+  const handleClick = () => {
+    setProgress((prev) => progress + 25);
+  };
+
   return (
     <OnboardingContainer>
-      <h1>Progress Bar</h1>
+      <ProgressBar progress={progress} />
       <Outlet />
+      <NextButton onClick={handleClick} />
     </OnboardingContainer>
   );
 };

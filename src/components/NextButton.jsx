@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-const NextButton = () => {
-  return <Button>다음</Button>;
+const NextButton = ({ onClick }) => {
+  return <Button onClick={onClick}>다음</Button>;
 };
 
 export default NextButton;

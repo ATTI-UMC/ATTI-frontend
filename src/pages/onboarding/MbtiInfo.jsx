@@ -1,6 +1,5 @@
 import React from "react";
 import MbtiForm from "../../components/MbtiForm";
-import NextButton from "../../components/NextButton";
 import styled from "styled-components";
 
 const MbtiInfo = () => {
@@ -14,7 +13,6 @@ const MbtiInfo = () => {
         <Text>MBTI를 기반으로 친구를 찾아줘요!</Text>
       </TextContainer>
       <MbtiForm />
-      <NextButton />
     </MbtiContainer>
   );
 };

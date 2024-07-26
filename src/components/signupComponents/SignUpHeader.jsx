@@ -1,18 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import backBtn from "../../assets/images/backBtn.png"
+import backBtn from "../../assets/images/backBtn.png";
 
 const HeaderWrapper = styled.div`
-  display:flex;
+  display: flex;
   flex-direction: column;
   width: 100%;
   padding: 20px 10px;
   position: relative;
   margin-bottom: 20px;
-`
+`;
 
 const BackBtn = styled.button`
-  position absolute;
+  position: absolute;
   width: 10px;
   height: 20px;
   margin: 20px;
@@ -20,7 +20,7 @@ const BackBtn = styled.button`
   border: none;
   cursor: pointer;
   padding: 0;
-`
+`;
 const BackButtonImg = styled.img`
   width: 10px;
   height: 20px;
