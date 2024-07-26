@@ -7,6 +7,7 @@ const Btn = styled.button`
   height: 60px;
   padding: 15px;
   margin-top: auto;
+  margin-bottom: 20px;
   background-color: ${({ theme }) => theme.colors.main[500]};
   border: none;
   border-radius: 50px;
