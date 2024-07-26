@@ -8,7 +8,7 @@ const NextButton = ({ onClick }) => {
 export default NextButton;
 
 const Button = styled.button`
-  width: 100%;
+  width: 80%;
   max-width: 400px;
   height: 50px;
   padding: 15px;
