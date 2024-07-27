@@ -5,10 +5,26 @@ const MbtiContainer = ({ ...props }) => {
   return (
     <Wrapper>
       <CircleContainer>
-        <BigCircle>{props.left}</BigCircle>
-        <SmallCircle></SmallCircle>
-        <SmallCircle></SmallCircle>
-        <BigCircle>{props.right}</BigCircle>
+        <BigCircle
+          selected={props.selectedValue === 25}
+          onClick={() => props.handleClick(props.idx, 25)}
+        >
+          {props.left}
+        </BigCircle>
+        <SmallCircle
+          selected={props.selectedValue === 50}
+          onClick={() => props.handleClick(props.idx, 50)}
+        ></SmallCircle>
+        <SmallCircle
+          selected={props.selectedValue === 75}
+          onClick={() => props.handleClick(props.idx, 75)}
+        ></SmallCircle>
+        <BigCircle
+          selected={props.selectedValue === 100}
+          onClick={() => props.handleClick(props.idx, 100)}
+        >
+          {props.right}
+        </BigCircle>
       </CircleContainer>
       <DescriptionContainer>
         <Description>{props.leftDescription}</Description>
@@ -31,7 +47,8 @@ const BigCircle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgba(153, 153, 153, 0.6);
+  border: 1px solid
+    ${(props) => (props.selected ? `#10D99B` : `rgba(153, 153, 153, 0.6)`)};
   border-radius: 50%;
   width: 68px;
   height: 68px;
@@ -40,7 +57,8 @@ const BigCircle = styled.div`
 `;
 
 const SmallCircle = styled.div`
-  border: 1px solid rgba(153, 153, 153, 0.6);
+  border: 1px solid
+    ${(props) => (props.selected ? `#10D99B` : `rgba(153, 153, 153, 0.6)`)};
   border-radius: 50%;
   width: 60px;
   height: 60px;

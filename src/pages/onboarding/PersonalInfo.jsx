@@ -11,7 +11,6 @@ const PersonalInfo = () => {
         환영합니다!
       </WelcomeMessage>
       <PersonalInfoForm />
-      <NextButton />
     </PersonalInfoContainer>
   );
 };
@@ -21,7 +20,6 @@ export default PersonalInfo;
 const PersonalInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-
 `;
 
 const WelcomeMessage = styled.div`
