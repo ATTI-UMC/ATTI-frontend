@@ -1,57 +1,62 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import MbtiContainer from "./MbtiContainer";
 
 const MbtiForm = () => {
+  const [mbti, setMbti] = useState([null, null, null, null]);
+  const [isMbtiValid, setIsMbtiValid] = useState(false);
+  const [value, setValue] = useState(null);
+
+  useEffect(() => {
+    const allSelected = mbti.every((e) => e !== null);
+    setIsMbtiValid(allSelected);
+  }, [mbti]);
+
+  const handleClick = (idx, value) => {
+    const selections = [...mbti];
+    selections[idx] = value;
+    setMbti(selections);
+    console.log();
+  };
+
   return (
     <FormContainer>
-      <Wrapper>
-        <CircleContainer>
-          <BigCircle>E</BigCircle>
-          <SmallCircle></SmallCircle>
-          <SmallCircle></SmallCircle>
-          <BigCircle>I</BigCircle>
-        </CircleContainer>
-        <DescriptionContainer>
-          <Description>외향적</Description>
-          <Description>내향적</Description>
-        </DescriptionContainer>
-      </Wrapper>{" "}
-      <Wrapper>
-        <CircleContainer>
-          <BigCircle>S</BigCircle>
-          <SmallCircle></SmallCircle>
-          <SmallCircle></SmallCircle>
-          <BigCircle>N</BigCircle>
-        </CircleContainer>
-        <DescriptionContainer>
-          <Description>감각적</Description>
-          <Description>직관적</Description>
-        </DescriptionContainer>
-      </Wrapper>{" "}
-      <Wrapper>
-        <CircleContainer>
-          <BigCircle>T</BigCircle>
-          <SmallCircle></SmallCircle>
-          <SmallCircle></SmallCircle>
-          <BigCircle>F</BigCircle>
-        </CircleContainer>
-        <DescriptionContainer>
-          <Description>논리적</Description>
-          <Description>감정적</Description>
-        </DescriptionContainer>
-      </Wrapper>{" "}
-      <Wrapper>
-        <CircleContainer>
-          <BigCircle>J</BigCircle>
-          <SmallCircle></SmallCircle>
-          <SmallCircle></SmallCircle>
-          <BigCircle>P</BigCircle>
-        </CircleContainer>
-        <DescriptionContainer>
-          <Description>계획적</Description>
-          <Description>자율적</Description>
-        </DescriptionContainer>
-      </Wrapper>
+      <MbtiContainer
+        left={"E"}
+        right={"I"}
+        leftDescription={"외향적"}
+        rightDescription={"내향적"}
+        idx={0}
+        handleClick={handleClick}
+        selectedValue={mbti[0]}
+      />
+      <MbtiContainer
+        left={"S"}
+        right={"N"}
+        leftDescription={"감각적"}
+        rightDescription={"직관적"}
+        idx={1}
+        handleClick={handleClick}
+        selectedValue={mbti[1]}
+      />
+      <MbtiContainer
+        left={"T"}
+        right={"F"}
+        leftDescription={"논리적"}
+        rightDescription={"감정적"}
+        idx={2}
+        handleClick={handleClick}
+        selectedValue={mbti[2]}
+      />
+      <MbtiContainer
+        left={"P"}
+        right={"J"}
+        leftDescription={"계획적"}
+        rightDescription={"자율적"}
+        idx={3}
+        handleClick={handleClick}
+        selectedValue={mbti[3]}
+      />
     </FormContainer>
   );
 };
@@ -61,47 +66,4 @@ export default MbtiForm;
 const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const CircleContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-`;
-
-const BigCircle = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid rgba(153, 153, 153, 0.6);
-  border-radius: 50%;
-  width: 68px;
-  height: 68px;
-  cursor: pointer;
-  font-size: 28px;
-`;
-
-const SmallCircle = styled.div`
-  border: 1px solid rgba(153, 153, 153, 0.6);
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const DescriptionContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Description = styled.div`
-  font-weight: 400;
-  font-size: 14px;
-  margin: 10px 15px;
 `;
