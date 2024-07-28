@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const InputField = ({ label, type, placeholder, withButton, value, onChange, error, success }) => (
+const InputField = ({ label, type, placeholder, withButton, value, onChange, error, success, disabled }) => (
   <InputWrapper>
     <Label>{label}</Label>
     <InputContainer>
@@ -11,7 +11,7 @@ const InputField = ({ label, type, placeholder, withButton, value, onChange, err
         onChange={onChange}
         value={value}
       />
-      {withButton && <VerifyButton>인증</VerifyButton>}
+      {withButton && <VerifyButton disabled={disabled} >인증</VerifyButton>}
       {error && <ErrorMsg>{error}</ErrorMsg>}
       {success && <SuccessMsg>{success}</SuccessMsg>}
     </InputContainer>
@@ -49,11 +49,14 @@ const Input = styled.input`
 const VerifyButton = styled.button`
   position: absolute;
   width: 50px;
+  height: 30px;
   border: none;
-  background-color: white;
-  right: 0;
-  top: 10px;
-  cursor: pointer;
+  border-radius: 5px;
+  background-color:  ${({ theme, disabled }) => disabled ? '#ccc' : theme.colors.main[500]};
+  color: #fff;
+  right: 10px;
+  top: 2px;
+  cursor: ${({disabled}) => disabled ? 'none' : 'pointer' }
 `
 const ErrorMsg = styled.p`
   position: absolute;
