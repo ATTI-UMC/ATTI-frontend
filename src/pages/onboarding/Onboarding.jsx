@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import ProgressBar from "../../components/ProgressBar";
-import NextButton from "../../components/NextButton";
+import NextButton from "../../components/onboarding/NextButton";
 
 const Onboarding = () => {
   const nav = useNavigate();

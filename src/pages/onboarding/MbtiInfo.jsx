@@ -1,5 +1,4 @@
 import React from "react";
-import MbtiForm from "../../components/MbtiForm";
 import styled from "styled-components";
 import MbtiForm from "../../components/onboarding/MbtiForm";
 import NextButton from "../../components/onboarding/NextButton";
