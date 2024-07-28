@@ -1,7 +1,7 @@
 import React from "react";
-import InputField from "../../components/signupComponents/InputField";
-import Button from "../../components/signupComponents/Button";
-import ImageUpload from "../../components/signupComponents/ImageUpload";
+import InputField from "../../components/signup/InputField";
+import Button from "../../components/signup/Button";
+import ImageUpload from "../../components/signup/ImageUpload";
 
 const Authentication = () => {
   return (

@@ -1,7 +1,7 @@
-import NextButton from "../../components/NextButton";
-import styled from "styled-components";
 import React from "react";
-import PersonalInfoForm from "../../components/PersonalInfoForm";
+import styled from "styled-components";
+import NextButton from "../../components/onboarding/NextButton";
+import PersonalInfoForm from "../../components/onboarding/PersonalInfoForm";
 
 const PersonalInfo = () => {
   return (

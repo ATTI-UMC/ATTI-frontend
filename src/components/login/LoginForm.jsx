@@ -1,6 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
+const LoginForm = () => (
+  <FormContainer>
+    <Input type="email" placeholder="E-mail 입력하기" />
+    <Input type="password" placeholder="비밀번호 입력하기" />
+    <CheckboxContainer>
+      <Checkbox type="checkbox" />
+      <CheckboxLabel>로그인 상태 유지하기</CheckboxLabel>
+    </CheckboxContainer>
+    <Button>로그인</Button>
+  </FormContainer>
+);
+
+export default LoginForm;
+
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
@@ -47,17 +61,3 @@ const Button = styled.button`
   font-size: 16px;
   cursor: pointer;
 `;
-
-const LoginForm = () => (
-  <FormContainer>
-    <Input type="email" placeholder="E-mail 입력하기" />
-    <Input type="password" placeholder="비밀번호 입력하기" />
-    <CheckboxContainer>
-      <Checkbox type="checkbox" />
-      <CheckboxLabel>로그인 상태 유지하기</CheckboxLabel>
-    </CheckboxContainer>
-    <Button>로그인</Button>
-  </FormContainer>
-);
-
-export default LoginForm;

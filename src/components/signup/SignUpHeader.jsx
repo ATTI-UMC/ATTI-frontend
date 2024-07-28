@@ -2,17 +2,28 @@ import React from "react";
 import styled from "styled-components";
 import backBtn from "../../assets/images/backBtn.png";
 
+const SignUpHeader = ({ onBack }) => (
+  <HeaderWrapper>
+    <BackBtn onClick={onBack}>
+      <BackButtonImg src={backBtn} alt="Back" />
+    </BackBtn>
+    <Title>회원가입</Title>
+  </HeaderWrapper>
+);
+
+export default SignUpHeader;
+
 const HeaderWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-top: 30px;
   padding: 20px 10px;
   position: relative;
   margin-bottom: 20px;
 `;
 
 const BackBtn = styled.button`
-  position: absolute;
   width: 10px;
   height: 20px;
   margin: 20px;
@@ -32,14 +43,3 @@ const Title = styled.h1`
   font-size: 18px;
   font-weight: bold;
 `;
-
-const SignUpHeader = ({ onBack }) => (
-  <HeaderWrapper>
-    <BackBtn onClick={onBack}>
-      <BackButtonImg src={backBtn} alt="Back" />
-    </BackBtn>
-    <Title>회원가입</Title>
-  </HeaderWrapper>
-);
-
-export default SignUpHeader;

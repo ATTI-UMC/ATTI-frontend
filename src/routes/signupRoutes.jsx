@@ -7,7 +7,7 @@ const signupRoutes = [
     path: "/signup",
     element: <SignUp />,
     children: [
-      { path: "", element: <Authentication /> },
+      { path: "auth", element: <Authentication /> },
       { path: "password-setup", element: <PasswordSetup /> },
     ],
   },
