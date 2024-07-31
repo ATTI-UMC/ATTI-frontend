@@ -1,13 +1,83 @@
-import React from "react";
+import React, { useState } from "react";
 import InputField from "../../components/signup/InputField";
 import Button from "../../components/signup/Button";
 import ImageUpload from "../../components/signup/ImageUpload";
+import axios from "axios";
 
 const Authentication = () => {
+  const [email, setEmail] = useState("");
+  const [isEmailValid, setIsEmailValid] = useState("");
+
+  const [verificationNum, setVerificationNum] = useState("");
+  const [isVerificationNumValid, setIsVerificationNumValid] = useState(false);
+  const [verificationError, setVerificationError] = useState("");
+  const [verificationSuccess, setVerificationSuccess] = useState("");
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  const handleEmailChange = (e) => {
+    const emailValue = e.target.value;
+    setEmail(emailValue);
+    setIsEmailValid(validateEmail(emailValue));
+  };
+
+  /* 인증번호 전송 버튼 클릭 로직
+  const handleSendButtonClick = async () => {
+    try {
+      const response = await axios.post("이메일 인증 url", {email: email});
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }*/
+
+  const handleVerificationNumChange = (e) => {
+    const codeValue = e.target.value;
+    setVerificationNum(codeValue);
+    setVerificationError("");
+    setVerificationSuccess("");
+  }
+
+  /*인증번호 확인 버튼 클릭 로직
+  const handleCheckButtonClick = async () => {
+    try {
+      const response = await axios.post("인증번호 확인 url", {
+        email: email,
+        code: verificationNum});
+      if (response.data.success) {
+        setVerificationSuccess("인증되었습니다")
+      } else {
+        setVerificationError("인증번호가 일치하지 않습니다")
+      }
+    } catch(error) {
+      setVerificationError("인증번호 확인에 실패했습니다. 다시 시도해 주세요")
+    }
+  }*/
+
+
   return (
     <>
-      <InputField label="E - mail 입력하기" type="text" withButton />
-      <InputField label="인증번호" type="text" />
+      <InputField 
+        label="E - mail 입력하기" 
+        type="email" 
+        value={email}
+        onChange={handleEmailChange}
+        //buttonOnClick={handleSendButtonClick}
+        disabled={!isEmailValid}
+        withSendButton />
+      <InputField 
+        label="인증번호" 
+        type="text"
+        value={verificationNum}
+        onChange={handleVerificationNumChange} 
+        withCheckButton
+        //buttonOnClick={handleCheckButtonClick}
+        //success={verificationSuccess}
+        //error={verificationError}
+        />
       <ImageUpload />
       <Button />
     </>
