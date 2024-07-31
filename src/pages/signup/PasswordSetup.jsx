@@ -5,6 +5,8 @@ import Button from "../../components/signup/Button";
 const PasswordSetup = () => {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [passwordSuccess, setPasswordSuccess] = useState('');
+ 
   const [confirmPassword, setConfirmPassword] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
   const [confirmPasswordSuccess, setConfirmPasswordSuccess] = useState('');
@@ -16,9 +18,11 @@ const PasswordSetup = () => {
     setPassword(newPassword);
 
     if (!passwordRegex.test(newPassword)) {
-      setPasswordError('실패하였습니다');
+      setPasswordError('형식에 맞는 비밀번호를 입력해주세요');
+      setPasswordSuccess('');
     } else {
       setPasswordError('');
+      setPasswordSuccess('사용 가능한 비밀번호입니다')
     }
   };
 
@@ -44,6 +48,7 @@ const PasswordSetup = () => {
         value={password}
         onChange={handlePasswordChange}
         error={passwordError}
+        success={passwordSuccess}
       />
       <InputField 
         label="비밀번호 재입력" 
