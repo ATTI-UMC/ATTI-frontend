@@ -10,6 +10,7 @@ const Authentication = () => {
 
   const [verificationNum, setVerificationNum] = useState("");
   const [isVerificationNumValid, setIsVerificationNumValid] = useState(false);
+  
   const [verificationError, setVerificationError] = useState("");
   const [verificationSuccess, setVerificationSuccess] = useState("");
 
@@ -37,6 +38,7 @@ const Authentication = () => {
   const handleVerificationNumChange = (e) => {
     const codeValue = e.target.value;
     setVerificationNum(codeValue);
+    setIsVerificationNumValid(codeValue.length ==6);
     setVerificationError("");
     setVerificationSuccess("");
   }
@@ -72,7 +74,8 @@ const Authentication = () => {
         label="인증번호" 
         type="text"
         value={verificationNum}
-        onChange={handleVerificationNumChange} 
+        onChange={handleVerificationNumChange}
+        disabled={!isVerificationNumValid}
         withCheckButton
         //buttonOnClick={handleCheckButtonClick}
         //success={verificationSuccess}
