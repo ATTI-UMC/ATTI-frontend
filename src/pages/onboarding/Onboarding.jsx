@@ -14,38 +14,38 @@ const Onboarding = () => {
   }));
   const nav = useNavigate();
   const location = useLocation();
-  const [progress, setProgress] = useState(25);
+  const [curIdx, setIdx] = useState(1);
+  const maxIdx = 4;
 
   useEffect(() => {
     setDisable(true);
     switch (location.pathname) {
       case "/onboarding/personal-info":
-        setProgress(25);
+        setIdx(1);
         break;
       case "/onboarding/mbti-info":
-        setProgress(50);
+        setIdx(2);
         break;
       case "/onboarding/interest-info":
-        setProgress(75);
+        setIdx(3);
         break;
       case "/onboarding/terms-agreement":
-        setProgress(100);
+        setIdx(4);
         break;
       default:
-        setProgress(25);
+        setIdx(1);
     }
   }, [location, setDisable]);
 
   const handleClick = (address) => {
     if (!disable) {
-      setProgress((prev) => progress + 25);
       nav(address);
     }
   };
 
   return (
     <OnboardingContainer>
-      <ProgressBar progress={progress} />
+      <ProgressBar curIdx={curIdx} maxIdx={maxIdx} />
       <Outlet />
       <NextButton onClick={() => handleClick(address)} />
     </OnboardingContainer>

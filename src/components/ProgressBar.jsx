@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-const ProgressBar = ({ progress }) => {
+const ProgressBar = ({ curIdx, maxIdx }) => {
+  const progress = (curIdx / maxIdx) * 100;
+  console.log("curIdx", curIdx, "maxIdx", maxIdx, "progress", progress);
+
   return (
     <Container>
       <Progress width={`${progress}%`}></Progress>
