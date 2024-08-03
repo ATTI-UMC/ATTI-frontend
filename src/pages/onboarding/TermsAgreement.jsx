@@ -1,13 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import NextButton from "../../components/onboarding/NextButton";
 
 const TermsAgreement = () => {
   return (
     <Container>
       <Header />
       <Content />
-      <NextButton />
     </Container>
   );
 };
@@ -71,6 +69,7 @@ const ContentContainer = styled.div`
   justify-content: space-around;
   height: 100%;
   padding: 20px;
+  gap: 20px;
 `;
 
 const TermContainer = styled.div`

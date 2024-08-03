@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
+import { useOnboardingStore } from "../../store/useOnboardingStore";
 
 const PersonalInfoForm = () => {
   const [inputs, setInputs] = useState(["", "", "", "", "", ""]);
@@ -9,7 +10,15 @@ const PersonalInfoForm = () => {
   const [isBirthValid, setIsBirthValid] = useState(true);
   const [isNickNameValid, setisNickNameValid] = useState(true);
   const [isFormValid, setIsFormValid] = useState(false);
-  //-> zustand 사용해서 next button에 전달하여 버튼 활성화 예정
+
+  const { setNav, setDisable } = useOnboardingStore((state) => ({
+    setNav: state.setNav,
+    setDisable: state.setDisable,
+  }));
+
+  useEffect(() => {
+    setIsFormValid(false);
+  }, []);
 
   // 닉네임(공백,특수문자) 유효성, 성별 not null, 생년월일 유효성 검사
   // 폼 전체에 대한 유효성 검사를 위해 useEffect deps 사용
@@ -18,8 +27,12 @@ const PersonalInfoForm = () => {
     const isValid =
       isNickNameValid && isBirthValid && gender !== null && allInputsFilled;
     setIsFormValid(isValid);
-    console.log(`isalid? : ${isFormValid}`);
-  }, [inputs, isNickNameValid, isBirthValid, gender]);
+    if (isFormValid) {
+      setNav("/onboarding/mbti-info");
+      setDisable(false);
+      console.log("form valid");
+    }
+  }, [inputs, isNickNameValid, isBirthValid, gender, isFormValid]);
 
   const handleGenderClick = (buttonName) => {
     setGender((prevGender) => (prevGender === buttonName ? null : buttonName));

@@ -17,7 +17,7 @@ const Container = styled.div`
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin: 1rem 2rem;
+  margin: 2rem;
 `;
 
 const Progress = styled.div`

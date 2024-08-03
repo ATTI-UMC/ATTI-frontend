@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import NextButton from "../../components/onboarding/NextButton";
 
 /**
  * entry point
@@ -37,7 +36,6 @@ const InterestInfo = () => {
     <Container>
       <Header />
       <Content objectList={objectList} />
-      <NextButton />
     </Container>
   );
 };
