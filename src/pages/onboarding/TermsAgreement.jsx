@@ -2,13 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../../components/onboarding/TermsAgreement/Header";
 import Content from "../../components/onboarding/TermsAgreement/Content";
+import { TermAgreementProvider } from "../../context/TermAgreementContext";
 
 const TermsAgreement = () => {
   return (
-    <Container>
-      <Header />
-      <Content />
-    </Container>
+    <TermAgreementProvider>
+      <Container>
+        <Header />
+        <Content />
+      </Container>
+    </TermAgreementProvider>
   );
 };
 
