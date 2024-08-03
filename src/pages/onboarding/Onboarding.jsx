@@ -1,24 +1,53 @@
-import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import ProgressBar from "../../components/ProgressBar";
 import NextButton from "../../components/onboarding/NextButton";
+import { useOnboardingStore } from "../../store/useOnboardingStore";
 
 const Onboarding = () => {
+  const { disable, address, setDisable } = useOnboardingStore((state) => ({
+    address: state.address,
+    disable: state.disable,
+    setDisable: state.setDisable,
+  }));
   const nav = useNavigate();
+  const location = useLocation();
+  const [curIdx, setIdx] = useState(1);
+  const maxIdx = 4;
 
-  const [progress, setProgress] = useState(25);
+  useEffect(() => {
+    setDisable(true);
+    switch (location.pathname) {
+      case "/onboarding/personal-info":
+        setIdx(1);
+        break;
+      case "/onboarding/mbti-info":
+        setIdx(2);
+        break;
+      case "/onboarding/interest-info":
+        setIdx(3);
+        break;
+      case "/onboarding/terms-agreement":
+        setIdx(4);
+        break;
+      default:
+        setIdx(1);
+    }
+  }, [location, setDisable]);
 
-  const handleClick = () => {
-    setProgress((prev) => progress + 25);
+  const handleClick = (address) => {
+    if (!disable) {
+      nav(address);
+    }
   };
 
   return (
     <OnboardingContainer>
-      <ProgressBar progress={progress} />
+      <ProgressBar curIdx={curIdx} maxIdx={maxIdx} />
       <Outlet />
-      <NextButton onClick={handleClick} />
+      <NextButton onClick={() => handleClick(address)} />
     </OnboardingContainer>
   );
 };
@@ -28,9 +57,8 @@ export default Onboarding;
 const OnboardingContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  min-width: 375px;
+  width: 100%;
+  height: 100%;
   align-items: center;
   justify-content: center;
   background: #fff;
