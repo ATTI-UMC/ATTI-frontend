@@ -1,10 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import { useTermAgreement } from "../../../context/TermAgreementContext";
 
-const Term = ({ text, isRequired }) => {
+const Term = ({ text, id, isRequired }) => {
+  const { agreedTerms, toggleAgreement } = useTermAgreement();
+  const isChecked = agreedTerms[id];
+
   return (
     <TermContainer>
-      <TermRadio type="checkbox" />
+      <TermCheckbox
+        type="checkbox"
+        checked={isChecked}
+        onChange={() => toggleAgreement(id)}
+      />
       <TermText>
         {text}
         {isRequired && <TermText className="required">(필수)</TermText>}
@@ -21,15 +29,10 @@ const TermContainer = styled.div`
   gap: 12px;
 `;
 
-const TermRadio = styled.input`
+const TermCheckbox = styled.input`
   width: 22px;
   height: 22px;
-  border: none;
   cursor: pointer;
-  background-color: #d9d9d9;
-  &:checked {
-    background-color: #d9d9d9;
-  }
 `;
 
 const TermText = styled.div`

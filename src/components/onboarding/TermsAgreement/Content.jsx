@@ -5,8 +5,12 @@ import Term from "./Term";
 const Content = () => {
   return (
     <ContentContainer>
-      <Term text="아띠 이용약관 동의" isRequired={true} />
-      <Term text="개인정보 수집 및 이용 동의" isRequired={true} />
+      <Term text="아띠 이용약관 동의" id="terms_of_service" isRequired={true} />
+      <Term
+        text="개인정보 수집 및 이용 동의"
+        id="privacy_policy"
+        isRequired={true}
+      />
     </ContentContainer>
   );
 };
