@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { TagProvider } from "../../context/TagContext";
 import Header from "../../components/onboarding/InterestInfo/Header";
 import Content from "../../components/onboarding/InterestInfo/Content";
+import { TagProvider } from "../../context/TagContext";
 
 const InterestInfo = () => {
   const objectList = [

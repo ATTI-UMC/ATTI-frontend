@@ -1,7 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { useTagContext } from "../context/TagContext";
+import { useTagContext } from "../../../context/TagContext";
 
+/**
+ * useTagContext 을 통해 선택된 태그 TagContext에서 관리
+ * @param {string} tag
+ * @returns 태크 컴포넌트
+ */
 const Tag = ({ tag }) => {
   const { selectedTags, handleTagSelection } = useTagContext();
   const selected = selectedTags.includes(tag);

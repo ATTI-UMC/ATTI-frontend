@@ -18,6 +18,10 @@ export const TagProvider = ({ children }) => {
   );
 };
 
+/**
+ * {selectedTags, handleTagSelection}
+ * @returns useContext(TagContext)
+ */
 export const useTagContext = () => {
   return useContext(TagContext);
 };

@@ -2,6 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import Tag from "./Tag";
 
+/**
+ * @param {Array} tagList
+ * @returns 태그 컨테이너
+ */
 const CategoryContent = ({ tagList }) => {
   return (
     <TagContainer>
