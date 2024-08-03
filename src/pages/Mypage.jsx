@@ -4,11 +4,13 @@ import InfoCard from "../components/mypage/InfoCard";
 import MypageContainer from "../components/mypage/MypageContainer";
 
 const Mypage = () => {
+  const infoList = ["INTP", "닉네임", "20", "홍익대 서울캠", "22", "재학생"];
+
   return (
     <Container>
       <SignUpHeader />
       <Wrapper>
-        <InfoCard />
+        <InfoCard info={infoList} />
         <MypageContainer />
       </Wrapper>
     </Container>
@@ -26,5 +28,5 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  padding: 20px 10px;
+  padding: 0 10px;
 `;
