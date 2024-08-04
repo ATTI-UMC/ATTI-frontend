@@ -19,6 +19,7 @@ const SignUpContainer = styled.div`
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+  max-width: 425px;
   min-width: 375px;
   align-items: center;
   justify-content: center;

@@ -11,7 +11,6 @@ const PersonalInfo = () => {
         환영합니다!
       </WelcomeMessage>
       <PersonalInfoForm />
-      <NextButton />
     </PersonalInfoContainer>
   );
 };

@@ -14,7 +14,6 @@ const MbtiInfo = () => {
         <Text>MBTI를 기반으로 친구를 찾아줘요!</Text>
       </TextContainer>
       <MbtiForm />
-      <NextButton />
     </MbtiContainer>
   );
 };
