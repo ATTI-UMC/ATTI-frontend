@@ -1,8 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import { useOnboardingStore } from "../../store/useOnboardingStore";
 
 const NextButton = ({ onClick }) => {
-  return <Button onClick={onClick}>다음</Button>;
+  const disable = useOnboardingStore((state) => state.disable);
+
+  return (
+    <Button onClick={onClick} disabled={disable}>
+      다음
+    </Button>
+  );
 };
 
 export default NextButton;
@@ -14,7 +21,7 @@ const Button = styled.button`
   padding: 15px;
   margin-top: 15px;
   color: white;
-  background-color: #d9d9d9;
+  background-color: ${({ disabled }) => (disabled ? "#d9d9d9" : "#10D99B")};
   border: none;
   border-radius: 50px;
   cursor: pointer;

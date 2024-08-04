@@ -1,22 +1,36 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import MbtiContainer from "./MbtiContainer";
+import { useOnboardingStore } from "../../store/useOnboardingStore";
 
 const MbtiForm = () => {
   const [mbti, setMbti] = useState([null, null, null, null]);
   const [isMbtiValid, setIsMbtiValid] = useState(false);
   const [value, setValue] = useState(null);
 
+  const { setNav, setDisable } = useOnboardingStore((state) => ({
+    setNav: state.setNav,
+    setDisable: state.setDisable,
+  }));
+
+  useEffect(() => {
+    setIsMbtiValid(false);
+  }, []);
+
   useEffect(() => {
     const allSelected = mbti.every((e) => e !== null);
     setIsMbtiValid(allSelected);
-  }, [mbti]);
+    if (isMbtiValid) {
+      setNav("/onboarding/interest-info");
+      setDisable(false);
+      console.log("mbtivalid");
+    }
+  }, [mbti, isMbtiValid]);
 
   const handleClick = (idx, value) => {
     const selections = [...mbti];
     selections[idx] = value;
     setMbti(selections);
-    console.log();
   };
 
   return (

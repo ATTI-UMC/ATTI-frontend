@@ -3,8 +3,14 @@ import InputField from "../../components/signup/InputField";
 import Button from "../../components/signup/Button";
 import ImageUpload from "../../components/signup/ImageUpload";
 import axios from "axios";
+import Modal from "../../components/Modal";
 
 const Authentication = () => {
+  const [showModal, setShowModal] = useState(false);
+  const handleClick = () => {
+    setShowModal(!showModal);
+  };
+
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState("");
 
@@ -17,7 +23,7 @@ const Authentication = () => {
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
-  }
+  };
 
   const handleEmailChange = (e) => {
     const emailValue = e.target.value;
@@ -41,7 +47,7 @@ const Authentication = () => {
     setIsVerificationNumValid(codeValue.length ==6);
     setVerificationError("");
     setVerificationSuccess("");
-  }
+  };
 
   /*인증번호 확인 버튼 클릭 로직
   const handleCheckButtonClick = async () => {
@@ -59,19 +65,19 @@ const Authentication = () => {
     }
   }*/
 
-
   return (
     <>
-      <InputField 
-        label="E - mail 입력하기" 
-        type="email" 
+      <InputField
+        label="E - mail 입력하기"
+        type="email"
         value={email}
         onChange={handleEmailChange}
         //buttonOnClick={handleSendButtonClick}
         disabled={!isEmailValid}
-        withSendButton />
-      <InputField 
-        label="인증번호" 
+        withSendButton
+      />
+      <InputField
+        label="인증번호"
         type="text"
         value={verificationNum}
         onChange={handleVerificationNumChange}
@@ -80,9 +86,15 @@ const Authentication = () => {
         //buttonOnClick={handleCheckButtonClick}
         //success={verificationSuccess}
         //error={verificationError}
-        />
+      />
       <ImageUpload />
       <Button />
+      <button onClick={handleClick}>모달확인용</button>
+      <Modal
+        show={showModal}
+        onClose={handleClick}
+        error={"학생증 인증에 실패"}
+      />
     </>
   );
 };
