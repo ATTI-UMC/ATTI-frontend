@@ -1,20 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import INTJ from "../../assets/images/INTJ.png"
-import exitBtn from "../../assets/images/exitBtn.png"
-import reportBtn from "../../assets/images/reportBtn.png"
+import button_exit from "../../assets/images/button_exit.png"
+import button_report from "../../assets/images/button_report.png"
 
 const Info = () => (
   <Container>
-    <InfoContainer>
+    <InfoWrapper>
       <MBTIIcon src = { INTJ }/>
       <Nickname>닉네임</Nickname>
       <MBTI>INTJ</MBTI>
-    </InfoContainer>
-    <IconsContainer>
-      <Icon src={ reportBtn } alt="report"/>
-      <Icon src={ exitBtn } alt="exit"/>
-    </IconsContainer>
+    </InfoWrapper>
+    <IconsWrapper>
+      <Icon src={ button_report } alt="report"/>
+      <Icon src={ button_exit } alt="exit"/>
+    </IconsWrapper>
   </Container>
 );
 
@@ -26,7 +26,7 @@ const Container = styled.div`
   width: 100%;
 `
 
-const InfoContainer = styled.div`
+const InfoWrapper = styled.div`
   display: inline-flex;
   align-items: center;
   padding: 0 10px;
@@ -47,7 +47,7 @@ const MBTI = styled.p`
   color: #10D99B;
 `
 
-const IconsContainer = styled.div`
+const IconsWrapper = styled.div`
   display: flex;
   align-items: center;
   padding: 0 10px;
@@ -56,4 +56,5 @@ const IconsContainer = styled.div`
 const Icon = styled.img`
   width: 16px;
   height: 18px;
+  cursor: pointer;
 `
