@@ -1,22 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import INTJ from "../../assets/images/INTJ.png"
 import button_exit from "../../assets/images/button_exit.png"
 import button_report from "../../assets/images/button_report.png"
+import BottomSheet from "./BottomSheet";
+import TextButton from "./TextButton";
+const Info = () => {
+  const [isSheetVisible, setIsSheetVisible] = useState(false);
 
-const Info = () => (
-  <Container>
-    <InfoWrapper>
-      <MBTIIcon src = { INTJ }/>
-      <Nickname>닉네임</Nickname>
-      <MBTI>INTJ</MBTI>
-    </InfoWrapper>
-    <IconsWrapper>
-      <Icon src={ button_report } alt="report"/>
-      <Icon src={ button_exit } alt="exit"/>
-    </IconsWrapper>
-  </Container>
-);
+  const toggleSheet = () => {
+    setIsSheetVisible(!isSheetVisible);
+  }
+
+  return(
+    <Container>
+      <InfoWrapper>
+        <MBTIIcon src = { INTJ }/>
+        <Nickname>닉네임</Nickname>
+        <MBTI>INTJ</MBTI>
+      </InfoWrapper>
+      <IconsWrapper>
+        <Icon src={ button_report } alt="report" onClick={toggleSheet}/>
+        <Icon src={ button_exit } alt="exit"/>
+      </IconsWrapper>
+      <BottomSheet isVisible={isSheetVisible} onClose={toggleSheet}>
+        <TextButton onClick={() => alert('신고')}>신고</TextButton>
+        <TextButton onClick={() => alert('차단')}>차단</TextButton>
+      </BottomSheet>
+    </Container>
+  )
+};
 
 export default Info;
 
