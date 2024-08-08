@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-const Modal = ({ isVisible, onClose, title, message, onConfirm }) => {
+const Modal = ({ isVisible, onClose, title, message, onConfirm, confirmButtonText, color }) => {
   return (
     <>
       <Overlay isVisible={isVisible} onClick={onClose} />
       <ModalContainer isVisible={isVisible}>
-        <ModalTitle>{title}</ModalTitle>
+        <ModalTitle color={color}>{title}</ModalTitle>
         <ModalMessage>{message}</ModalMessage>
         <ButtonWrapper>
           <CancelButton onClick={onClose}>취소</CancelButton>
-          <ConfirmButton onClick={onConfirm} >신고</ConfirmButton>
+          <ConfirmButton onClick={onConfirm} backgroundColor={color}>{confirmButtonText}</ConfirmButton>
         </ButtonWrapper>
       </ModalContainer>
     </>
@@ -45,7 +45,7 @@ const ModalContainer = styled.div`
 `;
 
 const ModalTitle = styled.h2`
-  color: #D91040;
+  color: ${({ color }) => color };
 `;
 
 const ModalMessage = styled.p`
@@ -74,10 +74,10 @@ const CancelButton = styled.button`
 
 const ConfirmButton = styled.button`
   padding: 10px 20px;
-  background-color: #D91040;
+  background-color: ${({ backgroundColor }) => backgroundColor };
   width: 106px;
   height: 32px;
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;

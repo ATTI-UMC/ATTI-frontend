@@ -11,6 +11,7 @@ const Info = () => {
   const [isSheetVisible, setIsSheetVisible] = useState(false);
   const [isReportSheetVisible, setIsReportSheetVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [modalContent, setModalContent] =useState({});
 
   const toggleSheet = () => {
     setIsSheetVisible(!isSheetVisible);
@@ -21,8 +22,10 @@ const Info = () => {
     setIsSheetVisible(false);
   };
 
-  const showModal = () => {
+  const showModal = (title, message, confirmButtonText, color) => {
+    setModalContent({ title, message, confirmButtonText, color });
     setIsModalVisible(true);
+    setIsSheetVisible(false);
     setIsReportSheetVisible(false);
   }
 
@@ -44,30 +47,32 @@ const Info = () => {
       </InfoWrapper>
       <IconsWrapper>
         <Icon src={ button_report } alt="report" onClick={toggleSheet}/>
-        <Icon src={ button_exit } alt="exit"/>
+        <Icon src={ button_exit } alt="exit" onClick={() => showModal('채팅을 종료할까요?', '채팅 종료 이후에는 채팅을 다시 이어나갈 수 없습니다.', '나가기', '#0FBD88')}/>
       </IconsWrapper>
 
       {/* 첫번째 팝업 */}
       <BottomSheet isVisible={isSheetVisible} onClose={toggleSheet}>
         <TextButton onClick={(toggleReportSheet)}>신고</TextButton>
-        <TextButton onClick={() => alert('차단')}>차단</TextButton>
+        <TextButton onClick={() => showModal('정말 차단할까요?', '해당 사용자와 서로 차단되며, 진행중인 채팅방은 삭제됩니다.', '차단', '#D91040')}>차단</TextButton>
       </BottomSheet>
 
       {/* 두번째 팝업 */}
       <BottomSheet isVisible={isReportSheetVisible} onClose={toggleReportSheet}>
         <Title>어떤 문제가 있나요?</Title>
-        <TextButton onClick={showModal}>상대방이 답장 없음</TextButton>
-        <TextButton onClick={showModal}>허위 프로필 및 사진 도용</TextButton>
-        <TextButton onClick={showModal}>불법 촬영물 공유</TextButton>
-        <TextButton onClick={showModal}>욕설 및 불쾌한 대화</TextButton>
-        <TextButton onClick={showModal}>기타</TextButton>
+        <TextButton onClick={() => showModal('정말 신고할까요?', '해당 사용자와 서로 차단되며, 진행중인 채팅방은 삭제됩니다.', '신고', '#D91040')}>상대방이 답장 없음</TextButton>
+        <TextButton onClick={() => showModal('정말 신고할까요?', '해당 사용자와 서로 차단되며, 진행중인 채팅방은 삭제됩니다.', '신고', '#D91040')}>허위 프로필 및 사진 도용</TextButton>
+        <TextButton onClick={() => showModal('정말 신고할까요?', '해당 사용자와 서로 차단되며, 진행중인 채팅방은 삭제됩니다.', '신고', '#D91040')}>불법 촬영물 공유</TextButton>
+        <TextButton onClick={() => showModal('정말 신고할까요?', '해당 사용자와 서로 차단되며, 진행중인 채팅방은 삭제됩니다.', '신고', '#D91040')}>욕설 및 불쾌한 대화</TextButton>
+        <TextButton onClick={() => showModal('정말 신고할까요?', '해당 사용자와 서로 차단되며, 진행중인 채팅방은 삭제됩니다.', '신고', '#D91040')}>기타</TextButton>
       </BottomSheet>
 
       <Modal
         isVisible={isModalVisible}
         onClose={closeModal}
-        title='정말 신고할까요?'
-        message='해당 사용자와 서로 차단되며, 진행중인 채팅방은 삭제됩니다.'
+        title={modalContent.title}
+        message={modalContent.message}
+        confirmButtonText={modalContent.confirmButtonText}
+        color={modalContent.color}
         onConfirm={handleConfirm}
       />  
     </Container>
