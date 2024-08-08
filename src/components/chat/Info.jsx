@@ -5,9 +5,12 @@ import button_exit from "../../assets/images/button_exit.png"
 import button_report from "../../assets/images/button_report.png"
 import BottomSheet from "./BottomSheet";
 import TextButton from "./TextButton";
+import Modal from "./Modal";
+
 const Info = () => {
   const [isSheetVisible, setIsSheetVisible] = useState(false);
   const [isReportSheetVisible, setIsReportSheetVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleSheet = () => {
     setIsSheetVisible(!isSheetVisible);
@@ -15,7 +18,21 @@ const Info = () => {
 
   const toggleReportSheet = () => {
     setIsReportSheetVisible(!isReportSheetVisible);
-    setIsSheetVisible();
+    setIsSheetVisible(false);
+  };
+
+  const showModal = () => {
+    setIsModalVisible(true);
+    setIsReportSheetVisible(false);
+  }
+
+  const closeModal = () => {
+    setIsModalVisible(false);
+  }
+
+  const handleConfirm = () => {
+    alert("신고가 접수되었습니다.");
+    closeModal();
   };
 
   return(
@@ -29,20 +46,30 @@ const Info = () => {
         <Icon src={ button_report } alt="report" onClick={toggleSheet}/>
         <Icon src={ button_exit } alt="exit"/>
       </IconsWrapper>
+
       {/* 첫번째 팝업 */}
       <BottomSheet isVisible={isSheetVisible} onClose={toggleSheet}>
         <TextButton onClick={(toggleReportSheet)}>신고</TextButton>
         <TextButton onClick={() => alert('차단')}>차단</TextButton>
       </BottomSheet>
+
       {/* 두번째 팝업 */}
       <BottomSheet isVisible={isReportSheetVisible} onClose={toggleReportSheet}>
         <Title>어떤 문제가 있나요?</Title>
-        <TextButton onClick={() => alert('상대방이 답장 없음')}>상대방이 답장 없음</TextButton>
-        <TextButton onClick={() => alert('허위 프로필 및 사진 도용')}>허위 프로필 및 사진 도용</TextButton>
-        <TextButton onClick={() => alert('불법 촬영물 공유')}>불법 촬영물 공유</TextButton>
-        <TextButton onClick={() => alert('욕설 및 불쾌한 대화')}>욕설 및 불쾌한 대화</TextButton>
-        <TextButton onClick={() => alert('기타')}>기타</TextButton>
+        <TextButton onClick={showModal}>상대방이 답장 없음</TextButton>
+        <TextButton onClick={showModal}>허위 프로필 및 사진 도용</TextButton>
+        <TextButton onClick={showModal}>불법 촬영물 공유</TextButton>
+        <TextButton onClick={showModal}>욕설 및 불쾌한 대화</TextButton>
+        <TextButton onClick={showModal}>기타</TextButton>
       </BottomSheet>
+
+      <Modal
+        isVisible={isModalVisible}
+        onClose={closeModal}
+        title='정말 신고할까요?'
+        message='해당 사용자와 서로 차단되며, 진행중인 채팅방은 삭제됩니다.'
+        onConfirm={handleConfirm}
+      />  
     </Container>
   )
 };

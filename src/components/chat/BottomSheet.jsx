@@ -31,6 +31,7 @@ const Sheet = styled.div`
   background-color: #fff;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
+  //슬라이드 애니메이션
   transition: transform 0.3s ease-in-out;
   transform: translateY(${({ isVisible }) => (isVisible ? '0' : '100%')});
   z-index: 1001;
