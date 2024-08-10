@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import MessageItem from "./MessageItem";
 import styled from "styled-components";
 
 const MessageList = ({ messages }) => {
+  const bottomRef = useRef(null);
+
+  useEffect(() => {
+    if(bottomRef.current) {
+      bottomRef.current.scrollIntoView({behavior:"smooth"});
+    }
+  }, [messages]);
   return (
     <MessageListContainer>
       {messages.map(message =>(
@@ -10,6 +17,7 @@ const MessageList = ({ messages }) => {
           //key={message.id} 
           message={message} />
       ))}
+      <div ref={bottomRef}></div>
     </MessageListContainer>
   )
 }
