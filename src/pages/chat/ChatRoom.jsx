@@ -16,7 +16,8 @@ const ChatRoom = () => {
       const newMessage = {
         //id: uuidv4(),
         text: inputValue,
-        isOwnMessage: true,   
+        isOwnMessage: true,
+        timestamp: new Date().toISOString(),   
       };
       setMessages([...messages, newMessage]);
       setInputValue('');
