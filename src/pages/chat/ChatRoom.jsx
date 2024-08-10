@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 //import { v4 as uuidv4 } from 'uuid';
 import ChatHeader from "../../components/chat/ChatHeader";
-import Layout from "../../components/Layout"
 import Info from "../../components/chat/Info";
 import InputField from "../../components/chat/InputField";
 import MessageList from "../../components/chat/MessageList";
@@ -29,16 +29,43 @@ const ChatRoom = () => {
 
   return(
     <Layout>
-      <ChatHeader />
-      <Info />
-      <MessageList messages={messages} />
-      <InputField 
-        inputValue={inputValue}
-        handleInputChange={handleInputChange}
-        handleSend={handleSend}
-      />
+      <ContentContainer>
+        <ChatHeader />
+        <Info />
+        <MessageListWrapper>
+          <MessageList messages={messages} />
+        </MessageListWrapper>
+        <InputField 
+          inputValue={inputValue}
+          handleInputChange={handleInputChange}
+          handleSend={handleSend}
+        />
+      </ContentContainer>
     </Layout>
   );
 };
 
 export default ChatRoom;
+
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100vh;
+`;
+
+const Layout = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 425px;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+`;
+
+const MessageListWrapper = styled.div`
+  flex: 1; /* Info와 InputField 사이의 모든 가용 공간을 차지하도록 설정 */
+  overflow-y: auto; /* 메시지 목록이 넘칠 경우 스크롤 활성화 */
+  background-color: #fff; /* 메시지 리스트 배경색 */
+  margin-bottom: 32px;
+`;

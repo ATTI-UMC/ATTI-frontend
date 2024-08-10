@@ -3,18 +3,19 @@ import styled from "styled-components";
 import button_image from "../../assets/images/button_image.png"
 import button_send from "../../assets/images/button_send.png"
 
-const InputField = ({ inputValue, handleInputChange, handleSend }) => (
-  <InputWrapper>
-    <ImgBtn><Icon src={ button_image }/></ImgBtn>
-    <Input 
-      type="text"
-      placeholder="메시지를 입력해주세요"
-      value={inputValue}
-      onChange={handleInputChange}
-    />
-    <SendBtn onClick={handleSend}><Icon src={ button_send }/></SendBtn>
-  </InputWrapper>
-)
+const InputField = ({ inputValue, handleInputChange, handleSend }) => {
+  return(
+    <InputWrapper>
+      <ImgBtn><Icon src={ button_image }/></ImgBtn>
+      <Input 
+        type="text"
+        placeholder="메시지를 입력해주세요"
+        value={inputValue}
+        onChange={handleInputChange}
+      />
+      <SendBtn onClick={handleSend}><Icon src={ button_send }/></SendBtn>
+    </InputWrapper>
+)};
 
 export default InputField;
 
@@ -33,6 +34,7 @@ const Input = styled.input`
   flex:1;
   border: none;
   outline: none;
+  height: 100%;
 `
 
 const SendBtn = styled.button`
