@@ -1,16 +1,44 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
+import { useOnboardingStore } from "../../store/useOnboardingStore";
 
 const PersonalInfoForm = () => {
   const [inputs, setInputs] = useState(["", "", "", "", "", ""]);
   const refs = [useRef(), useRef(), useRef(), useRef(), useRef(), useRef()];
   const [gender, setGender] = useState(null);
+  const [nickName, setNickName] = useState("");
+  const [isBirthValid, setIsBirthValid] = useState(true);
+  const [isNickNameValid, setisNickNameValid] = useState(true);
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  const { setNav, setDisable } = useOnboardingStore((state) => ({
+    setNav: state.setNav,
+    setDisable: state.setDisable,
+  }));
+
+  useEffect(() => {
+    setIsFormValid(false);
+  }, []);
+
+  // 닉네임(공백,특수문자) 유효성, 성별 not null, 생년월일 유효성 검사
+  // 폼 전체에 대한 유효성 검사를 위해 useEffect deps 사용
+  useEffect(() => {
+    const allInputsFilled = inputs.every((input) => input !== "");
+    const isValid =
+      isNickNameValid && isBirthValid && gender !== null && allInputsFilled;
+    setIsFormValid(isValid);
+    if (isFormValid) {
+      setNav("/onboarding/mbti-info");
+      setDisable(false);
+      console.log("form valid");
+    }
+  }, [inputs, isNickNameValid, isBirthValid, gender, isFormValid]);
 
   const handleGenderClick = (buttonName) => {
-    setGender(buttonName === gender ? null : buttonName);
+    setGender((prevGender) => (prevGender === buttonName ? null : buttonName));
   };
 
-  const handleChange = (index, value) => {
+  const handleBirthChange = (index, value) => {
     if (!/^\d*$/.test(value)) return;
 
     const newInputs = [...inputs];
@@ -20,13 +48,53 @@ const PersonalInfoForm = () => {
     if (value !== "" && index < 5) {
       refs[index + 1].current.focus();
     }
+
+    if (newInputs.every((input) => input !== "")) {
+      birthValidation(newInputs);
+    }
+  };
+
+  const birthValidation = (array) => {
+    const birthString = array.join("");
+    const year = parseInt(birthString.slice(0, 2));
+    const month = parseInt(birthString.slice(2, 4));
+    const day = parseInt(birthString.slice(4, 6));
+
+    const currentYear = new Date().getFullYear();
+    const century =
+      year <= parseInt(currentYear.toString().slice(2, 4)) ? 2000 : 1900;
+    const fullYear = century + year;
+
+    const birthDate = new Date(fullYear, month - 1, day);
+
+    const isValidDate =
+      birthDate.getFullYear() === fullYear &&
+      birthDate.getMonth() === month - 1 &&
+      birthDate.getDate() === day;
+
+    setIsBirthValid(isValidDate);
+  };
+
+  const handleNameChange = (e) => {
+    const input = e.target.value;
+    const isValid = /^[a-zA-Z0-9가-힣]*$/.test(input);
+    setNickName(input);
+    setisNickNameValid(isValid);
   };
 
   return (
     <FormContainer>
       <NickNameWrapper>
         <InputTitle>닉네임</InputTitle>
-        <Input placeholder="공백, 특수 문자 제외"></Input>
+        <Input
+          placeholder="공백, 특수 문자 제외"
+          onChange={handleNameChange}
+        ></Input>
+        {!isNickNameValid && (
+          <ValidationMessage>
+            공백, 특수 문자가 포함되어있습니다
+          </ValidationMessage>
+        )}
       </NickNameWrapper>
       <GenderWrapper>
         <InputTitle>성별</InputTitle>
@@ -55,10 +123,13 @@ const PersonalInfoForm = () => {
               type="text"
               maxLength={1}
               value={value}
-              onChange={(e) => handleChange(index, e.target.value)}
+              onChange={(e) => handleBirthChange(index, e.target.value)}
             />
           ))}
         </InputWrapper>
+        {!isBirthValid && (
+          <ValidationMessage>유효하지 않은 날짜입니다</ValidationMessage>
+        )}
       </BirthWrapper>
     </FormContainer>
   );
@@ -76,6 +147,12 @@ const NickNameWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
+`;
+
+const ValidationMessage = styled.div`
+  margin: 0.5rem;
+  color: red;
+  font-size: 0.8rem;
 `;
 
 const InputTitle = styled.div`
