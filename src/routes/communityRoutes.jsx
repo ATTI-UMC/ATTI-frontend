@@ -4,18 +4,16 @@ import Post from "../pages/Community/Post";
 
 const communityRoutes = [
   {
-    path: "/community",
+    path: "/community/:category",
     element: <CommunityHome />,
-    children: [
-      {
-        path: ":category",
-        element: <CategoryCommunity />,
-      },
-      {
-        path: ":category/:postId",
-        element: <Post />,
-      },
-    ],
+  },
+  {
+    path: "/community/:category/:mbti",
+    element: <CategoryCommunity />,
+  },
+  {
+    path: "/community/:category/:mbti/:postId",
+    element: <Post />,
   },
 ];
 
