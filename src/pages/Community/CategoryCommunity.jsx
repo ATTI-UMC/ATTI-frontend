@@ -87,6 +87,7 @@ const CategoryCommunity = () => {
       {dummyData.map((data) => (
         <PostItem
           key={data.id}
+          id={data.id}
           title={data.title}
           content={data.content}
           commentCount={data.commentCount}
