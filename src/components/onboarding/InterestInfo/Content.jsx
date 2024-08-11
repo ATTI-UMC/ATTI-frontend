@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import CategoryContent from "./CategoryContent";
+import { useOnboardingStore } from "../../../store/useOnboardingStore";
 
 const Content = ({ objectList }) => {
+  const setNav = useOnboardingStore((state) => state.setNav);
+  useEffect(() => {
+    setNav("/onboarding/terms-agreement");
+  }, [setNav]);
+
   return (
     <ScrollArea>
       {objectList.map((object, index) => (
