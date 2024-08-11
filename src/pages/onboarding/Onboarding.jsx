@@ -18,7 +18,11 @@ const Onboarding = () => {
   const maxIdx = 4;
 
   useEffect(() => {
-    setDisable(true);
+    if (location.pathname === "/onboarding/interest-info") {
+      setDisable(false); // InterestInfo 페이지에서는 버튼을 항상 활성화
+    } else {
+      setDisable(true); // 다른 페이지에서는 기본적으로 비활성화
+    }
     switch (location.pathname) {
       case "/onboarding/personal-info":
         setIdx(1);
