@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import camera from "../../assets/images/camera.png";
 
-const ImageUpload = () => {
+const ImageUpload = ({ onUploadSuccess }) => {
   const [imagePreview, setImagePreview] = useState(null);
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const videoRef = useRef(null);
@@ -11,17 +11,19 @@ const ImageUpload = () => {
 
   const handleBoxClick = () => {
     setIsCameraOpen(true);
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then((stream) => {
-      videoRef.current.srcObject = stream;
-      videoRef.current.play();
-    });
+    navigator.mediaDevices
+      .getUserMedia({ video: { facingMode: "environment" } })
+      .then((stream) => {
+        videoRef.current.srcObject = stream;
+        videoRef.current.play();
+      });
   };
 
   const handleTakePhoto = () => {
     const context = canvasRef.current.getContext("2d");
     const video = videoRef.current;
-    const width = 250; 
-    const height = 150; 
+    const width = 250;
+    const height = 150;
 
     // Get the white box position and size
     const whiteBox = document.getElementById("white-box");
@@ -32,10 +34,22 @@ const ImageUpload = () => {
     const offsetY = whiteBoxRect.top - videoRect.top;
 
     // Draw the video frame onto the canvas
-    context.drawImage(video, offsetX, offsetY, width, height, 0, 0, width, height);
+    context.drawImage(
+      video,
+      offsetX,
+      offsetY,
+      width,
+      height,
+      0,
+      0,
+      width,
+      height
+    );
 
     const imageDataUrl = canvasRef.current.toDataURL("image/png");
     setImagePreview(imageDataUrl);
+
+    onUploadSuccess();
 
     // Stop all video tracks to close the camera
     video.srcObject.getTracks().forEach((track) => track.stop());
@@ -58,7 +72,12 @@ const ImageUpload = () => {
         <CameraOverlay>
           <Video ref={videoRef} />
           <WhiteBox id="white-box" />
-          <Canvas ref={canvasRef} width="250" height="150" style={{ display: "none" }} />
+          <Canvas
+            ref={canvasRef}
+            width="250"
+            height="150"
+            style={{ display: "none" }}
+          />
           <TakePhotoButton onClick={handleTakePhoto}>사진 촬영</TakePhotoButton>
         </CameraOverlay>
       )}
@@ -139,8 +158,8 @@ const WhiteBox = styled.div`
   width: 250px;
   height: 150px;
   border: 2px solid white;
-  top: calc(50% - 100px);  
-  left: calc(50% - 125px);  
+  top: calc(50% - 100px);
+  left: calc(50% - 125px);
   box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.5);
 `;
 

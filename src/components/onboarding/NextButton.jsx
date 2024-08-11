@@ -19,7 +19,8 @@ const Button = styled.button`
   max-width: 400px;
   height: 50px;
   padding: 15px;
-  margin-top: 15px;
+  margin-top: auto;
+  margin-bottom: 20px;
   color: white;
   background-color: ${({ disabled }) => (disabled ? "#d9d9d9" : "#10D99B")};
   border: none;
