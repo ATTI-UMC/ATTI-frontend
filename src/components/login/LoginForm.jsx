@@ -24,8 +24,8 @@ const FormContainer = styled.form`
 `;
 
 const Input = styled.input`
-  width: 90%;
-  height: 42px;
+  width: 100%;
+  height: 45px;
   padding: 10px 15px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
@@ -51,9 +51,9 @@ const CheckboxLabel = styled.label`
 const Button = styled.button`
   width: 100%;
   max-width: 400px;
-  height: 60px;
+  height: 50px;
   padding: 15px;
-  margin-top: 15px;
+  margin-top: 30px;
   background-color: ${({ theme }) => theme.colors.main[500]};
   border: none;
   border-radius: 50px;

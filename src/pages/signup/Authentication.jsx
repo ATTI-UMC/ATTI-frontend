@@ -44,7 +44,7 @@ const Authentication = () => {
   const handleVerificationNumChange = (e) => {
     const codeValue = e.target.value;
     setVerificationNum(codeValue);
-    setIsVerificationNumValid(codeValue.length ==6);
+    setIsVerificationNumValid(codeValue.length === 6);
     setVerificationError("");
     setVerificationSuccess("");
   };
