@@ -1,9 +1,17 @@
 import React from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
-const PostItem = ({ title, content, commentCount, time, writer }) => {
+const PostItem = ({ id, title, content, commentCount, time, writer }) => {
+  const { category, mbti } = useParams();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/community/${category}/${mbti}/${id}`);
+  };
+
   return (
-    <PostContainer>
+    <PostContainer onClick={handleClick}>
       <Title>{title}</Title>
       <Content>{content}</Content>
       <Footer>
@@ -16,16 +24,19 @@ const PostItem = ({ title, content, commentCount, time, writer }) => {
 
 export default PostItem;
 
-const PostContainer = styled.div`
+const PostContainer = styled.button`
+  display: flex;
+  flex-direction: column;
   width: 360px;
   height: 120px;
-  border-bottom: 1px solid #ddd;
   padding: 12px;
   padding-bottom: 28px;
   margin: 12px 0;
   gap: 4px;
-  display: flex;
-  flex-direction: column;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
 `;
 
 const Title = styled.h3`
@@ -33,8 +44,6 @@ const Title = styled.h3`
   font-size: 16px;
   font-weight: bold;
   color: #333;
-  overflow: hidden;
-  text-overflow: ellipsis;
 `;
 
 const Content = styled.p`

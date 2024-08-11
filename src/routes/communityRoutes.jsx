@@ -10,12 +10,10 @@ const communityRoutes = [
   {
     path: "/community/:category/:mbti",
     element: <CategoryCommunity />,
-    children: [
-      {
-        path: ":postId",
-        element: <Post />,
-      },
-    ],
+  },
+  {
+    path: "/community/:category/:mbti/:postId",
+    element: <Post />,
   },
 ];
 
