@@ -1,3 +1,4 @@
+import MainLayout from "../components/MainLayout";
 import Home from "../pages/Home";
 
 const homeRoutes = [

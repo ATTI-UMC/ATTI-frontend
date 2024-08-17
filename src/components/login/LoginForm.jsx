@@ -1,17 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { fetchLogin } from "../../api/fetch";
 
-const LoginForm = () => (
-  <FormContainer>
-    <Input type="email" placeholder="E-mail 입력하기" />
-    <Input type="password" placeholder="비밀번호 입력하기" />
-    <CheckboxContainer>
-      <Checkbox type="checkbox" />
-      <CheckboxLabel>로그인 상태 유지하기</CheckboxLabel>
-    </CheckboxContainer>
-    <Button>로그인</Button>
-  </FormContainer>
-);
+const LoginForm = () => {
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
+  const onLoginHandler = async () => {
+    const id = await fetchLogin(id, password);
+  };
+
+  const onIdChangeHandler = (event) => {
+    setId(event.target.value);
+  };
+
+  const onPasswordChangeHandler = (event) => {
+    setPassword(event.target.value);
+  };
+
+  return (
+    <FormContainer>
+      <Input
+        type="email"
+        placeholder="E-mail 입력하기"
+        onChange={onIdChangeHandler}
+        value={id}
+      />
+      <Input
+        type="password"
+        placeholder="비밀번호 입력하기"
+        onChange={onPasswordChangeHandler}
+        value={password}
+      />
+      <CheckboxContainer>
+        <Checkbox type="checkbox" />
+        <CheckboxLabel>로그인 상태 유지하기</CheckboxLabel>
+      </CheckboxContainer>
+      <Button onClick={onLoginHandler}>로그인</Button>
+    </FormContainer>
+  );
+};
 
 export default LoginForm;
 
