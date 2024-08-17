@@ -12,7 +12,7 @@ const InputField = ({ label, type, placeholder, withSendButton, withCheckButton,
         value={value}
       />
       {withSendButton && <VerifyButton disabled={disabled} onClick={buttonOnClick} >인증</VerifyButton>}
-      {withCheckButton && <VerifyButton onClick={buttonOnClick}>확인</VerifyButton>}
+      {withCheckButton && <VerifyButton disabled={disabled} onClick={buttonOnClick}>확인</VerifyButton>}
     </InputContainer>
     {error && <ErrorMsg>{error}</ErrorMsg>}
     {success && <SuccessMsg>{success}</SuccessMsg>}

@@ -4,6 +4,9 @@ import authRoutes from "./routes/authRoutes";
 import signupRoutes from "./routes/signupRoutes";
 import onboardingRoutes from "./routes/onboardingRoutes";
 import mypageRoutes from "./routes/mypageRoutes";
+import ChatRoomRoutes from "./routes/chatRoomRoutes";
+import communityRoutes from "./routes/communityRoutes";
+import attitalkRoutes, { attiRoute } from "./routes/attitalkRoutes";
 
 const router = createBrowserRouter([
   ...homeRoutes,
@@ -11,6 +14,10 @@ const router = createBrowserRouter([
   ...signupRoutes,
   ...onboardingRoutes,
   ...mypageRoutes,
+  ...ChatRoomRoutes,
+  ...communityRoutes,
+  ...attitalkRoutes,
+  ...attiRoute,
 ]);
 
 export default router;

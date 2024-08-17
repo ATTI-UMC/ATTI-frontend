@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import Header from "../../components/onboarding/InterestInfo/Header";
+import Content from "../../components/onboarding/InterestInfo/Content";
+import { TagProvider } from "../../context/TagContext";
 
-/**
- * entry point
- * @returns
- */
 const InterestInfo = () => {
   const objectList = [
     {
@@ -33,10 +32,12 @@ const InterestInfo = () => {
   ];
 
   return (
-    <Container>
-      <Header />
-      <Content objectList={objectList} />
-    </Container>
+    <TagProvider>
+      <Container>
+        <Header />
+        <Content objectList={objectList} />
+      </Container>
+    </TagProvider>
   );
 };
 
@@ -48,98 +49,4 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   padding: 24px;
-`;
-
-/**
- * header
- * @returns
- */
-const Header = () => {
-  return (
-    <HeaderContainer>
-      <Title>아띠 멤버님의</Title>
-      <Title>관심사가 궁금해요!</Title>
-      <SubTitle>미래의 친구들에게 알려줄거에요!</SubTitle>
-    </HeaderContainer>
-  );
-};
-
-const HeaderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-left: 8px;
-  gap: 4px;
-`;
-
-const Title = styled.div`
-  font-size: 18px;
-`;
-
-const SubTitle = styled.div`
-  margin: 8px 0;
-  font-size: 14px;
-`;
-
-/**
- * content 영역 스크롤 가능, 객체 배열받아서 랜더링
- * @param {Array} objectList
- * @returns
- */
-const Content = ({ objectList }) => {
-  return (
-    <ScrollArea>
-      {objectList.map((object, index) => {
-        return (
-          <CategoryContainer key={index}>
-            <CategoryTitle>{object.title}</CategoryTitle>
-            <CategoryContent tagList={object.tagList}></CategoryContent>
-          </CategoryContainer>
-        );
-      })}
-    </ScrollArea>
-  );
-};
-
-const ScrollArea = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  overflow: scroll;
-`;
-
-const CategoryContainer = styled.div`
-  width: 100%;
-  height: auto;
-`;
-
-const CategoryTitle = styled.div`
-  font-size: 18px;
-  margin: 18px 0;
-`;
-
-const CategoryContent = ({ tagList }) => {
-  return (
-    <TagContainer>
-      {tagList.map((tag, index) => {
-        return <Tag key={index}>{`#${tag}`}</Tag>;
-      })}
-    </TagContainer>
-  );
-};
-
-const TagContainer = styled.div`
-  display: flex;
-  flex-flow: wrap;
-  gap: 10px;
-`;
-
-const Tag = styled.div`
-  text-align: center;
-  text-justify: center;
-  font-size: 14px;
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 8px;
-  background-color: white;
 `;
