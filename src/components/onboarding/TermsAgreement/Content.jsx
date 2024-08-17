@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Term from "./Term";
+import { useOnboardingStore } from "../../../store/useOnboardingStore";
+import { useTermAgreement } from "../../../context/TermAgreementContext";
 
 const Content = () => {
+  const { setNav, setDisable } = useOnboardingStore((state) => ({
+    setNav: state.setNav,
+    setDisable: state.setDisable,
+  }));
+
+  const { agreedTerms } = useTermAgreement();
+  const [isAllChecked, setIsAllChecked] = useState(false);
+
+  useEffect(() => {
+    const allRequiredTerms = ["terms_of_service", "privacy_policy"];
+    const allChecked = allRequiredTerms.every((term) => agreedTerms[term]);
+
+    setIsAllChecked(allChecked);
+
+    if (allChecked) {
+      setNav("/home");
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+  }, [agreedTerms, setNav, setDisable]);
+
   return (
     <ContentContainer>
       <Term text="아띠 이용약관 동의" id="terms_of_service" isRequired={true} />

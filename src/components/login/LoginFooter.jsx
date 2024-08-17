@@ -20,7 +20,6 @@ const LoginFooter = () => (
     </LinksContainer>
     <IconsContainer>
       <Icon src={logoNaver} alt="Naver" />
-      <Icon src={logoKakao} alt="KakaoTalk" />
       <Icon src={logoGoogle} alt="Google" />
     </IconsContainer>
   </FooterContainer>
