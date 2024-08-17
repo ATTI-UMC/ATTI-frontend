@@ -5,22 +5,21 @@ import ChatHeader from "../../components/chat/ChatHeader";
 import Info from "../../components/chat/Info";
 import InputField from "../../components/chat/InputField";
 import MessageList from "../../components/chat/MessageList";
-import MessageItem from "../../components/chat/MessageItem";
 
 const ChatRoom = () => {
   const [messages, setMessages] = useState([]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   const handleSend = () => {
-    if(inputValue.trim()) {
+    if (inputValue.trim()) {
       const newMessage = {
         //id: uuidv4(),
         text: inputValue,
         isOwnMessage: true,
-        timestamp: new Date().toISOString(),   
+        timestamp: new Date().toISOString(),
       };
       setMessages([...messages, newMessage]);
-      setInputValue('');
+      setInputValue("");
     }
   };
 
@@ -28,7 +27,7 @@ const ChatRoom = () => {
     setInputValue(e.target.value);
   };
 
-  return(
+  return (
     <Layout>
       <ContentContainer>
         <ChatHeader />
@@ -36,7 +35,7 @@ const ChatRoom = () => {
         <MessageListWrapper>
           <MessageList messages={messages} />
         </MessageListWrapper>
-        <InputField 
+        <InputField
           inputValue={inputValue}
           handleInputChange={handleInputChange}
           handleSend={handleSend}

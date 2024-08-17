@@ -1,12 +1,18 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import homeRoutes from "./routes/homeRoutes";
-import authRoutes from "./routes/authRoutes";
-import signupRoutes from "./routes/signupRoutes";
-import onboardingRoutes from "./routes/onboardingRoutes";
-import mypageRoutes from "./routes/mypageRoutes";
-import ChatRoomRoutes from "./routes/chatRoomRoutes";
-import communityRoutes from "./routes/communityRoutes";
 import MainLayout from "./components/MainLayout";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Onboarding from "./pages/onboarding/Onboarding";
+import SignUp from "./pages/signup/SignUp";
+import Authentication from "./pages/signup/Authentication";
+import PasswordSetup from "./pages/signup/PasswordSetup";
+import onboardingRoutes from "./routes/onboardingRoutes";
+import signupRoutes from "./routes/signupRoutes";
+import Mypage from "./pages/Mypage";
+import ChatRoom from "./pages/chat/ChatRoom";
+import CommunityHome from "./pages/Community/CommunityHome";
+import CategoryCommunity from "./pages/Community/CategoryCommunity";
+import Post from "./pages/Community/Post";
 
 const router = createBrowserRouter([
   {
@@ -17,13 +23,36 @@ const router = createBrowserRouter([
       </MainLayout>
     ),
     children: [
-      ...homeRoutes,
-      ...authRoutes,
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/",
+        element: <Login />,
+      },
       ...signupRoutes,
       ...onboardingRoutes,
-      ...mypageRoutes,
-      ...ChatRoomRoutes,
-      ...communityRoutes,
+      {
+        path: "/mypage",
+        element: <Mypage />,
+      },
+      {
+        path: "/chatroom",
+        element: <ChatRoom />,
+      },
+      {
+        path: "/community/:category",
+        element: <CommunityHome />,
+      },
+      {
+        path: "/community/:category/:mbti",
+        element: <CategoryCommunity />,
+      },
+      {
+        path: "/community/:category/:mbti/:postId",
+        element: <Post />,
+      },
     ],
   },
 ]);
