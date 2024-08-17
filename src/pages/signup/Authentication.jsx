@@ -4,6 +4,7 @@ import Button from "../../components/signup/Button";
 import ImageUpload from "../../components/signup/ImageUpload";
 import axios from "axios";
 import Modal from "../../components/Modal";
+import { useNavigate } from "react-router-dom";
 
 const Authentication = () => {
   const [showModal, setShowModal] = useState(false);
@@ -16,9 +17,15 @@ const Authentication = () => {
 
   const [verificationNum, setVerificationNum] = useState("");
   const [isVerificationNumValid, setIsVerificationNumValid] = useState(false);
-  
+
   const [verificationError, setVerificationError] = useState("");
   const [verificationSuccess, setVerificationSuccess] = useState("");
+
+  const [isImageUploaded, setIsImageUploaded] = useState(false);
+
+  const handleImageUploadSuccess = () => {
+    setIsImageUploaded(true);
+  };
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -65,6 +72,8 @@ const Authentication = () => {
     }
   }*/
 
+  const isNext = isEmailValid && isVerificationNumValid && isImageUploaded;
+
   return (
     <>
       <InputField
@@ -87,9 +96,9 @@ const Authentication = () => {
         //success={verificationSuccess}
         //error={verificationError}
       />
-      <ImageUpload />
-      <Button />
-      <button onClick={handleClick}>모달확인용</button>
+      <ImageUpload onUploadSuccess={handleImageUploadSuccess} />
+      <Button disabled={!isNext} to={"/signup/password-setup"} />
+      {/*<button onClick={handleClick}>모달확인용</button>*/}
       <Modal
         show={showModal}
         onClose={handleClick}
