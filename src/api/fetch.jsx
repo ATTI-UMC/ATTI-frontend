@@ -3,7 +3,6 @@ const baseURL = "http://52.78.150.51:3000";
 
 export const fetchLogin = async (id, password) => {
   const loginInfo = { id: id, password: password };
-  console.log(loginInfo);
 
   try {
     const response = await fetch(`${baseURL}/auth/login`, {

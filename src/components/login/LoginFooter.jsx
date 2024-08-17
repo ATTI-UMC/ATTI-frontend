@@ -5,25 +5,31 @@ import logoKakao from "../../assets/images/logoKakao.png";
 import logoGoogle from "../../assets/images/logoGoogle.png";
 import { Link } from "react-router-dom";
 
-const LoginFooter = () => (
-  <FooterContainer>
-    <LinksContainer>
-      <LinkItem>
-        <Link to="/signup/auth">회원가입</Link>
-      </LinkItem>
-      <LinkItem>
-        <Link to="">아이디 찾기</Link>
-      </LinkItem>
-      <LinkItem>
-        <Link to="">비밀번호 찾기</Link>
-      </LinkItem>
-    </LinksContainer>
-    <IconsContainer>
-      <Icon src={logoNaver} alt="Naver" />
-      <Icon src={logoGoogle} alt="Google" />
-    </IconsContainer>
-  </FooterContainer>
-);
+const LoginFooter = () => {
+  const onNaverClickHandler = () => {
+    window.open("http://52.78.150.51:3000/oauth/naver");
+  };
+
+  return (
+    <FooterContainer>
+      <LinksContainer>
+        <LinkItem>
+          <Link to="/signup/auth">회원가입</Link>
+        </LinkItem>
+        <LinkItem>
+          <Link to="">아이디 찾기</Link>
+        </LinkItem>
+        <LinkItem>
+          <Link to="">비밀번호 찾기</Link>
+        </LinkItem>
+      </LinksContainer>
+      <IconsContainer>
+        <Icon src={logoNaver} alt="Naver" onClick={onNaverClickHandler} />
+        <Icon src={logoGoogle} alt="Google" />
+      </IconsContainer>
+    </FooterContainer>
+  );
+};
 
 export default LoginFooter;
 

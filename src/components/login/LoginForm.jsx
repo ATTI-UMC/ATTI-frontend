@@ -7,7 +7,6 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
 
   const onLoginHandler = async () => {
-    console.log(id, password);
     const userId = await fetchLogin(id, password);
 
     console.log(userId);
