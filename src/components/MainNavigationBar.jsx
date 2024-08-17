@@ -14,16 +14,13 @@ function MainNavigationBar() {
         홈
       </NavItem>
       <NavItem to="/report" isActive={checkActive("/report")}>
-        분석
+        채팅
       </NavItem>
-      <NavItem to="/group" isActive={checkActive("/group")}>
-        그룹
+      <NavItem to="/community/counseling" isActive={checkActive("/group")}>
+        게시판
       </NavItem>
       <NavItem to="/match" isActive={checkActive("/match")}>
-        매치
-      </NavItem>
-      <NavItem to="/mypage" isActive={checkActive("/mypage")}>
-        마이페이지
+        아띠토크
       </NavItem>
     </NavBar>
   );
