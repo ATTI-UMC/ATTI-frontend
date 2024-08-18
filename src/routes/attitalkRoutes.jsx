@@ -13,15 +13,10 @@ const attitalkRoutes = [
       { path: "new-chat", element: <Newchat /> },
     ],
   },
-];
-
-export default attitalkRoutes;
-
-const attiRoute = [
   {
     path: "/attitalk",
     element: <Attitalk />,
   },
 ];
 
-export { attiRoute };
+export default attitalkRoutes;

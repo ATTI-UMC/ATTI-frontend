@@ -6,7 +6,7 @@ import onboardingRoutes from "./routes/onboardingRoutes";
 import mypageRoutes from "./routes/mypageRoutes";
 import ChatRoomRoutes from "./routes/chatRoomRoutes";
 import communityRoutes from "./routes/communityRoutes";
-import attitalkRoutes, { attiRoute } from "./routes/attitalkRoutes";
+import attitalkRoutes from "./routes/attitalkRoutes";
 
 const router = createBrowserRouter([
   ...homeRoutes,
@@ -17,7 +17,6 @@ const router = createBrowserRouter([
   ...ChatRoomRoutes,
   ...communityRoutes,
   ...attitalkRoutes,
-  ...attiRoute,
 ]);
 
 export default router;
