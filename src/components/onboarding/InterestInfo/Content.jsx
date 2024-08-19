@@ -25,7 +25,7 @@ export default Content;
 
 const ScrollArea = styled.div`
   width: 100%;
-  height: 500px; // 임시 고정 높이
+  height: fit-content;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
