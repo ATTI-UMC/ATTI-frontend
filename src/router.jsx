@@ -13,6 +13,7 @@ import ChatRoom from "./pages/chat/ChatRoom";
 import CommunityHome from "./pages/Community/CommunityHome";
 import CategoryCommunity from "./pages/Community/CategoryCommunity";
 import Post from "./pages/Community/Post";
+import ChatMain from "./pages/chat/ChatMain";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "/community/:category/:mbti/:postId",
         element: <Post />,
+      },
+      {
+        path: "/chatmain",
+        element: <ChatMain />,
       },
     ],
   },
