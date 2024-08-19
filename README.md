@@ -1,6 +1,8 @@
 # 🌱나와 맞는 학교친구를 찾아서, 아띠
 ## 👀 서비스 소개
-뭘까?
+![image](https://github.com/user-attachments/assets/99591a14-7daa-4774-a4d6-c821e0e48d99)
+![image](https://github.com/user-attachments/assets/7583fd51-96d3-4a5f-95b0-86314753ed3d)
+![image](https://github.com/user-attachments/assets/4fce9794-fb26-4f02-b973-5ee7d1af2971)
 
 ## 👥 팀원 소개
 <table >
