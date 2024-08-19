@@ -1,37 +1,28 @@
 import styled from "styled-components";
-import SectionTitle from "./SectionTitle";
 import header_logo from "../../../assets/images/header_logo.png";
 
 const Recommend = () => {
   const dummy = ["#재미잇어요", "#강추", "#놀러오세요"];
 
   return (
-    <RecommendContainer>
-      <SectionTitle title={"아띠가 추천하는 오늘의 아띠 토크"} />
-      <RecommendWrapper>
-        <ImageWrapper>
-          <Image src={header_logo} />
-        </ImageWrapper>
-        <TextWrapper>
-          <Title>ENFP의 아띠토크</Title>
-          <Description>첫사랑 고민 들어드립니다</Description>
-          <HashTagContainer>
-            {dummy.map((elm) => (
-              <HashTag>{elm}</HashTag>
-            ))}
-          </HashTagContainer>
-        </TextWrapper>
-      </RecommendWrapper>
-    </RecommendContainer>
+    <RecommendWrapper>
+      <ImageWrapper>
+        <Image src={header_logo} />
+      </ImageWrapper>
+      <TextWrapper>
+        <Title>ENFP의 아띠토크</Title>
+        <Description>첫사랑 고민 들어드립니다</Description>
+        <HashTagContainer>
+          {dummy.map((elm) => (
+            <HashTag>{elm}</HashTag>
+          ))}
+        </HashTagContainer>
+      </TextWrapper>
+    </RecommendWrapper>
   );
 };
 
 export default Recommend;
-
-const RecommendContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 const RecommendWrapper = styled.div`
   display: flex;
@@ -41,6 +32,7 @@ const RecommendWrapper = styled.div`
   padding: 10px;
   gap: 10px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: 10px;
 `;
 
 const Image = styled.img``;

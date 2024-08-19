@@ -5,7 +5,6 @@ import TalkHeader from "../../components/attitalk/TalkHeader";
 const Atti = () => {
   return (
     <AttiContainer>
-      <TalkHeader />
       <Outlet />
     </AttiContainer>
   );

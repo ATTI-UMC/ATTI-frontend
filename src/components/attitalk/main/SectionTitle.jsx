@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
 const SectionTitle = ({ title }) => {
-  return <TitleContainer>{title}</TitleContainer>;
+  return (
+    <Wrapper>
+      <TitleContainer>{title}</TitleContainer>
+    </Wrapper>
+  );
 };
-
 export default SectionTitle;
 
 const TitleContainer = styled.div`
@@ -15,6 +18,12 @@ const TitleContainer = styled.div`
   font-size: 14px;
   border-radius: 15px;
   padding: 5px;
-  margin: 10px 0;
   font-weight: 400;
+  margin: 10px 0;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
 `;

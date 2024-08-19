@@ -16,7 +16,7 @@ const TalkPreview = () => {
           <Preview>최근 대화 내용 미리보기</Preview>
         </ChatWrapper>
       </ChatContainer>
-      <Date>2024/08/02</Date>
+      <Date></Date>
     </Container>
   );
 };
@@ -26,7 +26,6 @@ export default TalkPreview;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
   padding: 10px;
 `;
 

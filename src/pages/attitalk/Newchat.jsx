@@ -28,6 +28,17 @@ export default Newchat;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 `;
 
-const Button = styled.div``;
+const Button = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 40px;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+`;

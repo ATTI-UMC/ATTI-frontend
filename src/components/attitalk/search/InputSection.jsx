@@ -13,8 +13,15 @@ export default InputSection;
 
 const Container = styled.div`
   display: flex;
+  width: 100%;
 `;
 
 const Icon = styled.div``;
 
-const Input = styled.input``;
+const Input = styled.input`
+  width: 100%;
+  height: 44px;
+  border-radius: 5px;
+  background-color: #d9d9d9;
+  border: none;
+`;
