@@ -6,13 +6,18 @@ import MainHeader from "../../components/MainHeader";
 import SectionTitle from "../../components/attitalk/main/SectionTitle";
 
 const Attitalk = () => {
+  const objectList = {
+    title: "ENFP의 아띠토크",
+    description: "첫사랑 고민 들어드립니다",
+    tagList: ["재미잇어요", "강추", "놀러오세요"],
+  };
   return (
     <AttitalkContainer>
       <MainHeader />
       <Header />
       <ContentWrapper>
         <SectionTitle title={"아띠가 추천하는 오늘의 아띠 토크"} />
-        <Recommend />
+        <Recommend objectList={objectList} />
         <SectionTitle title={"MY 토크"} />
         <MytalkWrapper>
           <Mytalk />

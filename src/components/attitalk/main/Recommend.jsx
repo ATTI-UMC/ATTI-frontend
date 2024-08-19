@@ -1,20 +1,19 @@
 import styled from "styled-components";
+import React from "react";
 import header_logo from "../../../assets/images/header_logo.png";
 
-const Recommend = () => {
-  const dummy = ["#재미잇어요", "#강추", "#놀러오세요"];
-
+const Recommend = ({ objectList }) => {
   return (
     <RecommendWrapper>
       <ImageWrapper>
         <Image src={header_logo} />
       </ImageWrapper>
       <TextWrapper>
-        <Title>ENFP의 아띠토크</Title>
-        <Description>첫사랑 고민 들어드립니다</Description>
+        <Title>{objectList.title}</Title>
+        <Description>{objectList.description}</Description>
         <HashTagContainer>
-          {dummy.map((elm) => (
-            <HashTag>{elm}</HashTag>
+          {objectList.tagList.map((elm, idx) => (
+            <HashTag key={idx}># {elm}</HashTag>
           ))}
         </HashTagContainer>
       </TextWrapper>

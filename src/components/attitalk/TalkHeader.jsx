@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import backBtn from "../../assets/images/backBtn.png";
 
-const TalkHeader = ({ title }) => {
+const TalkHeader = ({ title, disabled, onComplete }) => {
   const nav = useNavigate();
 
   return (
@@ -11,7 +11,12 @@ const TalkHeader = ({ title }) => {
         <BackButtonImg src={backBtn} alt="Back" />
       </BackBtn>
       <Title>{title}</Title>
-      <Complete>완료</Complete>
+      <Complete
+        onClick={!disabled ? onComplete : undefined}
+        disabled={disabled}
+      >
+        완료
+      </Complete>
     </HeaderContainer>
   );
 };
@@ -53,4 +58,9 @@ const Complete = styled.div`
   font-size: 14px;
   color: #1c1b1f;
   margin-top: 5px;
+  background: none;
+  border: none;
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+  pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
+  color: ${(props) => (props.disabled ? "#d9d9d9" : "#0fbd88")};
 `;
