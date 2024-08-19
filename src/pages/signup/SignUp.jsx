@@ -21,6 +21,7 @@ const SignUpContainer = styled.div`
   height: 100vh;
   max-width: 425px;
   min-width: 375px;
+  padding: 0 10px;
   align-items: center;
   justify-content: center;
   background: #fff;
