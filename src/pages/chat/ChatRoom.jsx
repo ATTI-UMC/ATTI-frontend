@@ -5,7 +5,6 @@ import ChatHeader from "../../components/chat/ChatHeader";
 import Info from "../../components/chat/Info";
 import InputField from "../../components/chat/InputField";
 import MessageList from "../../components/chat/MessageList";
-import MessageItem from "../../components/chat/MessageItem";
 
 const ChatRoom = () => {
   const [messages, setMessages] = useState([]);
