@@ -36,11 +36,12 @@ export default MainHeader;
 
 const HeaderContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 20%;
-  margin: 10px 20px;
+  margin: 20px;
+  padding: 0 20px;
 `;
 
 const LogoWrapper = styled.div`
@@ -48,7 +49,6 @@ const LogoWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 15px;
-  margin-right: 160px;
 `;
 
 const IconWrapper = styled.div`
@@ -56,6 +56,7 @@ const IconWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+  margin-left: auto;
 `;
 
 const MainLogo = styled.img`

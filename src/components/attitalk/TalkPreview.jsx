@@ -16,7 +16,7 @@ const TalkPreview = () => {
           <Preview>최근 대화 내용 미리보기</Preview>
         </ChatWrapper>
       </ChatContainer>
-      <Date></Date>
+      <Date>2024/08/02</Date>
     </Container>
   );
 };
@@ -26,14 +26,15 @@ export default TalkPreview;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  width: 100%;
+  padding: 12px;
+  cursor: pointer;
 `;
 
 const ChatContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  gap: 10px;
 `;
 
 const ImageWrapper = styled.div`
@@ -41,11 +42,19 @@ const ImageWrapper = styled.div`
   height: 44px;
   border: 1px solid #b8e581;
   border-radius: 5px;
+  margin-right: 15px;
 `;
 
 const Image = styled.img``;
 
-const InfoWrapper = styled.div``;
+const InfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+  flex-grow: 2;
+`;
 
 const Nickname = styled.div`
   font-weight: 400;
@@ -54,24 +63,28 @@ const Nickname = styled.div`
 
 const Mbti = styled.div`
   color: rgba(15, 189, 136, 1);
+  font-size: 12px;
 `;
 
 const ChatWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  flex-grow: 5;
 `;
 
 const ChatTitle = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 7px;
 `;
 
 const Preview = styled.div`
   font-size: 12px;
+  font-weight: 300;
   color: #1c1b1f;
 `;
 const Date = styled.div`
-  justify-self: flex-end;
   font-weight: 300;
   font-size: 8px;
   color: #5a5a5a;
+  margin-left: auto;
+  margin-top: 4px;
 `;
