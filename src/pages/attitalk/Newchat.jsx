@@ -10,10 +10,6 @@ const Newchat = () => {
   const [hashtags, setHashtags] = useState("");
   const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
-    console.log(hashtags);
-  }, [hashtags]);
-
   const handleClick = () => {
     setShowModal(!showModal);
   };

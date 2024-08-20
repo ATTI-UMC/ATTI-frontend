@@ -1,21 +1,51 @@
 import styled from "styled-components";
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import default_picture from "../../../assets/images/default_picture.png";
 
 const ImageInputField = () => {
-  const [isImageExist, setIsImageExist] = useState(false);
+  const inputRef = useRef(null);
+  const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState("");
   const [imageText, setImageText] = useState(
     "아띠토크의 메인 사진을 설정해주세요!"
   );
 
   useEffect(() => {
-    setImageText("메인 사진이 설정되었어요!");
-  }, [isImageExist]);
+    if (image !== null) {
+      setImageText("메인 사진이 설정되었어요!");
+    }
+  }, [image]);
+
+  const handleUpload = () => {
+    inputRef.current.click();
+  };
+
+  const handleChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <Container>
-      <InputBox>
-        <Input src={default_picture} />
+      <InputBox haspreview={!!preview} onClick={handleUpload}>
+        <Input
+          type="file"
+          accept="image/*"
+          ref={inputRef}
+          onChange={handleChange}
+        />
+        {preview ? (
+          <Image src={preview} />
+        ) : (
+          <DefaultImage src={default_picture} />
+        )}
       </InputBox>
       <Text>{imageText}</Text>
     </Container>
@@ -33,18 +63,34 @@ const Container = styled.div`
 `;
 
 const InputBox = styled.div`
+  display: flex;
   width: 180px;
   height: 180px;
   border-radius: 10px;
-  background-color: #d9d9d9;
+  background-color: ${(props) => (props.haspreview ? "white" : "#d9d9d9")};
   margin-bottom: 10px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+
+  /* hasPreview prop을 DOM으로 전달하지 않기 위한 처리 */
+  ${(props) => props.haspreview && ""}
 `;
 
 const Input = styled.input`
   display: none;
-  width: 180px;
-  height: 180px;
-  border: none;
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+`;
+
+const DefaultImage = styled.img`
+  width: 40%;
+  height: 40%;
 `;
 
 const Text = styled.div`
