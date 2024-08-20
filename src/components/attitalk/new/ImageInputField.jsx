@@ -3,6 +3,29 @@ import React, { useState, useRef, useEffect } from "react";
 import default_picture from "../../../assets/images/default_picture.png";
 
 const ImageInputField = () => {
+  /*
+// 폼 제출 핸들러
+const handleSubmit = (e) => {
+  e.preventDefault();
+  if (image) {
+    const formData = new FormData();
+    formData.append("image", image);
+
+    // 서버에 폼 데이터를 POST 요청으로 전송 (예: Axios 사용)
+    fetch("https://example.com/upload", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+};*/
+
   const inputRef = useRef(null);
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState("");
@@ -34,7 +57,10 @@ const ImageInputField = () => {
 
   return (
     <Container>
-      <InputBox haspreview={!!preview} onClick={handleUpload}>
+      <InputBox
+        onClick={handleUpload}
+        $isImageExist={preview ? "true" : "false"}
+      >
         <Input
           type="file"
           accept="image/*"
@@ -67,14 +93,12 @@ const InputBox = styled.div`
   width: 180px;
   height: 180px;
   border-radius: 10px;
-  background-color: ${(props) => (props.haspreview ? "white" : "#d9d9d9")};
+  background-color: ${(props) =>
+    props.$isImageExist === "true" ? "white" : "#d9d9d9"};
   margin-bottom: 10px;
   cursor: pointer;
   justify-content: center;
   align-items: center;
-
-  /* hasPreview prop을 DOM으로 전달하지 않기 위한 처리 */
-  ${(props) => props.haspreview && ""}
 `;
 
 const Input = styled.input`
