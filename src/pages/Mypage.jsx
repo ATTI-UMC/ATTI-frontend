@@ -24,7 +24,6 @@ const Container = styled.div`
   flex-direction: column;
   width: 90%;
   height: 100%;
-  margin: 3rem;
 `;
 
 const Wrapper = styled.div`

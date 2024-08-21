@@ -1,5 +1,9 @@
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
+import home from "../assets/images/nav_home.png";
+import chat from "../assets/images/nav_chat.png";
+import notice from "../assets/images/nav_notice.png";
+import attitalk from "../assets/images/nav_attitalk.png";
 
 function MainNavigationBar() {
   const location = useLocation();
@@ -11,16 +15,20 @@ function MainNavigationBar() {
         to="/home"
         isActive={checkActive("/") && location.pathname === "/"}
       >
-        홈
+        <Icon src={home} />
+        <Text>홈</Text>
       </NavItem>
-      <NavItem to="/report" isActive={checkActive("/report")}>
-        채팅
+      <NavItem to="/chatmain" isActive={checkActive("/report")}>
+        <Icon src={chat} />
+        <Text>채팅</Text>
       </NavItem>
       <NavItem to="/community/counseling" isActive={checkActive("/group")}>
-        게시판
+        <Icon src={notice} />
+        <Text>게시판</Text>
       </NavItem>
-      <NavItem to="/match" isActive={checkActive("/match")}>
-        아띠토크
+      <NavItem to="/attitalk" isActive={checkActive("/match")}>
+        <Icon src={attitalk} />
+        <Text>아띠토크</Text>
       </NavItem>
     </NavBar>
   );
@@ -48,5 +56,14 @@ const NavItem = styled(({ isActive, ...props }) => <Link {...props} />)`
   flex: 1;
   text-decoration: none;
   font-size: 10px;
-  color: ${({ isActive }) => (isActive ? "blue" : "black")};
+  color: ${({ isActive }) => (isActive ? "#10D99B" : "black")};
+`;
+
+const Icon = styled.img`
+  width: 30px;
+  height: 25px;
+`;
+
+const Text = styled.span`
+  margin-top: 10px;
 `;

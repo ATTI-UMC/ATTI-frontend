@@ -14,7 +14,6 @@ const ChatMain = () => {
         <Explain />
         <ChooseChat />
       </ContentWrapper>
-      <BottomNav />
     </Layout>
   );
 };
