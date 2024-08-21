@@ -69,7 +69,7 @@ const Authentication = () => {
         email: email,
         code: verificationNum,
       });
-      if (response.data.success) {
+      if (response.data.verified) {
         setVerificationSuccess("인증되었습니다");
       } else {
         setVerificationError("인증번호가 일치하지 않습니다");

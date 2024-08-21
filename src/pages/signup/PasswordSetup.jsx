@@ -48,16 +48,20 @@ const PasswordSetup = () => {
 
   const handleRegister = async () => {
     try {
-      const response = axios.post(`${baseURL / auth / register}`, {
-        email: email,
+      const response = await axios.post(`${baseURL}/auth/register`, {
+        id: email,
         password: password,
       });
       console.log(response.data);
-      if (response.data.success) {
+      if (response.status === 200) {
         navigate("/onboarding/personal-info");
       } else {
-        navigate("/onboarding/personal-info");
-        alert("회원가입에 실패했습니다.");
+        if (response.status === 409) {
+          alert("아이디가 이미 사용중입니다.");
+        } else {
+          navigate("/onboarding/personal-info");
+          alert("회원가입에 실패했습니다.");
+        }
       }
     } catch (error) {
       navigate("/onboarding/personal-info");
