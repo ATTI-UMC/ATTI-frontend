@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 
-const Modal = ({ show, onClose, error }) => {
+const CoverModal = ({ show, onClose, error }) => {
   const modalRef = useRef();
 
   const handleOverlayClick = (e) => {
@@ -30,7 +30,7 @@ const Modal = ({ show, onClose, error }) => {
   );
 };
 
-export default Modal;
+export default CoverModal;
 
 const Overlay = styled.div`
   position: fixed;

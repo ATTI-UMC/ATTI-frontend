@@ -30,7 +30,7 @@ const ChatRoom = () => {
   return (
     <Layout>
       <ContentContainer>
-        <ChatHeader />
+        <ChatHeader title={"채팅방"} />
         <Info />
         <MessageListWrapper>
           <MessageList messages={messages} />
