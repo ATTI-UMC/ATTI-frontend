@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 const baseURL = "http://52.78.150.51:3000";
 
 const Authentication = () => {
+  const navigate = useNavigate();
+
   const [showModal, setShowModal] = useState(false);
   const handleClick = () => {
     setShowModal(!showModal);
@@ -78,7 +80,11 @@ const Authentication = () => {
     }
   };
 
-  const isNext = isEmailValid && isVerificationNumValid && isImageUploaded;
+  const handleNextButtonClick = () => {
+    navigate("/signup/password-setup", { state: { email: email } });
+  };
+
+  const isNext = isVerificationNumValid;
 
   return (
     <>
@@ -103,7 +109,7 @@ const Authentication = () => {
         error={verificationError}
       />
       <ImageUpload onUploadSuccess={handleImageUploadSuccess} />
-      <Button disabled={!isNext} to={"/signup/password-setup"} />
+      <Button disabled={!isNext} onClick={handleNextButtonClick} />
       <button onClick={handleClick}>모달확인용</button>
       <Modal
         show={showModal}

@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import InputField from "../../components/signup/InputField";
 import Button from "../../components/signup/Button";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const PasswordSetup = () => {
+  const baseURL = "http://52.78.150.51:3000";
+  const navigate = useNavigate();
+  const location = useLocation();
+  const email = location.state?.email || "";
+
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [passwordSuccess, setPasswordSuccess] = useState("");
@@ -39,6 +46,26 @@ const PasswordSetup = () => {
     }
   };
 
+  const handleRegister = async () => {
+    try {
+      const response = axios.post(`${baseURL / auth / register}`, {
+        email: email,
+        password: password,
+      });
+      console.log(response.data);
+      if (response.data.success) {
+        navigate("/onboarding/personal-info");
+      } else {
+        navigate("/onboarding/personal-info");
+        alert("회원가입에 실패했습니다.");
+      }
+    } catch (error) {
+      navigate("/onboarding/personal-info");
+      console.error("회원가입 요청 실패:", error);
+      alert("회원가입에 실패했습니다. 다시 시도해 주세요.");
+    }
+  };
+
   return (
     <>
       <InputField
@@ -59,10 +86,7 @@ const PasswordSetup = () => {
         error={confirmPasswordError}
         success={confirmPasswordSuccess}
       />
-      <Button
-        disabled={!confirmPasswordSuccess}
-        to={"/onboarding/personal-info"}
-      />
+      <Button disabled={!confirmPasswordSuccess} onClick={handleRegister} />
     </>
   );
 };
