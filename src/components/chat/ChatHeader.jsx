@@ -1,18 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import backBtn from "../../assets/images/backBtn.png"
+import backBtn from "../../assets/images/backBtn.png";
 
-const ChatHeader = ({ onBack }) => {
-  return(
+const ChatHeader = ({ onBack, title }) => {
+  return (
     <HeaderWrapper>
       <BackBtn onClick={onBack}>
         <BackButtonImg src={backBtn} alt="Back" />
       </BackBtn>
-      <Title>채팅방</Title>
+      <Title>{title}</Title>
     </HeaderWrapper>
   );
 };
-  
+
 export default ChatHeader;
 
 const HeaderWrapper = styled.div`
@@ -21,8 +21,8 @@ const HeaderWrapper = styled.div`
   padding: 16px;
   background-color: #fff;
   text-align: center;
-  border-bottom: 1px solid #10D99B;
-`
+  border-bottom: 1px solid #10d99b;
+`;
 const BackBtn = styled.button`
   width: 10px;
   height: 20px;

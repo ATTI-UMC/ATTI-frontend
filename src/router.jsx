@@ -14,6 +14,7 @@ import CommunityHome from "./pages/Community/CommunityHome";
 import CategoryCommunity from "./pages/Community/CategoryCommunity";
 import Post from "./pages/Community/Post";
 import ChatMain from "./pages/chat/ChatMain";
+import attitalkRoutes from "./routes/attitalkRoutes";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
       },
       ...signupRoutes,
       ...onboardingRoutes,
+      ...attitalkRoutes,
       {
         path: "/mypage",
         element: <Mypage />,
