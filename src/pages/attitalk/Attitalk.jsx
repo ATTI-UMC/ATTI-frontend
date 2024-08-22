@@ -2,8 +2,8 @@ import styled from "styled-components";
 import Recommend from "../../components/attitalk/main/Recommend";
 import Mytalk from "../../components/attitalk/main/Mytalk";
 import Header from "../../components/attitalk/main/Header";
-import MainHeader from "../../components/MainHeader";
 import SectionTitle from "../../components/attitalk/main/SectionTitle";
+import HeaderMain from "../../components/HeaderMain";
 
 const Attitalk = () => {
   const objectList = {
@@ -13,7 +13,7 @@ const Attitalk = () => {
   };
   return (
     <AttitalkContainer>
-      <MainHeader />
+      <HeaderMain />
       <Header />
       <ContentWrapper>
         <SectionTitle title={"아띠가 추천하는 오늘의 아띠 토크"} />
@@ -31,11 +31,13 @@ export default Attitalk;
 
 const AttitalkContainer = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
   width: 100%;
   align-items: center;
   justify-content: center;
   background: #fff;
+  margin-top: 60px;
 `;
 const ContentWrapper = styled.div`
   width: 90%;

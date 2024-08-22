@@ -4,8 +4,11 @@ import logo from "../assets/images/logo.png";
 import title from "../assets/images/title.png";
 import notification from "../assets/images/button_notification.png";
 import mypage from "../assets/images/button_mypage.png";
+import { useNavigate } from "react-router-dom";
 
 const HeaderMain = () => {
+  const nav = useNavigate();
+
   return (
     <HeaderWrapper>
       <ContentWrapper>
@@ -13,8 +16,18 @@ const HeaderMain = () => {
         <Title src={title} />
       </ContentWrapper>
       <ContentWrapper>
-        <Icon src={notification} />
-        <Icon src={mypage} />
+        <Icon
+          src={notification}
+          onClick={() => {
+            nav("/notification");
+          }}
+        />
+        <Icon
+          src={mypage}
+          onClick={() => {
+            nav("/mypage");
+          }}
+        />
       </ContentWrapper>
     </HeaderWrapper>
   );
@@ -52,4 +65,5 @@ const Title = styled.img`
 const Icon = styled.img`
   width: 23px;
   height: 23px;
+  cursor: pointer;
 `;

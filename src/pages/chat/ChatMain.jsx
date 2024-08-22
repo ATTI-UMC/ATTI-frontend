@@ -1,19 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import Layout from "../../components/Layout";
 import HeaderMain from "../../components/HeaderMain";
 import Explain from "../../components/chat/Explain";
 import ChooseChat from "../../components/chat/ChooseChat";
 
 const ChatMain = () => {
   return (
-    <Layout>
+    <>
       <HeaderMain />
       <ContentWrapper>
         <Explain />
         <ChooseChat />
       </ContentWrapper>
-    </Layout>
+    </>
   );
 };
 

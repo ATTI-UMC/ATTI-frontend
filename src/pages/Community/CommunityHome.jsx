@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+import HeaderMain from "../../components/HeaderMain";
 
 const CommunityHome = () => {
   const { category } = useParams();
@@ -47,6 +48,7 @@ const CommunityHome = () => {
 
   return (
     <Layout>
+      <HeaderMain />
       <CategoryContainer>
         {categories.map(({ value, label }) => (
           <CategoryOption
@@ -85,6 +87,7 @@ const Layout = styled.div`
   height: 100vh;
   margin: 0 auto;
   padding: 12px;
+  margin-top: 60px;
 `;
 
 const CategoryContainer = styled.div`
