@@ -18,7 +18,7 @@ const MainHeader = () => {
         <Icon
           src={notification}
           onClick={() => {
-            nav("/");
+            nav("/notification");
           }}
         ></Icon>
         <Icon

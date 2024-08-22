@@ -15,6 +15,7 @@ import CategoryCommunity from "./pages/Community/CategoryCommunity";
 import Post from "./pages/Community/Post";
 import ChatMain from "./pages/chat/ChatMain";
 import attitalkRoutes from "./routes/attitalkRoutes";
+import Notification from "./pages/Notification";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "/chatmain",
         element: <ChatMain />,
+      },
+      {
+        path: "/notification",
+        element: <Notification />,
       },
     ],
   },

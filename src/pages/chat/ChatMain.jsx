@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import BottomNav from "../../components/BottomNav";
 import Layout from "../../components/Layout";
 import HeaderMain from "../../components/HeaderMain";
 import Explain from "../../components/chat/Explain";
@@ -14,7 +13,6 @@ const ChatMain = () => {
         <Explain />
         <ChooseChat />
       </ContentWrapper>
-      <BottomNav />
     </Layout>
   );
 };
