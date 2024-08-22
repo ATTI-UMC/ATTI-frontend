@@ -18,15 +18,18 @@ function MainNavigationBar() {
         <Icon src={home} />
         <Text>홈</Text>
       </NavItem>
-      <NavItem to="/chatmain" isActive={checkActive("/report")}>
+      <NavItem to="/chatmain" isActive={checkActive("/chatmain")}>
         <Icon src={chat} />
         <Text>채팅</Text>
       </NavItem>
-      <NavItem to="/community/counseling" isActive={checkActive("/group")}>
+      <NavItem
+        to="/community/counseling"
+        isActive={checkActive("/community/counseling")}
+      >
         <Icon src={notice} />
         <Text>게시판</Text>
       </NavItem>
-      <NavItem to="/attitalk" isActive={checkActive("/match")}>
+      <NavItem to="/attitalk" isActive={checkActive("/attitalk")}>
         <Icon src={attitalk} />
         <Text>아띠토크</Text>
       </NavItem>

@@ -120,6 +120,7 @@ const MBTIContainer = styled.div`
   grid-template-rows: repeat(8, auto);
   place-items: center;
   gap: 10px;
+  margin: 10px 0;
 `;
 
 const MBTIOption = styled.button`
@@ -133,6 +134,7 @@ const MBTIOption = styled.button`
   padding: 0 16px;
   background-color: #0fbd88;
   border: 1px #0fbd88;
+  cursor: pointer;
 `;
 
 const UserContainer = styled.div`

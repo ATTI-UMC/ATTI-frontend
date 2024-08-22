@@ -12,18 +12,20 @@ const Attitalk = () => {
     tagList: ["재미잇어요", "강추", "놀러오세요"],
   };
   return (
-    <AttitalkContainer>
+    <>
       <HeaderMain />
-      <Header />
-      <ContentWrapper>
-        <SectionTitle title={"아띠가 추천하는 오늘의 아띠 토크"} />
-        <Recommend objectList={objectList} />
-        <SectionTitle title={"MY 토크"} />
-        <MytalkWrapper>
-          <Mytalk />
-        </MytalkWrapper>
-      </ContentWrapper>
-    </AttitalkContainer>
+      <AttitalkContainer>
+        <Header />
+        <ContentWrapper>
+          <SectionTitle title={"아띠가 추천하는 오늘의 아띠 토크"} />
+          <Recommend objectList={objectList} />
+          <SectionTitle title={"MY 토크"} />
+          <MytalkWrapper>
+            <Mytalk />
+          </MytalkWrapper>
+        </ContentWrapper>
+      </AttitalkContainer>
+    </>
   );
 };
 
