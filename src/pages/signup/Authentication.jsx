@@ -6,7 +6,11 @@ import axios from "axios";
 import Modal from "../../components/Modal";
 import { useNavigate } from "react-router-dom";
 
+const baseURL = "http://52.78.150.51:3000";
+
 const Authentication = () => {
+  const navigate = useNavigate();
+
   const [showModal, setShowModal] = useState(false);
   const handleClick = () => {
     setShowModal(!showModal);
@@ -38,15 +42,17 @@ const Authentication = () => {
     setIsEmailValid(validateEmail(emailValue));
   };
 
-  /* 인증번호 전송 버튼 클릭 로직
+  // 인증번호 전송 버튼 클릭 로직
   const handleSendButtonClick = async () => {
     try {
-      const response = await axios.post("이메일 인증 url", {email: email});
+      const response = await axios.post(`${baseURL}/join/sendemail`, {
+        email: email,
+      });
       console.log(response.data);
     } catch (error) {
       console.log(error);
     }
-  }*/
+  };
 
   const handleVerificationNumChange = (e) => {
     const codeValue = e.target.value;
@@ -56,23 +62,29 @@ const Authentication = () => {
     setVerificationSuccess("");
   };
 
-  /*인증번호 확인 버튼 클릭 로직
+  //인증번호 확인 버튼 클릭 로직
   const handleCheckButtonClick = async () => {
     try {
-      const response = await axios.post("인증번호 확인 url", {
+      const response = await axios.post(`${baseURL}/join/verify`, {
         email: email,
-        code: verificationNum});
-      if (response.data.success) {
-        setVerificationSuccess("인증되었습니다")
+        code: verificationNum,
+      });
+      if (response.data.verified) {
+        setVerificationSuccess("인증되었습니다");
       } else {
-        setVerificationError("인증번호가 일치하지 않습니다")
+        setVerificationError("인증번호가 일치하지 않습니다");
       }
-    } catch(error) {
-      setVerificationError("인증번호 확인에 실패했습니다. 다시 시도해 주세요")
+    } catch (error) {
+      console.error("이메일 인증 요청 실패:", error);
+      setVerificationError("인증번호 확인에 실패했습니다. 다시 시도해 주세요");
     }
-  }*/
+  };
 
-  const isNext = isEmailValid && isVerificationNumValid && isImageUploaded;
+  const handleNextButtonClick = () => {
+    navigate("/signup/password-setup", { state: { email: email } });
+  };
+
+  const isNext = isVerificationNumValid;
 
   return (
     <>
@@ -81,7 +93,7 @@ const Authentication = () => {
         type="email"
         value={email}
         onChange={handleEmailChange}
-        //buttonOnClick={handleSendButtonClick}
+        buttonOnClick={handleSendButtonClick}
         disabled={!isEmailValid}
         withSendButton
       />
@@ -92,13 +104,13 @@ const Authentication = () => {
         onChange={handleVerificationNumChange}
         disabled={!isVerificationNumValid}
         withCheckButton
-        //buttonOnClick={handleCheckButtonClick}
-        //success={verificationSuccess}
-        //error={verificationError}
+        buttonOnClick={handleCheckButtonClick}
+        success={verificationSuccess}
+        error={verificationError}
       />
       <ImageUpload onUploadSuccess={handleImageUploadSuccess} />
-      <Button disabled={!isNext} to={"/signup/password-setup"} />
-      {/*<button onClick={handleClick}>모달확인용</button>*/}
+      <Button disabled={!isNext} onClick={handleNextButtonClick} />
+      <button onClick={handleClick}>모달확인용</button>
       <Modal
         show={showModal}
         onClose={handleClick}
