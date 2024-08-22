@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import SignUpHeader from "../components/signup/SignUpHeader";
 import InfoCard from "../components/mypage/InfoCard";
 import MypageContainer from "../components/mypage/MypageContainer";
+import Header from "../components/mypage/Header";
 
 const Mypage = () => {
   const infoList = ["INTP", "닉네임", "20", "홍익대 서울캠", "22", "재학생"];
 
   return (
     <Container>
-      <SignUpHeader />
+      <Header title={"마이페이지"} />
       <Wrapper>
         <InfoCard info={infoList} />
         <MypageContainer />
