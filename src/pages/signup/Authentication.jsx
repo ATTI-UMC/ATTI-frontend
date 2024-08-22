@@ -108,9 +108,9 @@ const Authentication = () => {
         success={verificationSuccess}
         error={verificationError}
       />
-      <ImageUpload onUploadSuccess={handleImageUploadSuccess} />
+      {/* <ImageUpload onUploadSuccess={handleImageUploadSuccess} /> */}
       <Button disabled={!isNext} onClick={handleNextButtonClick} />
-      <button onClick={handleClick}>모달확인용</button>
+      {/* <button onClick={handleClick}>모달확인용</button> */}
       <Modal
         show={showModal}
         onClose={handleClick}
