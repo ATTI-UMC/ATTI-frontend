@@ -1,15 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 import backBtn from "../../assets/images/backBtn.png";
+import { useNavigate } from "react-router-dom";
 
-const SignUpHeader = ({ onBack }) => (
-  <HeaderWrapper>
-    <BackBtn onClick={onBack}>
-      <BackButtonImg src={backBtn} alt="Back" />
-    </BackBtn>
-    <Title>회원가입</Title>
-  </HeaderWrapper>
-);
+const SignUpHeader = () => {
+  const nav = useNavigate();
+  return (
+    <HeaderWrapper>
+      <BackBtn
+        onClick={() => {
+          nav(-1);
+        }}
+      >
+        <BackButtonImg src={backBtn} alt="Back" />
+      </BackBtn>
+      <Title>회원가입</Title>
+    </HeaderWrapper>
+  );
+};
 
 export default SignUpHeader;
 

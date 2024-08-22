@@ -16,6 +16,7 @@ import Post from "./pages/Community/Post";
 import ChatMain from "./pages/chat/ChatMain";
 import attitalkRoutes from "./routes/attitalkRoutes";
 import Notification from "./pages/Notification";
+import FriendRecommendation from "./pages/FriendRecommendation";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "/notification",
         element: <Notification />,
+      },
+      {
+        path: "/friends",
+        element: <FriendRecommendation />,
       },
     ],
   },
