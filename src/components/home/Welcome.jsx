@@ -55,6 +55,7 @@ const Title = styled.span`
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
+  margin-bottom: 8px;
   color: #0fbd88;
 `;
 

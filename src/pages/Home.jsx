@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Welcome from "../components/home/Welcome";
 import HeaderMain from "../components/HeaderMain";
+import Contents from "../components/home/Contents";
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <HeaderMain />
       <HomeWrapper>
         <Welcome />
+        <Contents />
       </HomeWrapper>
     </>
   );
