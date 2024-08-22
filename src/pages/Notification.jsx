@@ -5,7 +5,7 @@ import Content from "../components/notification/Content";
 import { useState } from "react";
 
 const Notification = () => {
-  //알람 배열 받아와서 저장
+  //알람 배열 받아와서 저장 - Notifications에
   const dummy = [
     {
       notification_id: 13,
@@ -23,10 +23,16 @@ const Notification = () => {
   ];
   const noAlarm = [];
 
+  const [notifications, setNotifications] = useState(dummy);
+
   return (
     <Container>
       <Header title={"알림창"} />
-      <Content objectList={dummy} />
+      {notifications.length === 0 ? (
+        <NoAlarm />
+      ) : (
+        <Content objectList={notifications} />
+      )}
     </Container>
   );
 };
