@@ -18,6 +18,8 @@ import attitalkRoutes from "./routes/attitalkRoutes";
 import Notification from "./pages/Notification";
 import FriendRecommendation from "./pages/FriendRecommendation";
 import WritePost from "./pages/Community/WritePost";
+import Chat1on1 from "./pages/chat/Chat1on1";
+import MyAction from "./pages/Community/MyAction";
 
 const router = createBrowserRouter([
   {
@@ -74,6 +76,14 @@ const router = createBrowserRouter([
       {
         path: "/newpost",
         element: <WritePost />,
+      },
+      {
+        path: "/chat1on1",
+        element: <Chat1on1 />,
+      },
+      {
+        path: "/actions/:label",
+        element: <MyAction />,
       },
     ],
   },

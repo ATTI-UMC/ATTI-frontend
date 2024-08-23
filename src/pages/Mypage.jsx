@@ -2,15 +2,36 @@ import styled from "styled-components";
 import InfoCard from "../components/mypage/InfoCard";
 import MypageContainer from "../components/mypage/MypageContainer";
 import Header from "../components/mypage/Header";
+import { fetchUserInfo } from "../api/fetch";
+import { useEffect, useState } from "react";
 
 const Mypage = () => {
-  const infoList = ["INTP", "닉네임", "20", "홍익대 서울캠", "22", "재학생"];
+  const [data, setData] = useState(null);
+  const storedUserId = localStorage.getItem("userId");
+
+  const userid = storedUserId ? parseInt(storedUserId, 10) : null;
+
+  const getInfo = async () => {
+    try {
+      const fetchedData = await fetchUserInfo(userid);
+      setData(fetchedData);
+      console.log(fetchedData);
+    } catch (error) {
+      console.error("Error fetching user info:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (userid) {
+      getInfo();
+    }
+  }, [userid]);
 
   return (
     <Container>
       <Header title={"마이페이지"} />
       <Wrapper>
-        <InfoCard info={infoList} />
+        {data ? <InfoCard info={data} /> : <p>Loading...</p>}
         <MypageContainer />
       </Wrapper>
     </Container>
@@ -28,5 +49,6 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  padding: 0 10px;
+  width: 100%;
+  padding: 0 30px;
 `;

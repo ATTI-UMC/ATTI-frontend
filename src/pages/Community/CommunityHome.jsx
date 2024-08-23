@@ -37,9 +37,9 @@ const CommunityHome = () => {
   ];
 
   const userAction = [
-    { img: bookmark, content: "북마크" },
-    { img: comment, content: "댓글 단 글" },
-    { img: mypost, content: "내가 쓴 글" },
+    { img: bookmark, content: "북마크", label: "bookmark" },
+    { img: comment, content: "댓글 단 글", label: "mycomment" },
+    { img: mypost, content: "내가 쓴 글", label: "myposts" },
   ];
 
   const handleCategoryChange = (selectedCategory) => {
@@ -48,6 +48,10 @@ const CommunityHome = () => {
 
   const handleMBTIOptionClick = (mbti) => {
     navigate(`/community/${category}/${mbti}`);
+  };
+
+  const handleUserActionClick = (label) => {
+    navigate(`/actions/${label}`);
   };
 
   return (
@@ -75,7 +79,12 @@ const CommunityHome = () => {
         </MBTIContainer>
         <UserContainer>
           {userAction.map((action, index) => (
-            <UserAction key={index}>
+            <UserAction
+              key={index}
+              onClick={() => {
+                handleUserActionClick(action.label);
+              }}
+            >
               <ActionIcon src={action.img} alt={`${action.content} icon`} />
               {action.content}
             </UserAction>
@@ -153,6 +162,7 @@ const UserContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 12px;
+  cursor: pointer;
 `;
 
 const UserAction = styled.button`

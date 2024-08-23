@@ -1,76 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import CommunityHeader from "../../components/community/CommunityHeader";
-import comment from "../../assets/images/post_comment.png";
-import like from "../../assets/images/post_like.png";
-import scrap from "../../assets/images/post_scrap.png";
+import commentIcon from "../../assets/images/post_comment.png";
+import likeIcon from "../../assets/images/post_like.png";
+import scrapIcon from "../../assets/images/post_scrap.png";
 import { formatDate } from "../../utils/get-date-string";
 import PostWriterInfo from "../../components/community/PostWriterInfo";
-import white_like from "../../assets/images/white_like.png";
-import reply from "../../assets/images/reply.png";
-import chat from "../../assets/images/chat.png";
+import whiteLikeIcon from "../../assets/images/white_like.png";
+import replyIcon from "../../assets/images/reply.png";
+import chatIcon from "../../assets/images/chat.png";
+import { fetchPost } from "../../api/fetch";
 
 const Post = () => {
   const { category, mbti, postId } = useParams();
+  const [postContent, setPostContent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const categories = [
-    { value: "counseling", label: "고민상담소" },
-    { value: "learning", label: "학습 솔루션" },
-    { value: "mentoring", label: "멘토링" },
-  ];
+  useEffect(() => {
+    const getPost = async () => {
+      try {
+        const data = await fetchPost(postId);
+        setPostContent(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching post info:", error);
+        setError(error);
+        setLoading(false);
+      }
+    };
+    getPost();
+  }, [postId]);
 
-  const categoryLabel = categories.find((cat) => cat.value === category).label;
-
-  const postContent = {
-    board_id: 0,
-    board_type: "string",
-    user_id: 0,
-    nickname: "string",
-    title: "string",
-    content:
-      "This is the content of the post. It may be quite long and contain multiple lines of text.",
-    like_count: 0,
-    comment_count: 0,
-    scrap_count: 0,
-    created_at: "2024-08-23T04:22:58.271Z",
-    updated_at: "2024-08-23T04:22:58.271Z",
-    images: ["string"],
-    comments: [
-      {
-        comment_id: 0,
-        user_id: 0,
-        nickname: "string",
-        content: "string",
-        timestamp: "2024-08-23T04:22:58.271Z",
-      },
-    ],
-  };
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error loading post.</div>;
+  if (!postContent) return <div>No post found.</div>;
 
   const date = formatDate(postContent.created_at);
-
-  // Dummy comments data
-  const comments = [
-    {
-      comment_id: 0,
-      user_id: 0,
-      nickname: "string",
-      content: "string",
-      timestamp: "2024-08-23T04:22:58.271Z",
-    },
-    {
-      comment_id: 1,
-      user_id: 0,
-      nickname: "string",
-      content: "string",
-      timestamp: "2024-08-23T04:22:58.271Z",
-    },
-  ];
 
   return (
     <>
       <PostContainer>
-        <CommunityHeader title={`${mbti} ${categoryLabel}`} />
+        <CommunityHeader mbti={mbti} category={category} />
         <Header>
           <PostWriterInfo
             mbti={mbti}
@@ -82,39 +54,37 @@ const Post = () => {
           <Title>{postContent.title}</Title>
           <Content>{postContent.content}</Content>
           <ImageSection>
-            <Image></Image>
-            <Image></Image>
-            <Image></Image>
-            <Image></Image>
-            <Image></Image>
+            {postContent.images.map((image, index) => (
+              <Image key={index} src={image} />
+            ))}
           </ImageSection>
           <Stats>
             <StatWrapper>
-              <Icon src={like} />
+              <Icon src={likeIcon} />
               <LikeCount>{postContent.like_count}</LikeCount>
             </StatWrapper>
             <StatWrapper>
-              <Icon src={comment} />
+              <Icon src={commentIcon} />
               <CommentCount>{postContent.comment_count}</CommentCount>
             </StatWrapper>
             <StatWrapper>
-              <Icon src={scrap} />
+              <Icon src={scrapIcon} />
               <ScrapCount>{postContent.scrap_count}</ScrapCount>
             </StatWrapper>
           </Stats>
           <Buttons>
             <Button color={"1"}>
-              <Icon src={white_like} />
+              <Icon src={whiteLikeIcon} />
               <ButtonContainer color={"1"}>좋아요</ButtonContainer>
             </Button>
             <Button color={"2"}>
-              <Icon src={scrap} />
+              <Icon src={scrapIcon} />
               <ButtonContainer color={"2"}>스크랩</ButtonContainer>
             </Button>
           </Buttons>
           <Commercial />
           <CommentsSection>
-            {comments.map((comment) => (
+            {postContent.comments.map((comment) => (
               <Comment key={comment.comment_id}>
                 <CommentHeader>
                   <PostWriterInfo
@@ -123,12 +93,11 @@ const Post = () => {
                     date={formatDate(comment.timestamp)}
                   />
                   <ButtonGroup>
-                    <CommentButton src={white_like}></CommentButton>
+                    <CommentButton src={whiteLikeIcon}></CommentButton>
                     <p>|</p>
-                    <CommentButton src={reply}></CommentButton>
+                    <CommentButton src={replyIcon}></CommentButton>
                     <p>|</p>
-
-                    <CommentButton src={chat}></CommentButton>
+                    <CommentButton src={chatIcon}></CommentButton>
                   </ButtonGroup>
                 </CommentHeader>
                 <CommentContent>{comment.content}</CommentContent>

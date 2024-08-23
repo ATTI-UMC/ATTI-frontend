@@ -10,13 +10,13 @@ const InfoCard = ({ info }) => {
   };
 
   return (
-    <Wrapper isflipped={isFlipped.toString()}>
+    <Wrapper $isflipped={isFlipped.toString()}>
       <CardFront>
         <Container>
           <Image />
           <InfoContainer>
-            <MbtiText>{info[0]} 인</MbtiText>
-            <Nickname>{info[1]} 님</Nickname>
+            <MbtiText>{info.MBTI_FK} 인</MbtiText>
+            <Nickname>{info.nickname} 님</Nickname>
           </InfoContainer>
         </Container>
         <FlipContainer>
@@ -29,19 +29,19 @@ const InfoCard = ({ info }) => {
           <InfoContainer>
             <BackInfoWrapper>
               <BackInfoTitle>나이</BackInfoTitle>
-              <BackInfoText>만 {info[2]}세</BackInfoText>
+              <BackInfoText>만 {info.age}세</BackInfoText>
             </BackInfoWrapper>
             <BackInfoWrapper>
               <BackInfoTitle>학력</BackInfoTitle>
-              <BackInfoText>{info[3]}</BackInfoText>
+              <BackInfoText>{info.school}</BackInfoText>
             </BackInfoWrapper>
             <BackInfoWrapper>
               <BackInfoTitle>학번</BackInfoTitle>
-              <BackInfoText>{info[4]}</BackInfoText>
+              <BackInfoText>{info.student_id}</BackInfoText>
             </BackInfoWrapper>
             <BackInfoWrapper>
               <BackInfoTitle>상태</BackInfoTitle>
-              <BackInfoText>{info[5]}</BackInfoText>
+              <BackInfoText>{info.status}</BackInfoText>
             </BackInfoWrapper>
           </InfoContainer>
         </Container>
@@ -60,8 +60,8 @@ const Wrapper = styled.div`
   perspective: 800px;
   transition: transform 0.3s;
   transform: perspective(800px)
-    ${({ isflipped }) =>
-      isflipped === "true" ? "rotateY(180deg)" : "rotateY(0)"};
+    ${({ $isflipped }) =>
+      $isflipped === "true" ? "rotateY(180deg)" : "rotateY(0)"};
   transform-style: preserve-3d;
 `;
 

@@ -8,6 +8,9 @@ import { createPost } from "../../api/fetch";
 const WritePost = () => {
   const nav = useNavigate();
   const location = useLocation();
+  const storedUserId = localStorage.getItem("userId");
+  const userid = storedUserId ? parseInt(storedUserId, 10) : null; // 정수로 변환
+  const nickname = localStorage.getItem("nickname");
   const { mbti, category } = location.state;
 
   const [title, setTitle] = useState("");
@@ -44,18 +47,18 @@ const WritePost = () => {
 
     const postData = {
       boardType: category,
-      userId: 123,
-      nickname: "nickname",
+      userId: userid,
+      nickname: nickname,
       title,
       content,
       images,
     };
 
-    const url = await createPost(postData);
-    if (url !== undefined) {
-      nav(url);
+    const board_id = await createPost(postData);
+    if (board_id !== undefined) {
+      nav(`/community/${category}/${mbti}/${board_id}`);
     } else {
-      console.log("서버오류");
+      alert("다시 시도해주세요");
     }
   };
 

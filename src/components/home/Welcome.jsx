@@ -2,18 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import INTJ from "../../assets/images/INTJ.png";
 import { useNavigate } from "react-router-dom";
-import useUserStore from "../../store/useUserStore";
 
 const Welcome = () => {
   const nav = useNavigate();
-  const userid = useUserStore((state) => state.userid);
+  const nickname = localStorage.getItem("nickname");
+  const mbti = localStorage.getItem("mbti");
 
   return (
     <>
       <Container>
         <Icon src={INTJ} />
         <TextBox>
-          <Title>MBTI 아띠 님!</Title>
+          <Title>
+            {mbti} {nickname} 님!
+          </Title>
           <WelcomMsg>아띠에게 다 맡겨주세요!!</WelcomMsg>
         </TextBox>
       </Container>
