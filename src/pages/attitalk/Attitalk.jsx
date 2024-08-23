@@ -6,11 +6,13 @@ import SectionTitle from "../../components/attitalk/main/SectionTitle";
 import HeaderMain from "../../components/HeaderMain";
 
 const Attitalk = () => {
+  //recommend api 없어서 하드코딩함
   const objectList = {
     title: "ENFP의 아띠토크",
     description: "첫사랑 고민 들어드립니다",
     tagList: ["재미잇어요", "강추", "놀러오세요"],
   };
+
   return (
     <>
       <HeaderMain />
