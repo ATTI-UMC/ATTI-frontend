@@ -9,7 +9,7 @@ const ChatMain = () => {
     <>
       <HeaderMain />
       <ContentWrapper>
-        <Explain />
+        <Explain title="MBTI 아띠님!" message="새로운 친구를 사귀어 볼까요?" />
         <ChooseChat />
       </ContentWrapper>
     </>
