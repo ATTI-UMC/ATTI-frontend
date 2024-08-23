@@ -6,7 +6,8 @@ const LoginForm = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
-  const onLoginHandler = async () => {
+  const onLoginHandler = async (event) => {
+    event.preventDefault();
     const userId = await fetchLogin(id, password);
 
     console.log(userId);
@@ -21,7 +22,7 @@ const LoginForm = () => {
   };
 
   return (
-    <FormContainer>
+    <FormContainer onSubmit={onLoginHandler}>
       <Input
         type="email"
         placeholder="E-mail 입력하기"
@@ -38,7 +39,7 @@ const LoginForm = () => {
         <Checkbox type="checkbox" />
         <CheckboxLabel>로그인 상태 유지하기</CheckboxLabel>
       </CheckboxContainer>
-      <Button onClick={() => onLoginHandler(id, password)}>로그인</Button>
+      <Button type="submit">로그인</Button>
     </FormContainer>
   );
 };
