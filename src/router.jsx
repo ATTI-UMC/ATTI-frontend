@@ -17,7 +17,6 @@ import ChatMain from "./pages/chat/ChatMain";
 import attitalkRoutes from "./routes/attitalkRoutes";
 import Notification from "./pages/Notification";
 import FriendRecommendation from "./pages/FriendRecommendation";
-import NewPost from "./pages/Community/NewPost";
 import WritePost from "./pages/Community/WritePost";
 
 const router = createBrowserRouter([
