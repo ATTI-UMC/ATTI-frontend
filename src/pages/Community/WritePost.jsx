@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import NewPostHeader from "../../components/community/NewPostHeader";
 import image from "../../assets/images/default_picture.png";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { createPost } from "../../api/fetch";
 
 const WritePost = () => {
+  const nav = useNavigate();
   const location = useLocation();
   const { mbti, category } = location.state;
-  console.log(mbti, category);
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -30,7 +31,7 @@ const WritePost = () => {
     setImages((prevImages) => prevImages.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!title.trim()) {
       alert("제목을 입력해주세요.");
       return;
@@ -41,8 +42,21 @@ const WritePost = () => {
       return;
     }
 
-    // API 통신 로직을 여기에 추가
-    // 예시: axios.post('/api/posts', { title, content, images })
+    const postData = {
+      boardType: category,
+      userId: 123,
+      nickname: "nickname",
+      title,
+      content,
+      images,
+    };
+
+    const url = await createPost(postData);
+    if (url !== undefined) {
+      nav(url);
+    } else {
+      console.log("서버오류");
+    }
   };
 
   return (

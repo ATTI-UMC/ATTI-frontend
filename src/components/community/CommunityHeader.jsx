@@ -8,7 +8,7 @@ const CommunityHeader = ({ mbti, category }) => {
 
   const categories = [
     { value: "counseling", label: "고민상담소" },
-    { value: "learning", label: "학습 솔루션" },
+    { value: "education", label: "학습 솔루션" },
     { value: "mentoring", label: "멘토링" },
   ];
 

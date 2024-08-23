@@ -6,9 +6,9 @@ const LoginForm = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
-  const onLoginHandler = async () => {
+  const onLoginHandler = async (event) => {
     const userId = await fetchLogin(id, password);
-
+    event.preventDefault(); // 폼 제출 및 페이지 새로고침 방지
     console.log(userId);
   };
 
