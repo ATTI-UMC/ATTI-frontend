@@ -21,7 +21,7 @@ export const fetchLogin = async (id, password) => {
 
     const data = await response.json();
 
-    return data.user.id;
+    return data.user.userid;
   } catch (err) {
     console.log("버그당", err);
     throw err;
