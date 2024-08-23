@@ -58,7 +58,7 @@ const WritePost = () => {
     if (board_id !== undefined) {
       nav(`/community/${category}/${mbti}/${board_id}`);
     } else {
-      console.log("서버오류");
+      alert("다시 시도해주세요");
     }
   };
 

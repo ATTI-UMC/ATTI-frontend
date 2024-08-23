@@ -69,7 +69,15 @@ export const createPost = async ({
   }
 };
 
-export const getMyTalk = async () => {};
+export const getMyTalk = async (userid) => {
+  try {
+    const response = await axios.get(`${baseURL}/groupchat/${userid}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching a user's group chat:", error);
+    throw error;
+  }
+};
 
 export const fetchUserInfo = async (userid) => {
   try {
@@ -77,6 +85,16 @@ export const fetchUserInfo = async (userid) => {
     return response.data;
   } catch (error) {
     console.error("Error fetching user info:", error);
+    throw error;
+  }
+};
+
+export const fetchPost = async (postid) => {
+  try {
+    const response = await axios.get(`${baseURL}/board/${postid}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching post info:", error);
     throw error;
   }
 };
