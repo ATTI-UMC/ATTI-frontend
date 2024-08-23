@@ -16,6 +16,7 @@ export const fetchLogin = async (id, password) => {
     const userInfo = {
       userid: response.data.user.userid,
       nickname: response.data.user.nickname,
+      mbti: response.data.user.MBTI_FK,
     };
     return userInfo;
   } catch (err) {

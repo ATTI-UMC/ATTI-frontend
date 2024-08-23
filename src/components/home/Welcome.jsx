@@ -5,13 +5,17 @@ import { useNavigate } from "react-router-dom";
 
 const Welcome = () => {
   const nav = useNavigate();
+  const nickname = localStorage.getItem("nickname");
+  const mbti = localStorage.getItem("mbti");
 
   return (
     <>
       <Container>
         <Icon src={INTJ} />
         <TextBox>
-          <Title>MBTI 아띠 님!</Title>
+          <Title>
+            {mbti} {nickname} 님!
+          </Title>
           <WelcomMsg>아띠에게 다 맡겨주세요!!</WelcomMsg>
         </TextBox>
       </Container>

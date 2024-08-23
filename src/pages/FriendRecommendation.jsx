@@ -10,7 +10,6 @@ const FriendRecommendation = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      let id = 1;
       let userData = [];
       const maxId = 30;
 
