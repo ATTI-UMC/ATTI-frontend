@@ -6,9 +6,9 @@ const LoginForm = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
-  const onLoginHandler = async (event) => {
-    event.preventDefault(); // 폼 제출 및 페이지 새로고침 방지
+  const onLoginHandler = async () => {
     const userId = await fetchLogin(id, password);
+
     console.log(userId);
   };
 
@@ -21,7 +21,7 @@ const LoginForm = () => {
   };
 
   return (
-    <FormContainer onSubmit={onLoginHandler}>
+    <FormContainer>
       <Input
         type="email"
         placeholder="E-mail 입력하기"
@@ -38,7 +38,7 @@ const LoginForm = () => {
         <Checkbox type="checkbox" />
         <CheckboxLabel>로그인 상태 유지하기</CheckboxLabel>
       </CheckboxContainer>
-      <Button type="submit">로그인</Button>
+      <Button onClick={() => onLoginHandler(id, password)}>로그인</Button>
     </FormContainer>
   );
 };
