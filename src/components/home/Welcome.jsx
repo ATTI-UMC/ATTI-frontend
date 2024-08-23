@@ -2,9 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import INTJ from "../../assets/images/INTJ.png";
 import { useNavigate } from "react-router-dom";
+import useUserStore from "../../store/useUserStore";
 
 const Welcome = () => {
   const nav = useNavigate();
+  const userid = useUserStore((state) => state.userid);
 
   return (
     <>

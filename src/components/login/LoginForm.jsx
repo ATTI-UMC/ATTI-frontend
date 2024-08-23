@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { fetchLogin } from "../../api/fetch";
+import { useNavigate } from "react-router-dom";
+import useUserStore from "../../store/useUserStore";
 
 const LoginForm = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
+  const nav = useNavigate();
+  const setUserid = useUserStore((state) => state.setUserid);
 
   const onLoginHandler = async (event) => {
-    event.preventDefault();
+    event.preventDefault(); // 폼 제출 및 페이지 새로고침 방지
     const userId = await fetchLogin(id, password);
-
-    console.log(userId);
+    setUserid(userId);
+    nav("/home");
   };
 
   const onIdChangeHandler = (event) => {
@@ -24,7 +28,6 @@ const LoginForm = () => {
   return (
     <FormContainer onSubmit={onLoginHandler}>
       <Input
-        type="email"
         placeholder="E-mail 입력하기"
         onChange={onIdChangeHandler}
         value={id}
@@ -39,7 +42,7 @@ const LoginForm = () => {
         <Checkbox type="checkbox" />
         <CheckboxLabel>로그인 상태 유지하기</CheckboxLabel>
       </CheckboxContainer>
-      <Button type="submit">로그인</Button>
+      <Button type="submit">로그인</Button> {/* type="submit" 추가 */}
     </FormContainer>
   );
 };
