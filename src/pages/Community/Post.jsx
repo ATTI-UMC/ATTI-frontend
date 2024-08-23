@@ -2,6 +2,11 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import CommunityHeader from "../../components/community/CommunityHeader";
+import comment from "../../assets/images/post_comment.png";
+import like from "../../assets/images/post_like.png";
+import scrap from "../../assets/images/post_scrap.png";
+import { formatDate } from "../../utils/get-date-string";
+import PostWriterInfo from "../../components/community/PostWriterInfo";
 
 const Post = () => {
   const { category, mbti, postId } = useParams();
@@ -15,16 +20,30 @@ const Post = () => {
   const categoryLabel = categories.find((cat) => cat.value === category).label;
 
   const postContent = {
-    writer: "John Doe",
-    date: "2024-08-10",
-    time: "14:30",
-    title: "Example Post Title",
-    content:
-      "This is the content of the post. It may be quite long and contain multiple lines of text.",
-    likeCount: 120,
-    commentCount: 45,
-    scrapCount: 30,
+    board_id: 0,
+    board_type: "string",
+    user_id: 0,
+    nickname: "string",
+    title: "string",
+    content: "string",
+    like_count: 0,
+    comment_count: 0,
+    scrap_count: 0,
+    created_at: "2024-08-23T04:22:58.271Z",
+    updated_at: "2024-08-23T04:22:58.271Z",
+    images: ["string"],
+    comments: [
+      {
+        comment_id: 0,
+        user_id: 0,
+        nickname: "string",
+        content: "string",
+        timestamp: "2024-08-23T04:22:58.271Z",
+      },
+    ],
   };
+
+  const date = formatDate(postContent.created_at);
 
   // Dummy comments data
   const comments = [
@@ -51,10 +70,11 @@ const Post = () => {
       <PostContainer>
         <CommunityHeader title={`${mbti} ${categoryLabel}`} />
         <Header>
-          <Writer>{postContent.writer}</Writer>
-          <DateTime>
-            {postContent.date} {postContent.time}
-          </DateTime>
+          <PostWriterInfo
+            mbti={mbti}
+            nickname={postContent.nickname}
+            date={date}
+          />
         </Header>
         <Title>{postContent.title}</Title>
         <Content>{postContent.content}</Content>
