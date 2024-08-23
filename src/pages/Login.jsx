@@ -14,7 +14,6 @@ const Login = () => {
     try {
       const userid = await fetchLogin(id, password);
       console.log("로그인 성공:", userid);
-      // 로그인 성공 로직 추가 (예: 페이지 이동)
     } catch (error) {
       if (error.message === "Unauthorized") {
         setErrorMessage("로그인에 실패");
