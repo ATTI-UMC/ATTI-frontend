@@ -1,9 +1,18 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import CommunityHeader from "../../components/community/CommunityHeader";
 
 const Post = () => {
   const { category, mbti, postId } = useParams();
+
+  const categories = [
+    { value: "counseling", label: "고민상담소" },
+    { value: "learning", label: "학습 솔루션" },
+    { value: "mentoring", label: "멘토링" },
+  ];
+
+  const categoryLabel = categories.find((cat) => cat.value === category).label;
 
   const postContent = {
     writer: "John Doe",
@@ -38,45 +47,55 @@ const Post = () => {
   ];
 
   return (
-    <PostContainer>
-      <Header>
-        <Writer>{postContent.writer}</Writer>
-        <DateTime>
-          {postContent.date} {postContent.time}
-        </DateTime>
-      </Header>
-      <Title>{postContent.title}</Title>
-      <Content>{postContent.content}</Content>
-      <Stats>
-        <Stat>Likes: {postContent.likeCount}</Stat>
-        <Stat>Comments: {postContent.commentCount}</Stat>
-        <Stat>Scraps: {postContent.scrapCount}</Stat>
-      </Stats>
-      <Buttons>
-        <Button>Like</Button>
-        <Button>Scrap</Button>
-      </Buttons>
-      <CommentsSection>
-        {comments.map((comment) => (
-          <Comment key={comment.id}>
-            <CommentHeader>
-              <Avatar
-                src={`https://via.placeholder.com/40?text=${comment.author[0]}`}
-                alt={`${comment.author}'s avatar`}
-              />
-              <Author>{comment.author}</Author>
-              <ButtonGroup>
-                <Button>Reply</Button>
-                <Button>Like ({comment.likes})</Button>
-                <Button>Chat</Button>
-              </ButtonGroup>
-            </CommentHeader>
-            <CommentContent>{comment.content}</CommentContent>
-            <CommentDateTime>{comment.dateTime}</CommentDateTime>
-          </Comment>
-        ))}
-      </CommentsSection>
-    </PostContainer>
+    <>
+      <PostContainer>
+        <CommunityHeader title={`${mbti} ${categoryLabel}`} />
+        <Header>
+          <Writer>{postContent.writer}</Writer>
+          <DateTime>
+            {postContent.date} {postContent.time}
+          </DateTime>
+        </Header>
+        <Title>{postContent.title}</Title>
+        <Content>{postContent.content}</Content>
+        <ImageSection>
+          <Image></Image>
+          <Image></Image>
+          <Image></Image>
+          <Image></Image>
+          <Image></Image>
+        </ImageSection>
+        <Stats>
+          <Stat>Likes: {postContent.likeCount}</Stat>
+          <Stat>Comments: {postContent.commentCount}</Stat>
+          <Stat>Scraps: {postContent.scrapCount}</Stat>
+        </Stats>
+        <Buttons>
+          <Button>Like</Button>
+          <Button>Scrap</Button>
+        </Buttons>
+        <CommentsSection>
+          {comments.map((comment) => (
+            <Comment key={comment.id}>
+              <CommentHeader>
+                <Avatar
+                  src={`https://via.placeholder.com/40?text=${comment.author[0]}`}
+                  alt={`${comment.author}'s avatar`}
+                />
+                <Author>{comment.author}</Author>
+                <ButtonGroup>
+                  <Button>Reply</Button>
+                  <Button>Like ({comment.likes})</Button>
+                  <Button>Chat</Button>
+                </ButtonGroup>
+              </CommentHeader>
+              <CommentContent>{comment.content}</CommentContent>
+              <CommentDateTime>{comment.dateTime}</CommentDateTime>
+            </Comment>
+          ))}
+        </CommentsSection>
+      </PostContainer>
+    </>
   );
 };
 
@@ -86,6 +105,7 @@ const PostContainer = styled.div`
   background: white;
   width: 100%;
   height: 100vh;
+  padding: 12px;
 `;
 
 const Header = styled.div`
@@ -189,3 +209,24 @@ const CommentDateTime = styled.span`
   font-size: 12px;
   color: #666;
 `;
+
+const ImageSection = styled.div`
+  display: flex;
+  gap: 10px;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+`;
+
+const Image = styled.img`
+  background-color: #d9d9d9;
+  width: 180px;
+  height: 120px;
+  border-radius: 10px;
+  flex-shrink: 0; /* 이미지가 줄어들지 않도록 설정 */
+`;
+
+const Icons = styled.img``;

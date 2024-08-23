@@ -1,10 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 import PostItem from "./PostItem";
+import { useParams } from "react-router-dom";
+import { images } from "../../utils/mbti-characters";
+import CommunityHeader from "../../components/community/CommunityHeader";
 
 const CategoryCommunity = () => {
+  const { category, mbti } = useParams();
+
+  const categories = [
+    { value: "counseling", label: "고민상담소" },
+    { value: "learning", label: "학습 솔루션" },
+    { value: "mentoring", label: "멘토링" },
+  ];
+
+  const categoryLabel = categories.find((cat) => cat.value === category).label;
+
   const dummyIntro =
-    "임시텍스트, 계엄을 선포한 때에는 대통령은 지체없이 국회에 통고하여야 한다. 근로조건의 기준은 인간의 존엄성을 보장하도록 법률로 정한다. 타인의 범죄행위로 인하여 생명·신체에 대한 피해를 받은 국민은 법률이 정하는 바에 의하여 국가로부터 구조를 받을 수 있다.";
+    "임시텍스트, 계엄을 선포한 때에는 대통령은 지체없이 국회에 통고하여야 한다. 근";
   const dummyData = [
     {
       id: "1",
@@ -80,9 +93,10 @@ const CategoryCommunity = () => {
 
   return (
     <Layout>
+      <CommunityHeader title={`${mbti} ${categoryLabel}`} />
       <Intro>
-        <img src="" alt="mbti 캐릭터" />
-        {dummyIntro}
+        <MbtiCharacter src={images[mbti]} alt="mbti 캐릭터" />
+        <IntroText> {dummyIntro}</IntroText>
       </Intro>
       {dummyData.map((data) => (
         <PostItem
@@ -115,4 +129,23 @@ const Layout = styled.div`
 const Intro = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 15px;
+`;
+
+const IntroText = styled.div`
+  width: 285px;
+  height: 105px;
+  padding: 10px;
+  color: white;
+  background-color: #0fbd88;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+`;
+
+const MbtiCharacter = styled.img`
+  margin-right: 10px;
+  width: 90px;
+  height: 100px;
 `;
