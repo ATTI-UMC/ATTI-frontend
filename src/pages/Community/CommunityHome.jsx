@@ -2,6 +2,10 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import HeaderMain from "../../components/HeaderMain";
+import { images } from "../../utils/mbti-characters";
+import bookmark from "../../assets/images/bookmark.png";
+import comment from "../../assets/images/comment.png";
+import mypost from "../../assets/images/mypost.png";
 
 const CommunityHome = () => {
   const { category } = useParams();
@@ -33,9 +37,9 @@ const CommunityHome = () => {
   ];
 
   const userAction = [
-    { img: "", content: "북마크" },
-    { img: "", content: "댓글 단 글" },
-    { img: "", content: "내가 쓴 글" },
+    { img: bookmark, content: "북마크" },
+    { img: comment, content: "댓글 단 글" },
+    { img: mypost, content: "내가 쓴 글" },
   ];
 
   const handleCategoryChange = (selectedCategory) => {
@@ -64,13 +68,17 @@ const CommunityHome = () => {
         <MBTIContainer>
           {mbtiTypes.map((mbti) => (
             <MBTIOption key={mbti} onClick={() => handleMBTIOptionClick(mbti)}>
+              <MbtiCharacter src={images[mbti]} />
               {mbti}
             </MBTIOption>
           ))}
         </MBTIContainer>
         <UserContainer>
           {userAction.map((action, index) => (
-            <UserAction key={index}>{action.content}</UserAction>
+            <UserAction key={index}>
+              <ActionIcon src={action.img} alt={`${action.content} icon`} />
+              {action.content}
+            </UserAction>
           ))}
         </UserContainer>
       </Layout>
@@ -158,4 +166,15 @@ const UserAction = styled.button`
   border: 1px solid #0fbd88;
   border-radius: 5px;
   background-color: transparent;
+`;
+
+const MbtiCharacter = styled.img`
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+`;
+
+const ActionIcon = styled.img`
+  width: 30px;
+  height: 30px;
 `;
