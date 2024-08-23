@@ -10,16 +10,17 @@ const FriendRecommendation = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      let id = 1;
       let userData = [];
-      while (true) {
+      const maxId = 30;
+
+      for (let id = 1; id <= maxId; id++) {
         try {
           const response = await axios.get(`${baseURL}/user/${id}`);
           userData.push(response.data);
-          id++;
         } catch (error) {
-          console.error(`User with ID ${id} not found. Stopping fetch.`);
-          break;
+          // 오류 발생 시 해당 ID는 건너뛰고 다음 ID로 진행
+          console.error(`User with ID ${id} not found. Skipping.`);
+          continue;
         }
       }
 
@@ -32,11 +33,11 @@ const FriendRecommendation = () => {
   return (
     <Container>
       <Header />
-      <>
+      <CardWrapper>
         {users.map((user) => (
           <UserCard key={user.id} user={user} />
         ))}
-      </>
+      </CardWrapper>
     </Container>
   );
 };
@@ -47,4 +48,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const CardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 70px;
+  width: 100%;
 `;

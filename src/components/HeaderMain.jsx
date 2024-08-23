@@ -45,6 +45,7 @@ const HeaderWrapper = styled.div`
   width: 100%;
   max-width: 425px;
   height: 60px;
+  background-color: #fff;
 `;
 
 const ContentWrapper = styled.div`

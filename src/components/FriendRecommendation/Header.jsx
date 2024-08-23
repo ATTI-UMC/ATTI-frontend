@@ -21,13 +21,16 @@ const Header = () => {
 export default Header;
 
 const Container = styled.div`
+  position: fixed;
   display: flex;
   width: 100%;
+  height: 60px;
   padding: 20px;
   align-items: center;
   justify-content: center;
   margin-bottom: 15px;
   border-bottom: 1px solid #0fbd88;
+  background-color: #fff;
 `;
 
 const BackButton = styled.img`

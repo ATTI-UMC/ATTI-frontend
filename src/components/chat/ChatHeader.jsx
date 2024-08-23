@@ -3,7 +3,7 @@ import styled from "styled-components";
 import backBtn from "../../assets/images/backBtn.png";
 import { useNavigate } from "react-router-dom";
 
-const ChatHeader = ({ onBack, title }) => {
+const ChatHeader = ({ title }) => {
   const nav = useNavigate();
 
   return (
