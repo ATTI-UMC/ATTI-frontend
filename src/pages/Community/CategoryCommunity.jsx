@@ -8,16 +8,8 @@ import CommunityHeader from "../../components/community/CommunityHeader";
 const CategoryCommunity = () => {
   const { category, mbti } = useParams();
 
-  const categories = [
-    { value: "counseling", label: "고민상담소" },
-    { value: "learning", label: "학습 솔루션" },
-    { value: "mentoring", label: "멘토링" },
-  ];
-
-  const categoryLabel = categories.find((cat) => cat.value === category).label;
-
   const dummyIntro =
-    "임시텍스트, 계엄을 선포한 때에는 대통령은 지체없이 국회에 통고하여야 한다. 근";
+    "임시텍스트, 계엄을 선포한 때에는 대통령은 지체없이 국회에 통고하여야 한다.";
   const dummyData = [
     {
       id: "1",
@@ -93,7 +85,7 @@ const CategoryCommunity = () => {
 
   return (
     <Layout>
-      <CommunityHeader title={`${mbti} ${categoryLabel}`} />
+      <CommunityHeader mbti={mbti} category={category} />
       <Intro>
         <MbtiCharacter src={images[mbti]} alt="mbti 캐릭터" />
         <IntroText> {dummyIntro}</IntroText>

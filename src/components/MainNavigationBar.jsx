@@ -13,7 +13,7 @@ function MainNavigationBar() {
     <NavBar>
       <NavItem
         to="/home"
-        isActive={checkActive("/") && location.pathname === "/"}
+        isActive={checkActive("/") && location.pathname === "/home"}
       >
         <Icon src={home} />
         <Text>홈</Text>

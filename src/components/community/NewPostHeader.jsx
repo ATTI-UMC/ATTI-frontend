@@ -1,27 +1,9 @@
 import styled from "styled-components";
 import backBtn from "../../assets/images/backBtn.png";
 import { useNavigate } from "react-router-dom";
-import post from "../../assets/images/post1.png";
 
-const CommunityHeader = ({ mbti, category }) => {
+const NewPostHeader = ({ title, onSubmit }) => {
   const nav = useNavigate();
-
-  const categories = [
-    { value: "counseling", label: "고민상담소" },
-    { value: "education", label: "학습 솔루션" },
-    { value: "mentoring", label: "멘토링" },
-  ];
-
-  const categoryLabel = categories.find((cat) => cat.value === category).label;
-
-  const handleIconClick = () => {
-    nav("/newpost", {
-      state: {
-        mbti,
-        category,
-      },
-    });
-  };
 
   return (
     <Container>
@@ -33,13 +15,13 @@ const CommunityHeader = ({ mbti, category }) => {
           src={backBtn}
         />
       </BackContainer>
-      <Text>{`${mbti} ${categoryLabel}`}</Text>
-      <Icon src={post} onClick={handleIconClick} />
+      <Text>{title}</Text>
+      <Complete onClick={onSubmit}>완료</Complete>
     </Container>
   );
 };
 
-export default CommunityHeader;
+export default NewPostHeader;
 
 const Container = styled.div`
   display: flex;
@@ -63,8 +45,7 @@ const Text = styled.div`
   text-align: center;
 `;
 
-const Icon = styled.img`
+const Complete = styled.div`
   cursor: pointer;
-  width: 20px;
-  height: 20px;
+  color: #0fbd88;
 `;

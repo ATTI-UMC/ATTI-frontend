@@ -13,7 +13,7 @@ const CommunityHome = () => {
 
   const categories = [
     { value: "counseling", label: "MBTI별 고민상담소" },
-    { value: "learning", label: "MBTI 맞춤 학습 솔루션" },
+    { value: "education", label: "MBTI 맞춤 학습 솔루션" },
     { value: "mentoring", label: "MBTI 멘토링" },
   ];
 
