@@ -10,11 +10,19 @@ const FriendRecommendation = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
+      let id = 1;
       let userData = [];
-      for (let id = 1; id <= 4; id++) {
-        const response = await axios.get(`${baseURL}/user/${id}`);
-        userData.push(response.data);
+      while (true) {
+        try {
+          const response = await axios.get(`${baseURL}/user/${id}`);
+          userData.push(response.data);
+          id++;
+        } catch (error) {
+          console.error(`User with ID ${id} not found. Stopping fetch.`);
+          break;
+        }
       }
+
       userData.sort((a, b) => a.id - b.id);
       setUsers(userData);
     };
