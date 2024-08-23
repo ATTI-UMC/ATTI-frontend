@@ -3,13 +3,15 @@ import styled from "styled-components";
 import random from "../../assets/images/chat_random.png";
 import MBTI from "../../assets/images/chat_MBTI.png";
 import pick from "../../assets/images/chat_pick.png";
+import { useNavigate } from "react-router-dom";
 
 const ChooseChat = () => {
+  const nav = useNavigate();
   return (
     <ContentWrapper>
-      <ChatRoute src={random} />
-      <ChatRoute src={MBTI} />
-      <ChatRoute src={pick} />
+      <ChatRoute src={random} onClick={() => nav("/chatroom")} />
+      <ChatRoute src={MBTI} onClick={() => nav("/chatroom")} />
+      <ChatRoute src={pick} onClick={() => nav("/chatroom")} />
     </ContentWrapper>
   );
 };

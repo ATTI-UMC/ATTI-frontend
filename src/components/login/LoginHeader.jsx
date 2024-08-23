@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import logoAtti from "../../assets/images/logoAtti.png";
+import logoAtti from "../../assets/images/logo.png";
 
 const LoginHeader = () => {
   return (
@@ -20,13 +20,14 @@ const HeaderContainer = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 78px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
 `;
 
 const Title = styled.h1`
-  font-size: 36px;
+  font-size: 40px;
+  font-weight: 700;
   color: #000;
   margin-left: 20px;
 `;
