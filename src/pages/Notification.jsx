@@ -20,6 +20,27 @@ const Notification = () => {
       mbti: "INFP",
       last_message: "Discussing project details and deadlines.",
     },
+    {
+      notification_id: 1,
+      user_id: 3,
+      title: "Work Chat",
+      mbti: "INFP",
+      last_message: "Discussing project details and deadlines.",
+    },
+    {
+      notification_id: 14,
+      user_id: 3,
+      title: "Work Chat",
+      mbti: "INFP",
+      last_message: "Discussing project details and deadlines.",
+    },
+    {
+      notification_id: 4,
+      user_id: 3,
+      title: "Work Chat",
+      mbti: "INFP",
+      last_message: "Discussing project details and deadlines.",
+    },
   ];
   const noAlarm = [];
 

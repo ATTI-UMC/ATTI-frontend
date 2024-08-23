@@ -27,7 +27,7 @@ export default PostItem;
 const PostContainer = styled.button`
   display: flex;
   flex-direction: column;
-  width: 360px;
+  width: 100%;
   height: 120px;
   padding: 12px;
   padding-bottom: 28px;
@@ -37,6 +37,7 @@ const PostContainer = styled.button`
   background-color: transparent;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
+  justify-content: center;
 `;
 
 const Title = styled.h3`
@@ -47,6 +48,7 @@ const Title = styled.h3`
 `;
 
 const Content = styled.p`
+  max-width: 100%;
   margin: 5px 0;
   font-size: 14px;
   color: #555;
@@ -63,7 +65,9 @@ const Footer = styled.div`
   color: #777;
 `;
 
-const CommentCount = styled.span``;
+const CommentCount = styled.span`
+  color: #0fbd88;
+`;
 
 const Time = styled.span``;
 

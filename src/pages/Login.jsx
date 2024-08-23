@@ -22,7 +22,6 @@ const Login = () => {
         <button onClick={handleClick}>모달확인용</button>
         <Modal show={showModal} onClose={handleClick} error={"로그인에 실패"} />
       </LoginContainer>
-      <Debug></Debug>
     </>
   );
 };
