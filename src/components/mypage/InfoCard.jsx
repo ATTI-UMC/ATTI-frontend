@@ -66,6 +66,7 @@ const Wrapper = styled.div`
 `;
 
 const CardFace = styled.div`
+  grid-area: 1/1/1/1;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -75,7 +76,6 @@ const CardFace = styled.div`
   gap: 5px;
   margin-bottom: 10px;
   backface-visibility: hidden;
-  grid-area: 1/1/1/1;
 `;
 
 const CardFront = styled(CardFace)``;

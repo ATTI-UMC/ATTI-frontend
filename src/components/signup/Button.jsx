@@ -2,17 +2,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const Button = ({ disabled, to }) => {
+const Button = ({ disabled, onClick }) => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    if (!disabled) {
-      navigate(to);
-    }
-  };
-
   return (
-    <Btn disabled={disabled} onClick={handleClick}>
+    <Btn disabled={disabled} onClick={onClick}>
       다음
     </Btn>
   );

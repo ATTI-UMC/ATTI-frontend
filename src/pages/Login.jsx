@@ -22,7 +22,6 @@ const Login = () => {
         <button onClick={handleClick}>모달확인용</button>
         <Modal show={showModal} onClose={handleClick} error={"로그인에 실패"} />
       </LoginContainer>
-      <Debug></Debug>
     </>
   );
 };
@@ -32,9 +31,7 @@ export default Login;
 const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  min-width: 375px;
+  height: 100%;
   align-items: center;
   justify-content: center;
   background: #fff;

@@ -4,10 +4,6 @@ import styled from "styled-components";
 const Modal = ({ show, onClose, error }) => {
   const modalRef = useRef();
 
-  if (!show) {
-    return null;
-  }
-
   const handleOverlayClick = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
       onClose();
@@ -15,18 +11,22 @@ const Modal = ({ show, onClose, error }) => {
   };
 
   return (
-    <Overlay onClick={handleOverlayClick}>
-      <ModalContainer ref={modalRef}>
-        <ModalHeader>!</ModalHeader>
-        <Content>
-          <Message>
-            <Error>{error}</Error>하였습니다
-          </Message>
-          <Message>다시 확인해 주세요.</Message>
-        </Content>
-        <CloseButton onClick={onClose}>확인</CloseButton>
-      </ModalContainer>
-    </Overlay>
+    <>
+      {show && (
+        <Overlay onClick={handleOverlayClick}>
+          <ModalContainer ref={modalRef}>
+            <ModalHeader>!</ModalHeader>
+            <Content>
+              <Message>
+                <Error>{error}</Error>하였습니다
+              </Message>
+              <Message>다시 확인해 주세요.</Message>
+            </Content>
+            <CloseButton onClick={onClose}>확인</CloseButton>
+          </ModalContainer>
+        </Overlay>
+      )}
+    </>
   );
 };
 
