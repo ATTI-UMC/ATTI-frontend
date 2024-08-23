@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import INTJ from "../../assets/images/INTJ.png";
+import { useNavigate } from "react-router-dom";
 
 const Welcome = () => {
+  const nav = useNavigate();
+
   return (
     <>
       <Container>
@@ -17,7 +20,7 @@ const Welcome = () => {
           <TextBtn>간단한</TextBtn>
           <TextBtn>MBTI 검사하기</TextBtn>
         </Button>
-        <Button>
+        <Button onClick={() => nav("/friends")}>
           <TextBtn>새로운 친구</TextBtn>
           <TextBtn>추천받으러 가기</TextBtn>
         </Button>
