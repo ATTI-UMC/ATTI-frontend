@@ -1,87 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import PostItem from "./PostItem";
 import { useParams } from "react-router-dom";
 import { images } from "../../utils/mbti-characters";
 import CommunityHeader from "../../components/community/CommunityHeader";
+import { fetchBoard } from "../../api/fetch";
+import { formatDate } from "../../utils/get-date-string";
 
 const CategoryCommunity = () => {
   const { category, mbti } = useParams();
+  const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(null);
 
-  const dummyIntro =
-    "임시텍스트, 계엄을 선포한 때에는 대통령은 지체없이 국회에 통고하여야 한다.";
-  const dummyData = [
-    {
-      id: "1",
-      title: "React에서 상태 관리하기",
-      content: "React에서 상태를 효과적으로 관리하는 방법에 대해 알아보세요.",
-      commentCount: 12,
-      time: "2024-08-10",
-      writer: "JaneDoe",
-    },
-    {
-      id: "2",
-      title: "Styled-Components로 스타일링",
-      content:
-        "Styled-Components를 사용하여 React 컴포넌트에 스타일을 적용하는 방법을 배우세요.",
-      commentCount: 8,
-      time: "2024-08-09",
-      writer: "JohnSmith",
-    },
-    {
-      id: "3",
-      title: "TypeScript와 React 통합",
-      content:
-        "TypeScript와 React를 함께 사용하는 방법에 대한 가이드를 제공합니다.",
-      commentCount: 15,
-      time: "2024-08-08",
-      writer: "Alice",
-    },
-    {
-      id: "4",
-      title: "Next.js로 SSR 구현하기",
-      content:
-        "Next.js를 사용하여 서버 사이드 렌더링(SSR)을 구현하는 방법을 알아보세요.",
-      commentCount: 5,
-      time: "2024-08-07",
-      writer: "Bob",
-    },
-    {
-      id: "5",
-      title: "React에서 상태 관리하기",
-      content: "React에서 상태를 효과적으로 관리하는 방법에 대해 알아보세요.",
-      commentCount: 12,
-      time: "2024-08-10",
-      writer: "JaneDoe",
-    },
-    {
-      id: "6",
-      title: "Styled-Components로 스타일링",
-      content:
-        "Styled-Components를 사용하여 React 컴포넌트에 스타일을 적용하는 방법을 배우세요.",
-      commentCount: 8,
-      time: "2024-08-09",
-      writer: "JohnSmith",
-    },
-    {
-      id: "7",
-      title: "TypeScript와 React 통합",
-      content:
-        "TypeScript와 React를 함께 사용하는 방법에 대한 가이드를 제공합니다.",
-      commentCount: 15,
-      time: "2024-08-08",
-      writer: "Alice",
-    },
-    {
-      id: "8",
-      title: "Next.js로 SSR 구현하기",
-      content:
-        "Next.js를 사용하여 서버 사이드 렌더링(SSR)을 구현하는 방법을 알아보세요.",
-      commentCount: 5,
-      time: "2024-08-07",
-      writer: "Bob",
-    },
-  ];
+  const dummyIntro = "아띠토크에서 고민상담을 들어주세요!";
+
+  useEffect(() => {
+    const loadPosts = async () => {
+      try {
+        const data = await fetchBoard(category);
+        setPosts(data);
+      } catch (error) {
+        setError("게시글을 불러오는 중 오류가 발생했습니다.");
+      }
+    };
+
+    loadPosts();
+  }, [category]);
 
   return (
     <Layout>
@@ -90,17 +34,21 @@ const CategoryCommunity = () => {
         <MbtiCharacter src={images[mbti]} alt="mbti 캐릭터" />
         <IntroText> {dummyIntro}</IntroText>
       </Intro>
-      {dummyData.map((data) => (
-        <PostItem
-          key={data.id}
-          id={data.id}
-          title={data.title}
-          content={data.content}
-          commentCount={data.commentCount}
-          time={data.time}
-          writer={data.writer}
-        />
-      ))}
+      {error ? (
+        <ErrorMessage>{error}</ErrorMessage>
+      ) : (
+        posts.map((data) => (
+          <PostItem
+            key={data.board_id}
+            id={data.id}
+            title={data.title}
+            content={data.content}
+            commentCount={data.comment_count}
+            time={formatDate(data.updated_at)}
+            writer={data.nickname}
+          />
+        ))
+      )}
     </Layout>
   );
 };
@@ -140,4 +88,10 @@ const MbtiCharacter = styled.img`
   margin-right: 10px;
   width: 90px;
   height: 100px;
+`;
+
+const ErrorMessage = styled.div`
+  color: red;
+  text-align: center;
+  margin-top: 20px;
 `;
