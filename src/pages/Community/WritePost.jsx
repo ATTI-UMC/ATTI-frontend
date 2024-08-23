@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import NewPostHeader from "../../components/community/NewPostHeader";
 import image from "../../assets/images/default_picture.png";
+import { useLocation } from "react-router-dom";
 
 const WritePost = () => {
+  const location = useLocation();
+  const { mbti, category } = location.state;
+  console.log(mbti, category);
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [images, setImages] = useState([]);
