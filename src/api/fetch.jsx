@@ -1,4 +1,5 @@
 import axios from "axios";
+import useUserStore from "../store/useUserStore";
 
 //api 파일
 const baseURL = "http://teamatti.site:3000";
@@ -13,7 +14,11 @@ export const fetchLogin = async (id, password) => {
       },
     });
 
-    return response.data.user.userid;
+    const userInfo = {
+      userid: response.data.user.userid,
+      nickname: response.data.user.nickname,
+    };
+    return userInfo;
   } catch (err) {
     if (err.response && err.response.status === 401) {
       throw new Error("Unauthorized");
@@ -63,3 +68,5 @@ export const createPost = async ({
     console.error("create post 버그:", error);
   }
 };
+
+export const getMyTalk = async () => {};

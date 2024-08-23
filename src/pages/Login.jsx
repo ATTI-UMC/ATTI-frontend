@@ -4,16 +4,22 @@ import LoginHeader from "../components/login/LoginHeader";
 import LoginForm from "../components/login/LoginForm";
 import LoginFooter from "../components/login/LoginFooter";
 import Modal from "../components/Modal";
+import { useNavigate } from "react-router-dom";
 import { fetchLogin } from "../api/fetch";
+import useUserStore from "../store/useUserStore";
 
 const Login = () => {
   const [showModal, setShowModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const nav = useNavigate();
+  const setUserInfo = useUserStore((state) => state.setUserInfo); // zustand 훅 호출
 
   const handleLogin = async (id, password) => {
     try {
-      const userid = await fetchLogin(id, password);
-      console.log("로그인 성공:", userid);
+      const userInfo = await fetchLogin(id, password);
+      setUserInfo(userInfo);
+      console.log("로그인 성공:", userInfo);
+      nav("/home");
     } catch (error) {
       if (error.message === "Unauthorized") {
         setErrorMessage("로그인에 실패");

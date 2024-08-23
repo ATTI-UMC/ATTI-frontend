@@ -16,7 +16,7 @@ const Post = () => {
 
   const categories = [
     { value: "counseling", label: "고민상담소" },
-    { value: "learning", label: "학습 솔루션" },
+    { value: "education", label: "학습 솔루션" },
     { value: "mentoring", label: "멘토링" },
   ];
 
@@ -70,7 +70,7 @@ const Post = () => {
   return (
     <>
       <PostContainer>
-        <CommunityHeader title={`${mbti} ${categoryLabel}`} />
+        <CommunityHeader mbti={mbti} category={category} />
         <Header>
           <PostWriterInfo
             mbti={mbti}
