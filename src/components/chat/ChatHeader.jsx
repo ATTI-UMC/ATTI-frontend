@@ -1,11 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import backBtn from "../../assets/images/backBtn.png";
+import { useNavigate } from "react-router-dom";
 
 const ChatHeader = ({ onBack, title }) => {
+  const nav = useNavigate();
+
   return (
     <HeaderWrapper>
-      <BackBtn onClick={onBack}>
+      <BackBtn
+        onClick={() => {
+          nav(-1);
+        }}
+      >
         <BackButtonImg src={backBtn} alt="Back" />
       </BackBtn>
       <Title>{title}</Title>
