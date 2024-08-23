@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import INTJ from "../../assets/images/INTJ.png";
 import flower from "../../assets/images/flower.png";
+import { useNavigate } from "react-router-dom";
 
 const UserCard = ({ user }) => {
+  const nav = useNavigate();
   return (
-    <Container>
+    <Container onClick={() => nav("/chatroom")}>
       <Icon src={flower} />
       <Avatar src={INTJ} />
       <ContentsWrapper>
@@ -14,14 +16,13 @@ const UserCard = ({ user }) => {
           <MBTI>{user.MBTI_FK}</MBTI>
         </Wrapper>
         <TagsWrapper>
-          <Tag>#요리</Tag>
           <Tag>
             {user.interesting_tags ? (
               user.interting_tags.map((tag, index) => (
-                <span key={index}>{tag}</span>
+                <span key={index}>#{tag}</span>
               ))
             ) : (
-              <p>태그 없음</p>
+              <p>#태그없음</p>
             )}
           </Tag>
         </TagsWrapper>

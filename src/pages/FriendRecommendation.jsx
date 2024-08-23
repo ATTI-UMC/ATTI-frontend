@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Header from "../components/FriendRecommendation/Header";
 import UserCard from "../components/FriendRecommendation/UserCard";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const FriendRecommendation = () => {
   const [users, setUsers] = useState([]);
