@@ -18,7 +18,6 @@ const Login = () => {
       localStorage.setItem("userId", userInfo.userid.toString());
       localStorage.setItem("nickname", userInfo.nickname);
       localStorage.setItem("mbti", userInfo.mbti);
-
       nav("/home");
     } catch (error) {
       if (error.message === "Unauthorized") {
