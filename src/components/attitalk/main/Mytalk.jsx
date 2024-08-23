@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import SectionTitle from "./SectionTitle";
 import TalkPreview from "../TalkPreview";
 
 const Mytalk = () => {

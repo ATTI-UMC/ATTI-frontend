@@ -7,24 +7,24 @@ export const fetchLogin = async (id, password) => {
   const loginInfo = { id: id, password: password };
 
   try {
-    const response = await fetch(`${baseURL}/auth/login`, {
-      method: "POST",
+    const response = await axios.post(`${baseURL}/auth/login`, loginInfo, {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(loginInfo),
     });
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    const data = await response.json();
-
-    return data.user.userid;
+    const userInfo = {
+      userid: response.data.user.userid,
+      nickname: response.data.user.nickname,
+    };
+    return userInfo;
   } catch (err) {
-    console.log("버그당", err);
-    throw err;
+    if (err.response && err.response.status === 401) {
+      throw new Error("Unauthorized");
+    } else {
+      console.log("버그당", err);
+      throw err;
+    }
   }
 };
 
@@ -45,8 +45,8 @@ export const createPost = async ({
   formData.append("content", content);
 
   if (images && images.length > 0) {
-    images.forEach((image, index) => {
-      formData.append(`images`, image);
+    images.forEach((image) => {
+      formData.append("images", image);
     });
   }
 
@@ -56,14 +56,16 @@ export const createPost = async ({
         "Content-Type": "multipart/form-data",
       },
     });
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
+    console.log("formdata", formData);
     console.log("Post created successfully:", response.data);
-    const data = await response.json();
-    return data.redirecturl;
+    return response.data.board_id; // 응답 데이터에서 board_id 반환
   } catch (error) {
-    console.error("create post 버그:", error);
+    console.error(
+      "create post 버그:",
+      error.response ? error.response.data : error.message
+    );
+    throw new Error("Failed to create post");
   }
 };
+
+export const getMyTalk = async () => {};

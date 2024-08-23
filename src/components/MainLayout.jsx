@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import MainNavigationBar from "./MainNavigationBar";
 import styled from "styled-components";
 
@@ -19,10 +20,13 @@ const Content = styled.div`
 `;
 
 function MainLayout({ children }) {
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/";
+
   return (
     <LayoutContainer>
       <Content>{children}</Content>
-      <MainNavigationBar />
+      {!isLoginPage && <MainNavigationBar />}
     </LayoutContainer>
   );
 }
