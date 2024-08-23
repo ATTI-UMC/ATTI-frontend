@@ -20,7 +20,7 @@ const Notification = () => {
         console.log(response);
       } catch (error) {
         if (error.response && error.response.status === 404) {
-          setIsError(true); // 404 에러 시 에러 상태 설정
+          setIsError(true);
         } else {
           console.error("Error fetching notifications:", error);
         }

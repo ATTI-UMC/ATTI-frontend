@@ -4,19 +4,28 @@ import ImageInputField from "../../components/attitalk/new/ImageInputField";
 import SettingField from "../../components/attitalk/new/SettingField";
 import { useEffect, useState } from "react";
 import Preview from "../../components/attitalk/new/Preview";
+import { fetchNewTalk } from "../../api/fetch";
+import { useNavigate } from "react-router-dom";
 
 const Newchat = () => {
   const [name, setName] = useState("");
   const [hashtags, setHashtags] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const storedUserId = localStorage.getItem("userId");
+  const userid = storedUserId ? parseInt(storedUserId, 10) : null; // 정수로 변환
+  const nav = useNavigate();
 
   const handleClick = () => {
     setShowModal(!showModal);
   };
 
-  const handleCompleteButton = () => {
+  const handleCompleteButton = async () => {
     if (!isButtonDisabled) {
-      console.log("api 통신하겠삼");
+      const chatroomId = await fetchNewTalk(userid, name, hashtags);
+      console.log(chatroomId);
+      nav("chat1on1");
+    } else {
+      alert("양식을 모두 채웠는지 확인해주세요");
     }
   };
 
