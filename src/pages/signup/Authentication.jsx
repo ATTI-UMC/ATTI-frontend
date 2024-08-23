@@ -6,7 +6,7 @@ import axios from "axios";
 import Modal from "../../components/Modal";
 import { useNavigate } from "react-router-dom";
 
-const baseURL = "http://52.78.150.51:3000";
+const baseURL = "http://teamatti.site:3000";
 
 const Authentication = () => {
   const navigate = useNavigate();
@@ -69,11 +69,7 @@ const Authentication = () => {
         email: email,
         code: verificationNum,
       });
-      if (response.data.verified) {
-        setVerificationSuccess("인증되었습니다");
-      } else {
-        setVerificationError("인증번호가 일치하지 않습니다");
-      }
+      setVerificationSuccess(`${response.data.message}`);
     } catch (error) {
       console.error("이메일 인증 요청 실패:", error);
       setVerificationError("인증번호 확인에 실패했습니다. 다시 시도해 주세요");

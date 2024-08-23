@@ -17,7 +17,7 @@ const CategoryCommunity = () => {
   const categoryLabel = categories.find((cat) => cat.value === category).label;
 
   const dummyIntro =
-    "임시텍스트, 계엄을 선포한 때에는 대통령은 지체없이 국회에 통고하여야 한다. 근";
+    "임시텍스트, 계엄을 선포한 때에는 대통령은 지체없이 국회에 통고하여야 한다.";
   const dummyData = [
     {
       id: "1",

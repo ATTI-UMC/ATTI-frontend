@@ -6,7 +6,7 @@ import axios from "axios";
 
 const FriendRecommendation = () => {
   const [users, setUsers] = useState([]);
-  const baseURL = "http://52.78.150.51:3000";
+  const baseURL = "http://teamatti.site:3000";
 
   useEffect(() => {
     const fetchUsers = async () => {

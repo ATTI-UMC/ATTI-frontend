@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import backBtn from "../../assets/images/backBtn.png";
 import { useNavigate } from "react-router-dom";
-import search from "../../assets/images/search.png";
+import post from "../../assets/images/post1.png";
 
 const CommunityHeader = ({ title }) => {
   const nav = useNavigate();
@@ -17,7 +17,7 @@ const CommunityHeader = ({ title }) => {
         />
       </BackContainer>
       <Text>{title}</Text>
-      <Icon src={search} />
+      <Icon src={post} />
     </Container>
   );
 };
@@ -48,4 +48,6 @@ const Text = styled.div`
 
 const Icon = styled.img`
   cursor: pointer;
+  width: 20px;
+  height: 20px;
 `;

@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const PasswordSetup = () => {
-  const baseURL = "http://52.78.150.51:3000";
+  const baseURL = "http://teamatti.site:3000";
   const navigate = useNavigate();
   const location = useLocation();
   const email = location.state?.email || "";
