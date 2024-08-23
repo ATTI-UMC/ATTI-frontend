@@ -1,11 +1,16 @@
 import styled from "styled-components";
-import NotificatioinContainer from "./NotificationContainer";
+import NotificationContainer from "./NotificationContainer";
 
-const Content = ({ objectList }) => {
+const Content = ({ objectList = [] }) => {
+  if (!Array.isArray(objectList)) {
+    console.error("objectList is not an array:", objectList);
+    return null;
+  }
+
   return (
     <Container>
       {objectList.map((elm, index) => (
-        <NotificatioinContainer
+        <NotificationContainer
           key={elm.notification_id}
           isodd={(index + 1) % 2 === 0}
           object={elm}
