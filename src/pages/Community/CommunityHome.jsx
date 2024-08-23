@@ -47,32 +47,34 @@ const CommunityHome = () => {
   };
 
   return (
-    <Layout>
+    <>
       <HeaderMain />
-      <CategoryContainer>
-        {categories.map(({ value, label }) => (
-          <CategoryOption
-            key={value}
-            selected={category === value}
-            onClick={() => handleCategoryChange(value)}
-          >
-            {label}
-          </CategoryOption>
-        ))}
-      </CategoryContainer>
-      <MBTIContainer>
-        {mbtiTypes.map((mbti) => (
-          <MBTIOption key={mbti} onClick={() => handleMBTIOptionClick(mbti)}>
-            {mbti}
-          </MBTIOption>
-        ))}
-      </MBTIContainer>
-      <UserContainer>
-        {userAction.map((action, index) => (
-          <UserAction key={index}>{action.content}</UserAction>
-        ))}
-      </UserContainer>
-    </Layout>
+      <Layout>
+        <CategoryContainer>
+          {categories.map(({ value, label }) => (
+            <CategoryOption
+              key={value}
+              selected={category === value}
+              onClick={() => handleCategoryChange(value)}
+            >
+              {label}
+            </CategoryOption>
+          ))}
+        </CategoryContainer>
+        <MBTIContainer>
+          {mbtiTypes.map((mbti) => (
+            <MBTIOption key={mbti} onClick={() => handleMBTIOptionClick(mbti)}>
+              {mbti}
+            </MBTIOption>
+          ))}
+        </MBTIContainer>
+        <UserContainer>
+          {userAction.map((action, index) => (
+            <UserAction key={index}>{action.content}</UserAction>
+          ))}
+        </UserContainer>
+      </Layout>
+    </>
   );
 };
 
