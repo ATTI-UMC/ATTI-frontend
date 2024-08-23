@@ -98,3 +98,34 @@ export const fetchPost = async (postid) => {
     throw error;
   }
 };
+
+export const fetchBoard = async (boardtype) => {
+  try {
+    const response = await axios.get(`${baseURL}/board/boardtype/${boardtype}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching post info:", error);
+    throw error;
+  }
+};
+
+export const fetchNewTalk = async (userid, title, interest_tags) => {
+  const talkInfo = {
+    useId: userid,
+    title: title,
+    interest_tags: interest_tags,
+  };
+
+  try {
+    const response = await axios.post(`${baseURL}/chat/create`, talkInfo, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data.chatroomId;
+  } catch (err) {
+    console.log("error fetching new talk", err);
+    throw err;
+  }
+};

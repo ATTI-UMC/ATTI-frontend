@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const TalkPreview = () => {
+  const nav = useNavigate();
   return (
-    <Container>
+    <Container onClick={() => nav("/chatroom")}>
       <ChatContainer>
         <ImageWrapper>
           <Image />

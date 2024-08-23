@@ -2,54 +2,38 @@ import styled from "styled-components";
 import Header from "../components/mypage/Header";
 import NoAlarm from "../components/notification/NoAlarm";
 import Content from "../components/notification/Content";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Notification = () => {
-  //알람 배열 받아와서 저장 - Notifications에
-  const dummy = [
-    {
-      notification_id: 13,
-      user_id: 2,
-      title: "Work Chat",
-      last_message: "Discussing project details and deadlines.",
-    },
-    {
-      notification_id: 12,
-      user_id: 3,
-      title: "Work Chat",
-      mbti: "INFP",
-      last_message: "Discussing project details and deadlines.",
-    },
-    {
-      notification_id: 1,
-      user_id: 3,
-      title: "Work Chat",
-      mbti: "INFP",
-      last_message: "Discussing project details and deadlines.",
-    },
-    {
-      notification_id: 14,
-      user_id: 3,
-      title: "Work Chat",
-      mbti: "INFP",
-      last_message: "Discussing project details and deadlines.",
-    },
-    {
-      notification_id: 4,
-      user_id: 3,
-      title: "Work Chat",
-      mbti: "INFP",
-      last_message: "Discussing project details and deadlines.",
-    },
-  ];
-  const noAlarm = [];
+  const [notifications, setNotifications] = useState([]);
+  const [isError, setIsError] = useState(false);
+  const storedUserId = localStorage.getItem("userId");
+  const userid = storedUserId ? parseInt(storedUserId, 10) : null;
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      try {
+        const response = await axios.get(
+          `http://teamatti.site:3000/notifications/${userid}`
+        );
+        setNotifications(response.data);
+        console.log(response);
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          setIsError(true);
+        } else {
+          console.error("Error fetching notifications:", error);
+        }
+      }
+    };
 
-  const [notifications, setNotifications] = useState(dummy);
+    fetchNotifications();
+  }, []);
 
   return (
     <Container>
       <Header title={"알림창"} />
-      {notifications.length === 0 ? (
+      {isError || notifications.length === 0 ? (
         <NoAlarm />
       ) : (
         <Content objectList={notifications} />
