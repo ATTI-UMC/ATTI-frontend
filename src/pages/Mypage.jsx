@@ -6,7 +6,7 @@ import { fetchUserInfo } from "../api/fetch";
 import { useEffect, useState } from "react";
 
 const Mypage = () => {
-  const [data, setData] = useState(null); // data 상태를 추가합니다.
+  const [data, setData] = useState(null);
   const storedUserId = localStorage.getItem("userId");
 
   const userid = storedUserId ? parseInt(storedUserId, 10) : null;
@@ -14,7 +14,7 @@ const Mypage = () => {
   const getInfo = async () => {
     try {
       const fetchedData = await fetchUserInfo(userid);
-      setData(fetchedData); // 데이터를 상태로 설정합니다.
+      setData(fetchedData);
       console.log(fetchedData);
     } catch (error) {
       console.error("Error fetching user info:", error);
