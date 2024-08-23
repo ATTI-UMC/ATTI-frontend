@@ -4,7 +4,7 @@ import { fetchLogin } from "../../api/fetch";
 import { useNavigate } from "react-router-dom";
 import useUserStore from "../../store/useUserStore";
 
-const LoginForm = () => {
+const LoginForm = ({ onLogin }) => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const nav = useNavigate();
@@ -12,9 +12,7 @@ const LoginForm = () => {
 
   const onLoginHandler = async (event) => {
     event.preventDefault(); // 폼 제출 및 페이지 새로고침 방지
-    const userId = await fetchLogin(id, password);
-    setUserid(userId);
-    nav("/home");
+    onLogin(id, password);
   };
 
   const onIdChangeHandler = (event) => {

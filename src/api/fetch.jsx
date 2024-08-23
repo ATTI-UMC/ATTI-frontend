@@ -7,24 +7,20 @@ export const fetchLogin = async (id, password) => {
   const loginInfo = { id: id, password: password };
 
   try {
-    const response = await fetch(`${baseURL}/auth/login`, {
-      method: "POST",
+    const response = await axios.post(`${baseURL}/auth/login`, loginInfo, {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(loginInfo),
     });
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    const data = await response.json();
-
-    return data.user.userid;
+    return response.data.user.userid;
   } catch (err) {
-    console.log("버그당", err);
-    throw err;
+    if (err.response && err.response.status === 401) {
+      throw new Error("Unauthorized");
+    } else {
+      console.log("버그당", err);
+      throw err;
+    }
   }
 };
 
