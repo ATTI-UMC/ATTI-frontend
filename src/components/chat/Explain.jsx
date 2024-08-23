@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const Explain = () => {
+const Explain = ({ title, message }) => {
   return (
     <Wrapper>
-      <Title>MBTI 아띠님!</Title>
-      <Message>새로운 친구를 사귀어 볼까요?</Message>
+      <Title>{title}</Title>
+      <Message>{message}</Message>
     </Wrapper>
   );
 };

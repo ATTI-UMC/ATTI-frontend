@@ -11,7 +11,7 @@ const ChooseChat = () => {
     <ContentWrapper>
       <ChatRoute src={random} onClick={() => nav("/chatroom")} />
       <ChatRoute src={MBTI} onClick={() => nav("/chatroom")} />
-      <ChatRoute src={pick} onClick={() => nav("/chatroom")} />
+      <ChatRoute src={pick} onClick={() => nav("/chat1on1")} />
     </ContentWrapper>
   );
 };
