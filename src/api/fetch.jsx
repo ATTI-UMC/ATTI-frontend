@@ -1,5 +1,4 @@
 import axios from "axios";
-import useUserStore from "../store/useUserStore";
 
 //api 파일
 const baseURL = "http://teamatti.site:3000";
@@ -46,8 +45,8 @@ export const createPost = async ({
   formData.append("content", content);
 
   if (images && images.length > 0) {
-    images.forEach((image, index) => {
-      formData.append(`images`, image);
+    images.forEach((image) => {
+      formData.append("images", image);
     });
   }
 
@@ -57,15 +56,15 @@ export const createPost = async ({
         "Content-Type": "multipart/form-data",
       },
     });
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
+    console.log("formdata", formData);
     console.log("Post created successfully:", response.data);
-    const data = await response.json();
-    return data.redirecturl;
+    return response.data.board_id; // 응답 데이터에서 board_id 반환
   } catch (error) {
-    console.error("create post 버그:", error);
+    console.error(
+      "create post 버그:",
+      error.response ? error.response.data : error.message
+    );
+    throw new Error("Failed to create post");
   }
 };
 
