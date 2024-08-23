@@ -69,3 +69,13 @@ export const createPost = async ({
 };
 
 export const getMyTalk = async () => {};
+
+export const fetchUserInfo = async (userid) => {
+  try {
+    const response = await axios.get(`${baseURL}/user/${userid}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user info:", error);
+    throw error;
+  }
+};
